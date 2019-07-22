@@ -1,0 +1,21 @@
+@import "vars.scss";
+
+.home {
+  max-width: 540px;
+  padding: 64px;
+  margin: 0 auto;
+  margin-top: 64px;
+  background: black;
+  color: white;
+  font-family: $primaryFont;
+  font-size: 42px;
+  text-transform: uppercase;
+  text-align: center;
+
+  .small {
+    font-family: $defaultFont;
+    font-size: 16px;
+    text-transform: none;
+    text-align: left;
+  }
+}
