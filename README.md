@@ -8,11 +8,11 @@ The initial portion of this interview is simply answering a few technical, front
 
 Thus writing, and the ability to write clearly, logically and to formulate arguments and answers is crucial at tonebase, whether a developer, PM, or A&R manager! This test aims to give us a better understanding of you as a writer, as well as your development skills.
 
-##### Types of Questions
+#### Types of Questions
 
 This interview has been created for someone who considers themselves a full-stack developer with a focus on the front-end. Very concretely what we mean by this is you feel comfortable spinning up an express server and handling MVC based routes, controlles and middleware... but you really feel at home diving into some React or Vue code and ironing out cross-browser bugs and optimizing SCSS patterns. Or you feel comfortable everywhere, which is even better :)
 
-##### Our Stack
+#### Our Stack
 
 The questions below are informed by our stack. I will list the details of each below:
 
@@ -51,19 +51,19 @@ The questions below are informed by our stack. I will list the details of each b
 
 Okay, with all that out of the way let's dive into the question section!
 
-#### 1. What made you interested in/choose React as a framework? Was it a choice you made? Regardless, what is the one thing you enjoy most about it compared to other frameworks you've used and what is one thing you dislike about it?
+### 1. What made you interested in/choose React as a framework? Was it a choice you made? Regardless, what is the one thing you enjoy most about it compared to other frameworks you've used and what is one thing you dislike about it?
 
-#### 2. What are the main types of components you can render in React? When do you choose one over the other?
+### 2. What are the main types of components you can render in React? When do you choose one over the other?
 
-#### 3. Tell me about componentWillMount and the issues with it?
+### 3. Tell me about componentWillMount and the issues with it?
 
-#### 4. How much experience do you have with testing frameworks? While our testing is light at the moment (read: nonexistent) this is something we'd like to move to in the future so this is a 'nice-to-know' for us!
+### 4. How much experience do you have with testing frameworks? While our testing is light at the moment (read: nonexistent) this is something we'd like to move to in the future so this is a 'nice-to-know' for us!
 
 ---
 
 Whew, okay, now moving into a couple of code questions. We don't need you to code anything just yet, but this is more around optimization and undertstanding JS/React.
 
-#### 1. What is wrong with this example, and how would you go about fixing or improving the component?
+### 1. What is wrong with this example, and how would you go about fixing or improving the component?
 
 ```
 class App extends React.Component {
@@ -81,7 +81,7 @@ class App extends React.Component {
 }
 ```
 
-#### 2. What's the issue with this component. Why? How would you go about fixing it?
+### 2. What's the issue with this component. Why? How would you go about fixing it?
 
 ```
 class App extends React.Component {
