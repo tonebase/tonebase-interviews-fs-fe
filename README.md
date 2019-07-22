@@ -87,7 +87,7 @@ class App extends React.Component {
 class App extends React.Component {
 state = { search: '' }
 handleChange = event => {
-	/**
+/**
      * This is a simple implementation of a "debounce" function,
      * which will queue an expression to be called in 250ms and
      * cancel any pending queued expressions. This way we can
