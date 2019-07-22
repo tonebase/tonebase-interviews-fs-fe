@@ -17,7 +17,7 @@ This interview has been created for someone who considers themselves a full-stac
 The questions below are informed by our stack. I will list the details of each below:
 
 - Client
-  - NextJS => Server Side React ([Github Link](https://github.com/zeit/next.js))
+  - NextJS => Server Side React ([Github Link](https://github.com/zeit/next.js)) + MadeByWild Boilerplate ([Github Link](https://github.com/madebywild/wild-next))
   - Firebase Authentication ([Documentation](https://firebase.google.com/docs/auth))
   - React-Easy State Stores ([Github Link](https://github.com/solkimicreb/react-easy-state))
   - Segment Analytics
