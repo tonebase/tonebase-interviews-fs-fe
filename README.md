@@ -4,9 +4,7 @@ Welcome to the tonebase Technical Interview! Congratulations, if you're here it 
 
 This interview is a small/short test of those skills. Ideally the questions presented and the challenges involved should take no more than 1 hour for an experienced full-stack developer with React chops.
 
-The initial portion of this interview is simply answering a few technical, front-end and React based questions. These should be written and do not need to be too long. However, we are a company where members of the team are constantly shifting around/traveling, whether to China to manage our upcoming subsidiary there, or to New York and Europe to head productions, attend events, etc.
-
-Thus writing, and the ability to write clearly, logically and to formulate arguments and answers is crucial at tonebase, whether a developer, PM, or A&R manager! This test aims to give us a better understanding of you as a writer, as well as your development skills.
+The initial portion of this interview is simply answering a few technical, front-end and React based questions. We can talk through these on a call as I'd love to hear how you think about them/through them!
 
 #### Types of Questions
 
@@ -53,9 +51,9 @@ Okay, with all that out of the way let's dive into the question section!
 
 ### 1. What made you interested in/choose React as a framework? Was it a choice you made? Regardless, what is the one thing you enjoy most about it compared to other frameworks you've used and what is one thing you dislike about it?
 
-### 2. What are the main types of components you can render in React? When do you choose one over the other?
+### 2. Why do the component names in JSX start with capital letters?
 
-### 3. Tell me about componentWillMount and the issues with it?
+### 3. What are the main types of components you can render in React? When do you choose one over the other?
 
 ### 4. How much experience do you have with testing frameworks? While our testing is light at the moment (read: nonexistent) this is something we'd like to move to in the future so this is a 'nice-to-know' for us!
 
@@ -132,3 +130,31 @@ Your job is to implement this design on that blank page in the NextJS applicatio
 The implementation is good when you determine it's good -- we're excited to see what you come up with!
 
 **Note:** The design is intentionally non-prescriptive on interactivity. Adding any or none is up to you. Build this how you would were this going to be shipped to 100,000+ passionate musicians, pianists and guitarists.
+
+---
+
+Lastly, just a bit of writing! We are a company where members of the team are constantly shifting around/traveling, whether to China to manage our upcoming subsidiary there, or to New York and Europe to head productions, attend events, etc.
+
+Thus writing, and the ability to write clearly, logically and to formulate arguments and answers is crucial at tonebase, whether a developer, PM, or A&R manager! These questions aim to give us a better understanding of you as a writer, as well as your development skills.
+
+### 1. Tell me about componentWillMount and the issues with it?
+
+### 2. Can you walk me through the cycle of mounting a stateful component? What functions are called in what order? Where would you place a request for data from the API? Why?
+
+### 3. If you had unlimited time budget and could fix / improve / change one thing in your last project, what would it be and why?
+
+---
+
+That's it! Now it's your time -- feel free to ask me any questions you may have and we'd love to answer to the best of our abilities. Thank you so much for taking the time to do this quick interview - we can't wait to see your answers and see if there's a way for us to work together!
+
+At tonebase we truly believe in the following principles:
+
+1. To Educate & Inspire In Everything We Do
+1. Think Big, Then Think Bigger
+1. Align Around The Mission, Execute Against The Vision
+1. Start And End With The Customer
+1. Culture Doesn't Just Happen, It's Crafted
+
+We'll let you know very soon if you've moved into the next phase of the interview. In the next step we will introduce you to the founders, our mission + vision, core company values and to our small, close-knit and wonderful team. We're all excited to see where things go and will be in touch ASAP.
+
+If there's anything else or you need to get ahold of the team at any time, you can reach out to [team@tonebase.co>](mailto:team@tonebase.co) or reach Abhi, co-founder and Head of Product at [<abhi@tonebase.co>](mailto:abhi@tonebase.co)
