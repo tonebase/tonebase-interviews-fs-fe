@@ -17,35 +17,35 @@ This interview has been created for someone who considers themselves a full-stac
 The questions below are informed by our stack. I will list the details of each below:
 
 - Client
-  _ NextJS => Server Side React ([Github Link](https://github.com/zeit/next.js))
-  _ Firebase Authentication ([Documentation](https://firebase.google.com/docs/auth))
-  _ React-Easy State Stores ([Github Link](https://github.com/solkimicreb/react-easy-state))
-  _ Segment Analytics
+  - NextJS => Server Side React ([Github Link](https://github.com/zeit/next.js))
+  - Firebase Authentication ([Documentation](https://firebase.google.com/docs/auth))
+  - React-Easy State Stores ([Github Link](https://github.com/solkimicreb/react-easy-state))
+  - Segment Analytics
 - Server/API
-  _ NodeJS/Express (custom, no off the shelf management system like SAILS)
-  _ Segment Analytics
+  - NodeJS/Express (custom, no off the shelf management system like SAILS)
+    - Segment Analytics
 - Database
-  _ Firebase Realtime Database (current)
-  _ MongoDB (future)
+  - Firebase Realtime Database (current)
+  - MongoDB (future)
 - Payment Processing
-  _ Chargebee (Subscription Management)
-  _ Stripe (Payment Processing)
+  - Chargebee (Subscription Management)
+  - Stripe (Payment Processing)
 - Marketing Technology
-  _ Intercom (soon to be removed)
-  _ FullStory
-  _ Attribution App
-  _ HelpScout
-  _ Customer.io
-  _ Amplitude
-  _ Google Analytics
-  _ SendGrid
-  _ Google Optimize (A/B, Multivariate)
-  _ Some others...
+  - Intercom (soon to be removed)
+  - FullStory
+  - Attribution App
+  - HelpScout
+  - Customer.io
+  - Amplitude
+  - Google Analytics
+  - SendGrid
+  - Google Optimize (A/B, Multivariate)
+  - Some others...
 - Other
-  _ Vimeo (Video Hosting)  
-   _ Figma (Design)
-  _ Canva (Design)
-  _ Premier (Video Editing) \* GIMP (Image Manipulation)
+  - Vimeo (Video Hosting)
+  - Figma (Design)
+  - Canva (Design)
+  - Premier (Video Editing) \* GIMP (Image Manipulation)
 
 ---
 
