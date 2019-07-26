@@ -1,0 +1,51 @@
+@import "vars.scss";
+@import "mixins.scss";
+
+.tabs {
+  display: flex;
+  justify-content: flex-start;
+  height: $tabBarHeight;
+  background-color: $white;
+  padding: 32px 12px 0;
+  border-bottom: 1px solid $lightBorder;
+
+  :global(.tabs__item) {
+    width: 124px;
+    padding-bottom: 9px;
+    cursor: pointer;
+  }
+
+  :global(.tabs__title) {
+    text-align: center;
+    font-family: $primaryFont;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: $textTitle;
+  }
+
+  :global(.tabs__item--active) {
+    border-bottom: solid 2px $textEmphasis;
+  }
+
+  :global(.tabs__item):hover {
+    border-bottom: solid 2px $textTitle;
+  }
+
+  :global(.tabs__item--active):hover {
+    cursor: default;
+    border-bottom: solid 2px $textEmphasis;
+  }
+
+  :global(.tabs__item--active .tabs__title) {
+    color: $textEmphasis;
+  }
+
+  @include for-tablet-landscape-up {
+    border-radius: $contentRadius;
+    padding: 32px 32px 0;
+
+    :global(.tabs__item) {
+      width: 172px;
+    }
+  }
+}

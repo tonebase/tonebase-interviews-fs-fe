@@ -1,0 +1,10 @@
+@import "vars.scss";
+@import "mixins.scss";
+
+.dashboard {
+  max-width: 100%;
+
+  @include for-tablet-landscape-up {
+    margin-right: 32px;
+  }
+}
