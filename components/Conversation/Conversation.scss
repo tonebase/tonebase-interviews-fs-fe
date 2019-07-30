@@ -1,0 +1,97 @@
+@import "vars.scss";
+@import "mixins.scss";
+
+.conversation {
+  position: relative;
+  display: flex;
+  width: 848px;
+  padding: 16px 19px 24px;
+  cursor: pointer;
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 32px;
+    display: block;
+    width: calc(100% - 64px);
+    border-bottom: 1px solid $lightBorder;
+    content: "";
+  }
+
+  &:hover {
+    box-shadow: $boxShadow;
+    transform: translateY(-2px);
+  }
+
+  &__avatar {
+    display: none;
+
+    @include for-tablet-landscape-up {
+      display: block;
+      padding: 0 13px;
+    }
+  }
+
+  :global(.conversation__image-placeholder) {
+    width: 64px;
+    height: 64px;
+    border-radius: $curvedRadius;
+    background-color: #c4c4c4;
+  }
+
+  &__title {
+    font-family: $primaryFont;
+    font-size: 14px;
+    text-transform: uppercase;
+    line-height: 22px;
+    color: $textTitle;
+    margin-bottom: 4px;
+
+    @include for-tablet-landscape-up {
+      font-size: 16px;
+    }
+  }
+
+  &__details {
+    font-size: 8px;
+    margin: 0;
+
+    &--emphasis {
+      color: $textEmphasis;
+    }
+
+    @include for-tablet-landscape-up {
+      font-size: 14px;
+    }
+  }
+
+  :global(.conversation__body) {
+    font-size: 10px;
+    color: $darkText;
+    margin: 8px 0;
+
+    @include for-tablet-landscape-up {
+      font-size: 14px;
+      margin: 12px 0;
+    }
+  }
+
+  :global(.conversation__abbreviation-button) {
+    font-size: 10px;
+    font-weight: 600;
+    color: $textEmphasis;
+    cursor: pointer;
+
+    &:hover {
+      filter: brightness(70%);
+    }
+
+    @include for-tablet-landscape-up {
+      font-size: 14px;
+    }
+  }
+
+  @include for-tablet-landscape-up {
+    padding-bottom: 25px;
+  }
+}

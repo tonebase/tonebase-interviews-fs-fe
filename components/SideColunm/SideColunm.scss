@@ -1,0 +1,22 @@
+@import "vars.scss";
+@import "mixins.scss";
+
+.side-colunm {
+  display: none;
+  background-color: $white;
+  min-width: 408px;
+  max-height: 985px;
+
+  &__title {
+    font-family: $primaryFont;
+    font-size: 16px;
+    text-transform: uppercase;
+    text-align: center;
+    color: $textTitle;
+    margin-top: 32px;
+  }
+
+  @include for-tablet-landscape-up {
+    display: block;
+  }
+}

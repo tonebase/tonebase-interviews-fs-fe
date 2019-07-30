@@ -1,0 +1,11 @@
+@import "vars.scss";
+@import "mixins.scss";
+
+.conversation-list {
+  background-color: $white;
+  width: 100%;
+
+  @include for-tablet-landscape-up {
+    border-radius: $contentRadius;
+  }
+}

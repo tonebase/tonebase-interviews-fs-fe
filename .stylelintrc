@@ -2,6 +2,9 @@
   "extends": "stylelint-config-wild",
   "rules": {
     "max-nesting-depth": null,
-    "selector-max-id": null
+    "selector-max-id": null,
+    "selector-pseudo-class-no-unknown": [true, {
+      "ignorePseudoClasses": ["global"]
+    }]
   }
 }
