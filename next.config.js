@@ -44,7 +44,7 @@ module.exports = withTM(
       return config;
     },
     exportPathMap: () => ({
-      "/": { page: "/Home" }
+      // "/": { page: "/Home" }
     }),
     cssModules: true,
     cssLoaderOptions: {

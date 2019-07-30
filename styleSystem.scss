@@ -1,0 +1,23 @@
+// Import general variables
+@import "vars.scss";
+@import "resets.scss";
+
+// Import Style System
+@import "./lib/styleGuide/animation.scss";
+@import "./lib/styleGuide/backgrounds.scss";
+@import "./lib/styleGuide/borders.scss";
+@import "./lib/styleGuide/colors.scss";
+@import "./lib/styleGuide/displays.scss";
+@import "./lib/styleGuide/flex.scss";
+@import "./lib/styleGuide/grids.scss";
+@import "./lib/styleGuide/icons.scss";
+@import "./lib/styleGuide/inputs.scss";
+@import "./lib/styleGuide/links.scss";
+@import "./lib/styleGuide/lists.scss";
+@import "./lib/styleGuide/modals.scss";
+@import "./lib/styleGuide/popovers.scss";
+@import "./lib/styleGuide/positions.scss";
+@import "./lib/styleGuide/shadows.scss";
+@import "./lib/styleGuide/sizing.scss";
+@import "./lib/styleGuide/spacing.scss";
+@import "./lib/styleGuide/typography.scss";

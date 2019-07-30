@@ -1,0 +1,378 @@
+// === 1. FONT FAMILIES
+.fontFamily-primary {
+  font-family: "Oswald";
+}
+.fontFamily-secondary {
+  font-family: "-apple-system, Arial, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'";
+}
+
+// === 2. FONT SIZING
+.fontSize-xxxxl {
+  font-size: 46px;
+}
+.fontSize-xxxl {
+  font-size: 38px;
+}
+.fontSize-xxl {
+  font-size: 32px;
+}
+.fontSize-xl {
+  font-size: 20px;
+}
+.fontSize-lg {
+  font-size: 18px;
+}
+.fontSize-md {
+  font-size: 16px;
+}
+.fontSize-sm {
+  font-size: 14px;
+}
+.fontSize-xs {
+  font-size: 12px;
+}
+.fontSize-xxs {
+  font-size: 10px;
+}
+.fontSize-xxxs {
+  font-size: 8px;
+}
+
+@media (min-width: 540px) {
+  .breakSm-fontSize-xxxxl {
+    font-size: 46px;
+  }
+  .breakSm-fontSize-xxxl {
+    font-size: 38px;
+  }
+  .breakSm-fontSize-xxl {
+    font-size: 28px;
+  }
+  .breakSm-fontSize-xl {
+    font-size: 20px;
+  }
+  .breakSm-fontSize-lg {
+    font-size: 18px;
+  }
+  .breakSm-fontSize-md {
+    font-size: 16px;
+  }
+  .breakSm-fontSize-sm {
+    font-size: 14px;
+  }
+  .breakSm-fontSize-xs {
+    font-size: 12px;
+  }
+  .breakSm-fontSize-xxs {
+    font-size: 10px;
+  }
+  .breakSm-fontSize-xxxs {
+    font-size: 8px;
+  }
+}
+@media (min-width: 768px) {
+  .breakMd-fontSize-xxxxl {
+    font-size: 46px;
+  }
+  .breakMd-fontSize-xxxl {
+    font-size: 38px;
+  }
+  .breakMd-fontSize-xxl {
+    font-size: 28px;
+  }
+  .breakMd-fontSize-xl {
+    font-size: 20px;
+  }
+  .breakMd-fontSize-lg {
+    font-size: 18px;
+  }
+  .breakMd-fontSize-md {
+    font-size: 16px;
+  }
+  .breakMd-fontSize-sm {
+    font-size: 14px;
+  }
+  .breakMd-fontSize-xs {
+    font-size: 12px;
+  }
+  .breakMd-fontSize-xxs {
+    font-size: 10px;
+  }
+  .breakMd-fontSize-xxxs {
+    font-size: 8px;
+  }
+}
+@media (min-width: 992px) {
+  .breakLg-fontSize-xxxxl {
+    font-size: 46px;
+  }
+  .breakLg-fontSize-xxxl {
+    font-size: 38px;
+  }
+  .breakLg-fontSize-xxl {
+    font-size: 28px;
+  }
+  .breakLg-fontSize-xl {
+    font-size: 20px;
+  }
+  .breakLg-fontSize-lg {
+    font-size: 18px;
+  }
+  .breakLg-fontSize-md {
+    font-size: 16px;
+  }
+  .breakLg-fontSize-sm {
+    font-size: 14px;
+  }
+  .breakLg-fontSize-xs {
+    font-size: 12px;
+  }
+  .breakLg-fontSize-xxs {
+    font-size: 10px;
+  }
+  .breakLg-fontSize-xxxs {
+    font-size: 8px;
+  }
+}
+@media (min-width: 1200px) {
+  .breakXl-fontSize-xxxxl {
+    font-size: 46px;
+  }
+  .breakXl-fontSize-xxxl {
+    font-size: 38px;
+  }
+  .breakXl-fontSize-xxl {
+    font-size: 28px;
+  }
+  .breakXl-fontSize-xl {
+    font-size: 20px;
+  }
+  .breakXl-fontSize-lg {
+    font-size: 18px;
+  }
+  .breakXl-fontSize-md {
+    font-size: 16px;
+  }
+  .breakXl-fontSize-sm {
+    font-size: 14px;
+  }
+  .breakXl-fontSize-xs {
+    font-size: 12px;
+  }
+  .breakXl-fontSize-xxs {
+    font-size: 10px;
+  }
+  .breakXl-fontSize-xxxs {
+    font-size: 8px;
+  }
+}
+
+// === 3. FONT WEIGHTS
+.fontWeight-xs {
+  font-weight: 100;
+}
+.fontWeight-sm {
+  font-weight: 300;
+}
+.fontWeight-md {
+  font-weight: 400;
+}
+.fontWeight-lg {
+  font-weight: 700;
+}
+.fontWeight-xl {
+  font-weight: 900;
+}
+
+// === 4. ALIGNMENT
+.textAlign-left {
+  text-align: left;
+}
+.textAlign-right {
+  text-align: right;
+}
+.textAlign-center {
+  text-align: center;
+}
+
+@media (min-width: 540px) {
+  .breakSm-textAlign-left {
+    text-align: left;
+  }
+  .breakSm-textAlign-right {
+    text-align: right;
+  }
+  .breakSm-textAlign-center {
+    text-align: center;
+  }
+}
+@media (min-width: 768px) {
+  .breakMd-textAlign-left {
+    text-align: left;
+  }
+  .breakMd-textAlign-right {
+    text-align: right;
+  }
+  .breakMd-textAlign-center {
+    text-align: center;
+  }
+}
+@media (min-width: 992px) {
+  .breakLg-textAlign-left {
+    text-align: left;
+  }
+  .breakLg-textAlign-right {
+    text-align: right;
+  }
+  .breakLg-textAlign-center {
+    text-align: center;
+  }
+}
+@media (min-width: 1200px) {
+  .breakXl-textAlign-left {
+    text-align: left;
+  }
+  .breakXl-textAlign-right {
+    text-align: right;
+  }
+  .breakXl-textAlign-center {
+    text-align: center;
+  }
+}
+
+// === 5. LINE HEIGHTS
+.lineHeight-xs {
+  line-height: 0.85em;
+}
+.lineHeight-sm {
+  line-height: 1em;
+}
+.lineHeight-md {
+  line-height: 1.32em;
+}
+.lineHeight-lg {
+  line-height: 1.6em;
+}
+.lineHeight-xl {
+  line-height: 1.8em;
+}
+@media (min-width: 540px) {
+  .breakSm-lineHeight-xs {
+    line-height: 0.85em;
+  }
+  .breakSm-lineHeight-sm {
+    line-height: 1em;
+  }
+  .breakSm-lineHeight-md {
+    line-height: 1.32em;
+  }
+  .breakSm-lineHeight-lg {
+    line-height: 1.6em;
+  }
+  .breakSm-lineHeight-xl {
+    line-height: 1.8em;
+  }
+}
+@media (min-width: 768px) {
+  .breakMd-lineHeight-xs {
+    line-height: 0.85em;
+  }
+  .breakMd-lineHeight-sm {
+    line-height: 1em;
+  }
+  .breakMd-lineHeight-md {
+    line-height: 1.32em;
+  }
+  .breakMd-lineHeight-lg {
+    line-height: 1.6em;
+  }
+  .breakMd-lineHeight-xl {
+    line-height: 1.8em;
+  }
+}
+@media (min-width: 992px) {
+  .breakLg-lineHeight-xs {
+    line-height: 0.85em;
+  }
+  .breakLg-lineHeight-sm {
+    line-height: 1em;
+  }
+  .breakLg-lineHeight-md {
+    line-height: 1.32em;
+  }
+  .breakLg-lineHeight-lg {
+    line-height: 1.6em;
+  }
+  .breakLg-lineHeight-xl {
+    line-height: 1.8em;
+  }
+}
+@media (min-width: 1200px) {
+  .breakXl-lineHeight-xs {
+    line-height: 0.85em;
+  }
+  .breakXl-lineHeight-sm {
+    line-height: 1em;
+  }
+  .breakXl-lineHeight-md {
+    line-height: 1.32em;
+  }
+  .breakXl-lineHeight-lg {
+    line-height: 1.6em;
+  }
+  .breakXl-lineHeight-xl {
+    line-height: 1.8em;
+  }
+}
+
+// === 6. LETTER SPACING
+.letterSpacing-0 {
+  letter-spacing: 0;
+}
+.letterSpacing-xs {
+  letter-spacing: 0.012em;
+}
+.letterSpacing-sm {
+  letter-spacing: 0.032em;
+}
+.letterSpacing-md {
+  letter-spacing: 0.05em;
+}
+.letterSpacing-lg {
+  letter-spacing: 0.072em;
+}
+.letterSpacing-xl {
+  letter-spacing: 0.14em;
+}
+
+// === 7. TRANSFORMS
+.textTransform-none {
+  text-transform: none !important;
+}
+.textTransform-lowercase {
+  text-transform: lowercase !important;
+}
+.textTransform-uppercase {
+  text-transform: uppercase !important;
+}
+.textTransform-capitalize {
+  text-transform: capitalize !important;
+}
+
+// Cuts text and adds ellipsis at edge of container
+.truncateText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// === 8. CURSOR
+.cursor-pointer {
+  cursor: pointer;
+}
+.cursor-auto {
+  cursor: auto;
+}
+.pointerEvents-none {
+  pointer-events: none !important;
+}
