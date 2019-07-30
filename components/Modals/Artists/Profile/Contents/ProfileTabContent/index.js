@@ -11,7 +11,7 @@ import { view } from "react-easy-state";
 // === CUSTOM ===
 import Overview from "./Overview";
 import About from "./About";
-import OtherInstructors from "./otherInstructors";
+import OtherInstructors from "./OtherInstructors";
 
 // =============================
 // =============================
