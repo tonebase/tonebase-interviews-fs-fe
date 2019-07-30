@@ -102,30 +102,6 @@ function PreviewModalEmpty(props) {
         </div>
       </div>
       <Spacer vertical space={16} />
-      <style jsx>{`
-        .blackAnimated {
-          background-color: #333333;
-
-          animation-name: pulse;
-          animation-duration: 2.1s;
-          animation-timing-function: ease-out;
-          animation-iteration-count: infinite;
-          animation-play-state: running;
-          animation-delay: 320ms;
-        }
-
-        @keyframes pulse {
-          0% {
-            background-color: #333333;
-          }
-          50% {
-            background-color: #555555;
-          }
-          100% {
-            background-color: #333333;
-          }
-        }
-      `}</style>
     </div>
   );
 }

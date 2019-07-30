@@ -68,8 +68,11 @@ class About extends React.Component {
               ) : (
                 <span className="short">
                   {modalData.metadata.description
+                    .replace("<br/><br/>", " ")
+                    .replace("<br /><br />", " ")
                     .replace("<br><br>", " ")
                     .replace("<br>", "")
+                    .replace("<br/>", "")
                     .substring(0, 244) + "..."}
                   <span className="fontSize-xs breakLg-fontSize-sm fontFamily-primary textTransform-uppercase letterSpacing-md color-primary--main">
                     &nbsp;Read More

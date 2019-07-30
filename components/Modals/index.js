@@ -6,6 +6,7 @@ import UpgradeModal from "./Upgrade";
 // === PROFILES===
 import ArtistProfileModal from "./Artists/Profile";
 import ComposerProfileModal from "./Composers/Profile";
+import CollectionProfileModal from "./Collections/Profile";
 
 // === PREVIEWS ===
 import LessonPreviewModal from "./Lessons/Preview";
@@ -15,6 +16,7 @@ export {
   MenuModal,
   ArtistProfileModal,
   ComposerProfileModal,
+  CollectionProfileModal,
   LessonPreviewModal,
   UpgradeModal
 };

@@ -10,7 +10,6 @@
 // ===============================
 
 html {
-
   &::-webkit-scrollbar {
     width: 9px;
     background-color: #f5f5f5;
@@ -28,7 +27,6 @@ html {
   }
 
   &.__showScrollbar {
-
     &::-webkit-scrollbar,
     &::-webkit-scrollbar-track,
     &::-webkit-scrollbar-thumb {
@@ -187,7 +185,6 @@ body {
 // <<< "Clearfix" for major page items
 
 .pageContentItem {
-
   &::before {
     display: flex;
     content: "";
@@ -203,5 +200,46 @@ body {
   @media (min-width: 992px) {
     width: 14px;
     height: 14px;
+  }
+}
+
+// << Loading Animation
+
+.blackAnimated {
+  background-color: #333333;
+
+  animation-name: pulse;
+  animation-duration: 2.1s;
+  animation-timing-function: ease-out;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+  animation-delay: 320ms;
+
+  &.pulseDark {
+    animation-name: pulseDark;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    background-color: #333333;
+  }
+  50% {
+    background-color: #555555;
+  }
+  100% {
+    background-color: #333333;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    background-color: #111111;
+  }
+  50% {
+    background-color: #333333;
+  }
+  100% {
+    background-color: #111111;
   }
 }

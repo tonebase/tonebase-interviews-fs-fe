@@ -24,7 +24,7 @@ class CollectionCard extends React.Component {
     return (
       <div
         className="contentItem __Collection __regular w-100 paddingLeft-xs paddingRight-xs marginBottom-lg"
-        onClick={ModalStore.openModal("previewModal", {
+        onClick={ModalStore.openModal("collectionProfileModal", {
           slug: this.props.slug
         })}
       >

@@ -16,11 +16,14 @@ import { createBaseDataURL } from "../../../../lib/helpers/data";
 
 // === CUSTOM ===
 import { ModalClose } from "../../Contents";
-import { ArtistProfileModalContent, ArtistProfileModalEmpty } from "./Contents";
+import {
+  CollectionProfileModalContent,
+  CollectionProfileModalEmpty
+} from "./Contents";
 
 // === STYLING ===
 import ModalStyle from "../../Modals.scss";
-import style from "./ArtistProfileModal.scss";
+import style from "./CollectionProfileModal.scss";
 
 // =============================
 // =============================
@@ -28,7 +31,7 @@ import style from "./ArtistProfileModal.scss";
 // COMPONENT
 // =============================
 
-class ArtistProfileModal extends React.Component {
+class CollectionProfileModal extends React.Component {
   // =============================
   // =============================
   // =============================
@@ -47,14 +50,14 @@ class ArtistProfileModal extends React.Component {
     // === Load The Data (if we don't have it already)
     if (
       ModalStore.modalIsOpen &&
-      ModalStore.openModalName === "artistProfileModal" &&
+      ModalStore.openModalName === "collectionProfileModal" &&
       !ModalStore.modalData
     ) {
       console.log("... No modal data, fetching");
       if (ModalStore.openModalSlug) {
         const dataURL =
           createBaseDataURL() +
-          `/artists/profile?slug=${ModalStore.openModalSlug}`;
+          `/collections/profile?slug=${ModalStore.openModalSlug}`;
         console.log("... Data URL =>", dataURL);
 
         await ModalStore.getModalData(dataURL);
@@ -67,10 +70,10 @@ class ArtistProfileModal extends React.Component {
       }
 
       // === Toggle to the right TabNav
-      ModalStore.switchToModalTab("overview");
+      ModalStore.switchToModalTab("inThisCollection");
 
       // === Run The Analytics
-      console.log("... Running artist profile modal analytics");
+      console.log("... Running collection profile modal analytics");
     }
 
     return null;
@@ -82,7 +85,7 @@ class ArtistProfileModal extends React.Component {
   // LIFECYCLE FUNCTIONS
   // =============================
   render() {
-    const modalName = "artistProfileModal";
+    const modalName = "collectionProfileModal";
     const modalIsOpen =
       ModalStore.modalIsOpen && ModalStore.openModalName === modalName;
 
@@ -95,8 +98,8 @@ class ArtistProfileModal extends React.Component {
           onClick={ModalStore.closeModals}
         />
         <div
-          id="artistProfileModal"
-          className={`artistProfileModal tbModal position-fixed ${
+          id="collectionProfileModal"
+          className={`collectionProfileModal tbModal position-fixed ${
             modalIsOpen ? "__shown" : ""
           }`}
           name={modalName}
@@ -109,10 +112,15 @@ class ArtistProfileModal extends React.Component {
             {
               // === CONTENTSß
             }
+            {/* {ModalStore.modalData ? (
+              <CollectionProfileModalContent />
+              ) : (
+              <CollectionProfileModalEmpty />
+            )} */}
             {modalIsOpen && ModalStore.modalData ? (
-              <ArtistProfileModalContent />
+              <CollectionProfileModalContent />
             ) : (
-              <ArtistProfileModalEmpty />
+              <CollectionProfileModalEmpty />
             )}
           </div>
         </div>
@@ -123,4 +131,4 @@ class ArtistProfileModal extends React.Component {
   }
 }
 
-export default view(ArtistProfileModal);
+export default view(CollectionProfileModal);

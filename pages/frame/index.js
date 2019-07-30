@@ -48,6 +48,7 @@ import {
   MenuModal,
   ArtistProfileModal,
   ComposerProfileModal,
+  CollectionProfileModal,
   LessonPreviewModal,
   UpgradeModal
 } from "../../components/Modals";
@@ -107,6 +108,7 @@ class Frame extends React.Component {
           <MenuModal />
           <ArtistProfileModal />
           <ComposerProfileModal />
+          <CollectionProfileModal />
           <LessonPreviewModal />
           <UpgradeModal />
           {

@@ -20,7 +20,7 @@ import { Spacer } from "../../../../Molecules/Layout";
 // COMPONENT
 // =============================
 
-function ComposerProfileModalEmpty(props) {
+function CollectionProfileModalEmpty(props) {
   return (
     <div className="modalContentEmpty d-flex flex-col paddingBottom-xxl">
       {
@@ -34,19 +34,19 @@ function ComposerProfileModalEmpty(props) {
           <div className="profileHeaderImage position-absolute t-0 l-0 r-0 w-100 h-100 bg-cover bg-no-repeat bg-center blackAnimated">
             <div className="profileHeaderContent">
               {
-                // Composer Info
+                // Collection Info
               }
-              <div className="composerInfo position-absolute b-0 l-0 w-100 d-flex flex-row flex-noWrap paddingLeft-md paddingRight-md breakMd-paddingLeft-xl breakMd-paddingRight-xl paddingBottom-md">
-                <div className="composerImage partImage d-flex alignItems-start justifyContent-center w-25 min-w-25 max-w-180px marginTop-xs breakMd-marginTop-0">
+              <div className="collectionInfo position-absolute b-0 l-0 w-100 d-flex flex-row flex-noWrap paddingLeft-md paddingRight-md breakMd-paddingLeft-xl breakMd-paddingRight-xl paddingBottom-md">
+                <div className="collectionImage partImage d-flex alignItems-start justifyContent-center w-25 min-w-25 max-w-180px marginTop-xs breakMd-marginTop-0">
                   <div
-                    className="composerImageInner position-relative w-100 h-0 bg-cover bg-no-repeat bg-center borderRadius-50 overflow-hidden blackAnimated pulseDark"
+                    className="collectionImageInner position-relative w-100 h-0 bg-cover bg-no-repeat bg-center borderRadius-50 overflow-hidden blackAnimated pulseDark"
                     style={{
-                      paddingTop: "100%"
+                      paddingTop: "132%"
                     }}
                   />
                 </div>
-                <div className="composerDescription min-w-75 max-w-75 paddingLeft-md breakMd-paddingLeft-lg">
-                  <div className="composerMetadata">
+                <div className="collectionDescription min-w-75 max-w-75 paddingLeft-md breakMd-paddingLeft-lg">
+                  <div className="collectionMetadata">
                     <h6
                       className={`color-primary--main fontSize-sm breakMd-fontSize-md fontFamily-primary textTransform-uppercase letterSpacing-md lineHeight-lg w-100 max-w-420px blackAnimated pulseDark`}
                       style={{
@@ -54,7 +54,7 @@ function ComposerProfileModalEmpty(props) {
                       }}
                     />
                   </div>
-                  <div className="composerTitle marginTop-sm">
+                  <div className="collectionTitle marginTop-sm">
                     <h4
                       className="fontSize-xxl breakMd-fontSize-xxxl breakLg-fontSize-xxxl fontFamily-primary fontWeight-xl textTransform-uppercase letterSpacing-xs lineHeight-md breakMd-lineHeight-md color-white--main blackAnimated pulseDark"
                       style={{
@@ -80,4 +80,4 @@ function ComposerProfileModalEmpty(props) {
   );
 }
 
-export default view(ComposerProfileModalEmpty);
+export default view(CollectionProfileModalEmpty);
