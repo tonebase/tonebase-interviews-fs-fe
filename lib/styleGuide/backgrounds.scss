@@ -1,48 +1,62 @@
 // === 1. BACKGROUND SIZE
+
 .bg-cover {
   background-size: cover;
 }
+
 .bg-contain {
   background-size: contain;
 }
+
 .bg-auto {
   background-size: auto;
 }
 
 // === 2. BACKGROUND ALIGNMENT
+
 .bg-center {
   background-position: center;
 }
+
 .bg-left {
   background-position: left;
 }
+
 .bg-right {
   background-position: right;
 }
+
 .bg-top {
   background-position: top;
 }
+
 .bg-bottom {
   background-position: bottom;
 }
 
 // === 3. REPEAT
+
 .bg-no-repeat {
   background-repeat: no-repeat;
 }
+
 .bg-repeat {
   background-repeat: repeat;
 }
+
 .bg-repeat-x {
   background-repeat: repeat-x;
 }
+
 .bg-repeat-y {
   background-repeat: repeat-y;
 }
 
 // === 4. OVERLAYS
+
 .overlay-dark {
-  &:after {
+
+  &::after {
     content: "";
     position: absolute;
     top: 0;

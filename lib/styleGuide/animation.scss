@@ -1,38 +1,49 @@
 // === 1. TRANSITION DURATION
+
 .transitionDuration-sm {
   transition-duration: 80ms;
 }
+
 .transitionDuration-md {
   transition-duration: 150ms;
 }
+
 .transitionDuration-lg {
   transition-duration: 300ms;
 }
+
 .transitionDuration-xl {
   transition-duration: 500ms;
 }
+
 .transitionDuration-xxl {
   transition-duration: 700ms;
 }
 
 // === 2. TRANSITION TIMINGS
+
 .transitionTiming-linear {
   transition-timing-function: linear;
 }
+
 .transitionTiming-ease {
   transition-timing-function: ease;
 }
+
 .transitionTiming-scaleIn {
   transition-timing-function: cubic-bezier(0, 0.89, 0.44, 1);
 }
+
 .transitionTiming-scaleOut {
   transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
 }
+
 .transitionTiming-scaleUp {
   transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 // === 3. HOVER STATES
+
 .floatOnHover {
   transform: translateY(0);
   transition: transform 0.12s ease;
@@ -42,7 +53,9 @@
     transform: translateY(-4px);
   }
 }
+
 .floatOnHover-md {
+
   &:hover {
     transform: translateY(-8px);
   }
@@ -50,24 +63,31 @@
 
 // === 4. ANIMATIONS
 @keyframes spin {
+
   0% {
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
+
   100% {
     -webkit-transform: rotate(1turn);
     transform: rotate(1turn);
   }
 }
+
 @keyframes rotate {
+
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(1turn);
   }
 }
+
 @keyframes bounce {
+
   0%,
   20%,
   50%,
@@ -76,43 +96,57 @@
     -webkit-transform: translateY(0);
     transform: translateY(0);
   }
+
   40% {
     -webkit-transform: translateY(-15px);
     transform: translateY(-15px);
   }
+
   60% {
     -webkit-transform: translateY(-5px);
     transform: translateY(-5px);
   }
 }
+
 @keyframes scaleUp {
+
   0% {
     transform: scale(1);
   }
+
   100% {
     transform: scale(1.08);
   }
 }
+
 @keyframes scaleUp-sm {
+
   0% {
     transform: scale(1);
   }
+
   100% {
     transform: scale(1.04);
   }
 }
+
 @keyframes scaleUp-lg {
+
   0% {
     transform: scale(1);
   }
+
   100% {
     transform: scale(1.2);
   }
 }
+
 @keyframes scaleUp-xl {
+
   0% {
     transform: scale(1);
   }
+
   100% {
     transform: scale(1.32);
   }

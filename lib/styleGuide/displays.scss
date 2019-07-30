@@ -1,22 +1,29 @@
 // === 1. CORE DISPLAY TYPES
+
 .d-block {
   display: block;
 }
+
 .d-inline {
   display: inline;
 }
+
 .d-inline-block {
   display: inline-block;
 }
+
 .d-flex {
   display: flex;
 }
+
 .d-table {
   display: table;
 }
+
 .d-table-cell {
   display: table-cell;
 }
+
 .d-none,
 .hidden {
   display: none;
@@ -24,27 +31,34 @@
 
 // Breakpoints
 @media (max-width: 539px) {
+
   .hidden-xs {
     display: none;
   }
 }
 
 @media (min-width: 540px) and (max-width: 767px) {
+
   .breakSm-d-block {
     display: block;
   }
+
   .breakSm-d-inline {
     display: inline;
   }
+
   .breakSm-d-inline-block {
     display: inline-block;
   }
+
   .breakSm-d-flex {
     display: flex;
   }
+
   .breakSm-d-table {
     display: table;
   }
+
   .breakSm-d-none,
   .hidden-sm {
     display: none;
@@ -52,21 +66,27 @@
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
+
   .breakMd-d-block {
     display: block;
   }
+
   .breakMd-d-inline {
     display: inline;
   }
+
   .breakMd-d-inline-block {
     display: inline-block;
   }
+
   .breakMd-d-flex {
     display: flex;
   }
+
   .breakMd-d-table {
     display: table;
   }
+
   .breakMd-d-none,
   .hidden-md {
     display: none;
@@ -74,21 +94,27 @@
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
+
   .breakLg-d-block {
     display: block;
   }
+
   .breakLg-d-inline {
     display: inline;
   }
+
   .breakLg-d-inline-block {
     display: inline-block;
   }
+
   .breakLg-d-flex {
     display: flex;
   }
+
   .breakLg-d-table {
     display: table;
   }
+
   .breakLg-d-none,
   .hidden-lg {
     display: none;
@@ -96,21 +122,27 @@
 }
 
 @media (min-width: 1200px) {
+
   .breakXl-d-block {
     display: block;
   }
+
   .breakXl-d-inline {
     display: inline;
   }
+
   .breakXl-d-inline-block {
     display: inline-block;
   }
+
   .breakXl-d-flex {
     display: flex;
   }
+
   .breakXl-d-table {
     display: table;
   }
+
   .breakXl-d-none,
   .hidden-xl {
     display: none;
@@ -118,146 +150,194 @@
 }
 
 // === 2. OVERFLOWS
+
 .overflow-visible {
   overflow: visible;
 }
+
 .overflow-hidden {
   overflow: hidden;
 }
+
 .overflow-scroll {
   overflow: scroll;
 }
+
 .overflowX-visible {
   overflow-x: visible;
 }
+
 .overflowY-visible {
   overflow-y: visible;
 }
+
 .overflowX-hidden {
   overflow-x: hidden;
 }
+
 .overflowY-hidden {
   overflow-y: hidden;
 }
+
 .overflowX-scroll {
   overflow-x: scroll;
 }
+
 .overflowY-scroll {
   overflow-y: scroll;
 }
 
 @media (min-width: 540px) {
+
   .breakSm-overflow-visible {
     overflow: visible;
   }
+
   .breakSm-overflow-hidden {
     overflow: hidden;
   }
+
   .breakSm-overflow-scroll {
     overflow: scroll;
   }
+
   .breakSm-overflowX-visible {
     overflow-x: visible;
   }
+
   .breakSm-overflowY-visible {
     overflow-y: visible;
   }
+
   .breakSm-overflowX-hidden {
     overflow-x: hidden;
   }
+
   .breakSm-overflowY-hidden {
     overflow-y: hidden;
   }
+
   .breakSm-overflowX-scroll {
     overflow-x: scroll;
   }
+
   .breakSm-overflowY-scroll {
     overflow-y: scroll;
   }
 }
+
 @media (min-width: 768px) {
+
   .breakMd-overflow-visible {
     overflow: visible;
   }
+
   .breakMd-overflow-hidden {
     overflow: hidden;
   }
+
   .breakMd-overflow-scroll {
     overflow: scroll;
   }
+
   .breakMd-overflowX-visible {
     overflow-x: visible;
   }
+
   .breakMd-overflowY-visible {
     overflow-y: visible;
   }
+
   .breakMd-overflowX-hidden {
     overflow-x: hidden;
   }
+
   .breakMd-overflowY-hidden {
     overflow-y: hidden;
   }
+
   .breakMd-overflowX-scroll {
     overflow-x: scroll;
   }
+
   .breakMd-overflowY-scroll {
     overflow-y: scroll;
   }
 }
+
 @media (min-width: 992px) {
+
   .breakLg-overflow-visible {
     overflow: visible;
   }
+
   .breakLg-overflow-hidden {
     overflow: hidden;
   }
+
   .breakLg-overflow-scroll {
     overflow: scroll;
   }
+
   .breakLg-overflowX-visible {
     overflow-x: visible;
   }
+
   .breakLg-overflowY-visible {
     overflow-y: visible;
   }
+
   .breakLg-overflowX-hidden {
     overflow-x: hidden;
   }
+
   .breakLg-overflowY-hidden {
     overflow-y: hidden;
   }
+
   .breakLg-overflowX-scroll {
     overflow-x: scroll;
   }
+
   .breakLg-overflowY-scroll {
     overflow-y: scroll;
   }
 }
+
 @media (min-width: 1200px) {
+
   .breakXl-overflow-visible {
     overflow: visible;
   }
+
   .breakXl-overflow-hidden {
     overflow: hidden;
   }
+
   .breakXl-overflow-scroll {
     overflow: scroll;
   }
+
   .breakXl-overflowX-visible {
     overflow-x: visible;
   }
+
   .breakXl-overflowY-visible {
     overflow-y: visible;
   }
+
   .breakXl-overflowX-hidden {
     overflow-x: hidden;
   }
+
   .breakXl-overflowY-hidden {
     overflow-y: hidden;
   }
+
   .breakXl-overflowX-scroll {
     overflow-x: scroll;
   }
+
   .breakXl-overflowY-scroll {
     overflow-y: scroll;
   }

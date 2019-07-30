@@ -10,6 +10,7 @@
 // ===============================
 
 html {
+
   &::-webkit-scrollbar {
     width: 9px;
     background-color: #f5f5f5;
@@ -27,6 +28,7 @@ html {
   }
 
   &.__showScrollbar {
+
     &::-webkit-scrollbar,
     &::-webkit-scrollbar-track,
     &::-webkit-scrollbar-thumb {
@@ -44,7 +46,7 @@ html {
 body {
   min-height: 100vh;
 
-  color: #ffffff;
+  color: #fff;
   font-size: 16px;
   line-height: 22pt;
   -webkit-font-smoothing: antialiased;
@@ -56,6 +58,7 @@ body {
   overflow-x: hidden;
 
   // Handle no scroll for modals
+
   &.__noScroll {
     overflow: hidden !important;
 
@@ -89,6 +92,7 @@ body {
 // ===============================
 
 // <<< Wrapped from withFrame
+
 #globalWrapper {
   height: 100%;
   position: relative;
@@ -102,6 +106,7 @@ body {
 }
 
 // <<< Body Content wrapped from withFrame
+
 #bodyWrapper {
   height: 100%;
   position: relative;
@@ -113,6 +118,7 @@ body {
 }
 
 // <<< The actual page component wrapper
+
 .pageBody {
   padding-top: 50px;
 
@@ -134,6 +140,7 @@ body {
 }
 
 // <<< Wrapped from within each page component
+
 .appWrapper {
   position: relative;
   padding-top: 0;
@@ -172,19 +179,23 @@ body {
 // ===============================
 
 // <<< Frame items
+
 .tbFrame {
   position: fixed;
 }
 
 // <<< "Clearfix" for major page items
+
 .pageContentItem {
-  &:before {
+
+  &::before {
     display: flex;
     content: "";
   }
 }
 
 // << Common Upgrade Icon
+
 .upgradeSVG {
   width: 11px;
   height: 11px;

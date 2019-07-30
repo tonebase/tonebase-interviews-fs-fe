@@ -1,7 +1,7 @@
 {
-  "name": "wild-next",
+  "name": "tonebase-client-staging",
   "version": "0.1.1",
-  "description": "Our next.js boilerplate with sane base configuration.",
+  "description": "The tonebase Staging environment with Nightingale upgrades.",
   "main": "server.js",
   "engines": {
     "node": "12.6.0",
@@ -26,7 +26,7 @@
     "**/*.js": "eslint --ignore-path .eslintignore",
     "**/*.scss": "stylelint */**.scss --ignore-path .stylelintignore --fix"
   },
-  "author": "WILD <weare@wild.as> (https://wild.as)",
+  "author": "Abhi Nayar <abhi@tonebase.co> (https://tonebase.co)",
   "license": "ISC",
   "eslintConfig": {
     "extends": "wild"

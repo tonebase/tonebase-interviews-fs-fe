@@ -4,15 +4,17 @@
   will-change: height;
 
   svg {
-    fill: #555555;
+    fill: #555;
   }
+
   .sidebarIcon {
     margin-bottom: -18px;
     transition: margin 0.12s ease;
     will-change: margin;
   }
+
   .sidebarText {
-    color: #aaaaaa;
+    color: #aaa;
     opacity: 0;
 
     transform: translateY(-4px) scaleZ(0);
@@ -22,14 +24,16 @@
 
   &:hover {
     height: 80px;
-    background-color: #000000;
+    background-color: #000;
 
     svg {
-      fill: #ffffff;
+      fill: #fff;
     }
+
     .sidebarIcon {
       margin-bottom: 0;
     }
+
     .sidebarText {
       color: #e14f3d;
       opacity: 1;
@@ -44,11 +48,13 @@
     pointer-events: none !important;
 
     svg {
-      fill: #ffffff;
+      fill: #fff;
     }
+
     .sidebarIcon {
       margin-bottom: 0;
     }
+
     .sidebarText {
       color: #e14f3d;
       opacity: 1;

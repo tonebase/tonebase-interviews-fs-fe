@@ -9,104 +9,135 @@
 // === 1. UI COLORS
 
 // Transparency
+
 .color-transparent {
   color: rgba(0, 0, 0, 0);
 }
+
 .bgColor-transparent {
   background-color: rgba(0, 0, 0, 0);
 }
 
 // Primary brand color
+
 .color-primary--main {
   color: #e14f3d;
 }
+
 .color-primary--light {
   color: #fead9a;
 }
+
 .color-primary--lighter {
   color: #fbeae5;
 }
+
 .color-primary--dark {
   color: #bf0711;
 }
+
 .color-primary--darker {
   color: #330101;
 }
+
 .color-primary--text {
   color: #583c35;
 }
+
 .bgColor-primary--main {
   background-color: #e14f3d;
 }
+
 .bgColor-primary--light {
   background-color: #fead9a;
 }
+
 .bgColor-primary--lighter {
   background-color: #fbeae5;
 }
+
 .bgColor-primary--dark {
   background-color: #bf0711;
 }
+
 .bgColor-primary--darker {
   background-color: #330101;
 }
+
 .bgColor-primary--text {
   background-color: #583c35;
 }
+
 .borderColor-primary--main {
   border-color: #e14f3d;
 }
 
 // For alerts, warnings, etc.
+
 .color-yellow--main {
   color: #ffc82c;
 }
+
 .color-yellow--light {
   color: #ffd55f;
 }
+
 .color-yellow--dark {
   color: #faa000;
 }
+
 .color-yellow--text {
   color: #595130;
 }
+
 .bgColor-yellow--main {
   background-color: #ffc82c;
 }
+
 .bgColor-yellow--light {
   background-color: #ffd55f;
 }
+
 .bgColor-yellow--dark {
   background-color: #faa000;
 }
+
 .borderColor-yellow--main {
   border-color: #ffc82c;
 }
+
 .borderColor-yellow--light {
   border-color: #ffd55f;
 }
+
 .borderColor-yellow--dark {
   border-color: #faa000;
 }
 
 // For warnings, alerts, etc.
+
 .color-negative--main {
   color: #ff4949;
 }
+
 .bgColor-negative--main {
   background-color: #ff4949;
 }
+
 .borderColor-negative--main {
   border-color: #ff4949;
 }
 
 // For success indications
+
 .color-positive--main {
   color: #13ce66;
 }
+
 .bgColor-positive--main {
   background-color: #13ce66;
 }
+
 .borderColor-positive--main {
   border-color: #13ce66;
 }
@@ -114,120 +145,157 @@
 // === 2. GREY COLORS
 
 // Primarily for UI elements, backgrounds, etc.
+
 .color-black--main {
   color: #1c1c1f;
 }
+
 .color-black--light {
   color: #212b36;
 }
+
 .color-black--lighter {
-  color: #333333;
+  color: #333;
 }
+
 .color-black--dark {
   color: #101012;
 }
+
 .color-black--darker {
-  color: #000000;
+  color: #000;
 }
+
 .color-black--text {
-  color: #aaaaaa;
+  color: #aaa;
 }
+
 .bgColor-black--main {
   background-color: #1c1c1f;
 }
+
 .bgColor-black--light {
   background-color: #212b36;
 }
+
 .bgColor-black--lighter {
-  background-color: #333333;
+  background-color: #333;
 }
+
 .bgColor-black--dark {
   background-color: #101012;
 }
+
 .bgColor-black--darker {
-  background-color: #000000;
+  background-color: #000;
 }
+
 .borderColor-black--main {
   border-color: #1c1c1f;
 }
+
 .borderColor-black--light {
   border-color: #212b36;
 }
+
 .borderColor-black--lighter {
-  border-color: #333333;
+  border-color: #333;
 }
+
 .borderColor-black--dark {
   border-color: #101012;
 }
+
 .borderColor-black--darker {
-  border-color: #000000;
+  border-color: #000;
 }
 
 // Primarily for borders, underlines, etc.
+
 .color-white--main {
   color: #fff;
 }
+
 .color-smoke--main {
-  color: #333333;
+  color: #333;
 }
+
 .color-smoke--light {
   color: #454f5b;
 }
+
 .color-smoke--lighter {
   color: #637381;
 }
+
 .color-smoke--dark {
   color: #1c1c1f;
 }
+
 .color-smoke--darker {
   color: #101012;
 }
+
 .color-smoke--text {
-  color: #aaaaaa;
+  color: #aaa;
 }
+
 .bgColor-smoke--main {
-  background-color: #333333;
+  background-color: #333;
 }
+
 .bgColor-smoke--light {
   background-color: #454f5b;
 }
+
 .bgColor-smoke--lighter {
   background-color: #637381;
 }
+
 .bgColor-smoke--dark {
   background-color: #1c1c1f;
 }
+
 .bgColor-smoke--darker {
   background-color: #101012;
 }
+
 .borderColor-smoke--main {
-  border-color: #333333;
+  border-color: #333;
 }
+
 .borderColor-smoke--light {
   border-color: #454f5b;
 }
+
 .borderColor-smoke--lighter {
   border-color: #637381;
 }
+
 .borderColor-smoke--dark {
   border-color: #1c1c1f;
 }
+
 .borderColor-smoke--darker {
   border-color: #101012;
 }
 
 // === 3. GRADIENTS
+
 .gradient-transToBlack {
-  background-image: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0),
-    rgba(0, 0, 0, 1)
-  );
+  background-image:
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 1)
+    );
 }
+
 .gradient-transToDark {
-  background-image: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0),
-    rgba(0, 0, 0, 0.72)
-  );
+  background-image:
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0.72)
+    );
 }
