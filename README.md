@@ -123,6 +123,7 @@ Here is a link to a Github repo. containing our NextJS setup. It includes everyt
 For this assignment you may use a state management system of your choice (other than the native React state). We recommend `react-easy-state` as that is our default tool and is extremely simple to get up and running.
 
 The counter should:
+
 (a) Increment UP once per hour between 9AM and 5PM (inclusive)
 
 (b) Increment DOWN once per hour between 6PM and 8AM (inclusive)
@@ -131,7 +132,8 @@ The counter should:
 
 (d) Increment DOWN when a different button is clicked manually
 
-1. Build the Google homepage (www.google.com)
+
+2. Build the Google homepage (www.google.com)
 
 Open-ended, go into as much or as little detail as makes sense to you. Responsiveness, functionality, modularity, etc. is all up to you -- we want to know how you interpret this prompt. Feel free to get as creative or keep it as simple as you would like. Your code will be evaluated along the following criteria:
 - Functionality
