@@ -111,7 +111,7 @@ render() {
 
 ---
 
-Onto just a teensy bit of code + introducing you to our system! This part can be done on your own, and you can ping me when it's good to go! When you're good to go with your implementation and/or happy with it feel free to make a P.R. into this repo. under a new branch titled `${ YOUR_NAME--FullStack--FrontEnd }`
+Onto just a teensy bit of code + introducing you to our system! This part can be done on your own, and you can ping me when it's good to go!
 
 Here is a link to a Github repo. containing our NextJS setup. It includes everything already setup for you -- SCSS support, a blank canvas for you to play with, and all the boileplate out of the way.
 
@@ -119,17 +119,33 @@ Here is a link to a Github repo. containing our NextJS setup. It includes everyt
 
 **Your challenge is the following:**
 
-I, or a designer, just gave you the following design in Figma.
+1. Implement a simple counter
+For this assignment you may use a state management system of your choice (other than the native React state). We recommend `react-easy-state` as that is our default tool and is extremely simple to get up and running.
 
-[The Figma Design](https://www.figma.com/file/9lVu8DBWvR04IRuFI07eRX/tonebase-Interviews?node-id=0%3A1)
+The counter should:
+(a) Increment UP once per hour between 9AM and 5PM (inclusive)
 
-Please open up that link - you may need to create a Figma account to be able to view it but this should be relatively easy/simple. This is testing your ability to handle design-handoffs in a clean manner, but if this is in any way tricky simply reach out because this is an easily trainable skill and not a requirement!
+(b) Increment DOWN once per hour between 6PM and 8AM (inclusive)
 
-Your job is to implement this design on that blank page in the NextJS application. Feel free to structure the code in whatever manner you would be proud of shipping. Any framework is just fine to use -- Bootstrap, Material, whatever! Bootstrap is included by default so you don't have to look for how to interface BS + NextJS. Other frameworks might need a little more work/searching.
+(c) Increment UP when a button is clicked manually
 
-The implementation is good when you determine it's good -- we're excited to see what you come up with!
+(d) Increment DOWN when a different button is clicked manually
 
-**Note:** The design is intentionally non-prescriptive on interactivity. Adding any or none is up to you. Build this how you would were this going to be shipped to 100,000+ passionate musicians, pianists and guitarists.
+1. Build the Google homepage (www.google.com)
+
+Open-ended, go into as much or as little detail as makes sense to you. Responsiveness, functionality, modularity, etc. is all up to you -- we want to know how you interpret this prompt. Feel free to get as creative or keep it as simple as you would like. Your code will be evaluated along the following criteria:
+- Functionality
+- Creativity
+- Readability
+- Cleanliness
+- Comments
+- Modularity
+- Defensiveness
+- Declarative-ness
+
+
+**When Complete**
+When you're good to go with your implementation and/or happy with it feel free to make a P.R. into this repo. under a new branch titled `${ YOUR_NAME--FullStack--FrontEnd }`
 
 ---
 
