@@ -117,9 +117,10 @@ Here is a link to a Github repo. containing our NextJS setup. It includes everyt
 
 [The Github Repo.](https://github.com/tonebase/tonebase-interviews-fs-fe)
 
-**Your challenge is the following:**
+**Your challenge is to implement ONE of the following:**
 
-1. Implement a simple counter
+1. OPTION 1: Implement a simple counter
+  
   For this assignment you may use a state management system of your choice (other than the native React state). We recommend `react-easy-state` as that is our default tool and is extremely simple to get up and running.
 
   The counter should:
@@ -133,7 +134,7 @@ Here is a link to a Github repo. containing our NextJS setup. It includes everyt
   (d) Increment DOWN when a different button is clicked manually
 
 
-2. Build the Google homepage (www.google.com)
+2. OPTION 2: Build the Google homepage (www.google.com)
 
   Open-ended, go into as much or as little detail as makes sense to you. Responsiveness, functionality, modularity, etc. is all up to you -- we want to know how you interpret this prompt. Feel free to get as creative or keep it as simple as you would like. Your code will be evaluated along the following criteria:
   - Functionality
@@ -144,6 +145,9 @@ Here is a link to a Github repo. containing our NextJS setup. It includes everyt
   - Modularity
   - Defensiveness
   - Declarative-ness
+
+
+NOTE: There are no bonus points for completing both options but you are, of course, free to do so! Please choose one option and indicate your choice in the documents accompanying any submission :)
 
 
 **When Complete**
