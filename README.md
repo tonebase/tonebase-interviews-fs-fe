@@ -147,9 +147,6 @@ Here is a link to a Github repo. containing our NextJS setup. It includes everyt
   - Declarative-ness
 
 
-NOTE: There are no bonus points for completing both options but you are, of course, free to do so! Please choose one option and indicate your choice in the documents accompanying any submission :)
-
-
 **When Complete**
 
 When you're good to go with your implementation and/or happy with it feel free to make a P.R. into this repo. under a new branch titled `${ YOUR_NAME--FullStack--FrontEnd }`
