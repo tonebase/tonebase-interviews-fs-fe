@@ -51,14 +51,12 @@ class MyDocument extends Document {
             rel="stylesheet"
           />
           <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
-
           {
             // === NEXT DEFAULT
           }
           <script dangerouslySetInnerHTML={{ __html: envScript }} />
           <script src="home.js"></script>
           <script src="https://kit.fontawesome.com/f391d4e959.js" crossorigin="anonymous"></script>
-          
         </Head>
         <body>
           <Main />

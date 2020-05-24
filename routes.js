@@ -3,5 +3,4 @@ const nextRoutes = require("@yolkai/next-routes").default;
 const routes = (module.exports = nextRoutes());
 
 // === MAIN ===
-routes.add("home", "/home", "Home");
-// routes.add("results", "/results", "results")
+// routes.add("home", "/home", "Home");

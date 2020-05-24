@@ -1,4 +1,4 @@
-import HomeStyle from "../home.scss";
+import HomeStyle from "../homepage.scss";
 import axios from "axios";
 
 class Home extends React.Component {
@@ -12,10 +12,12 @@ class Home extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
+  //this function keeps track of the input entered by users.
   updateQuery(e){
     this.setState({search: e.currentTarget.value})
   }
 
+  // this function redirects users to the search results page.
   handleClick = (e) => {
     e.preventDefault();
     window.location.href=`/results?searchQuery=${this.state.search}`

@@ -21,6 +21,7 @@ class Results extends React.Component{
     this.loadResults();
   }
 
+  // this function uses an API to obtain search results from Google and we set the data to state.
   loadResults = async () => {
     var query = window.location.search.split("=")[1];
     var API_KEY = "605c6c6018d2ad327294f089ad5bb6cf"
@@ -34,23 +35,29 @@ class Results extends React.Component{
     this.setState({loaded: true});
   }
   
+  //this function sets the state to the search input.
   updateQuery(e) {
     this.setState({ search: e.currentTarget.value })
   }
 
+  //this function redirects them to the the results page again but with updated search query.
   handleClick = (e) => {
     e.preventDefault();
     window.location.href = `/results?searchQuery=${this.state.search}`
   }
 
   render(){
+    // Conditional statement that checks if the results are loaded.
+    //If it has, you render the results from the query otherwise show users the loading page.
     if (this.state.loaded === true){
       return(
         <div className="results-container">
           <style jsx>{ResultsStyle}</style>
 
           <div className="results-navbar">
-            <img src="../static/images/google-logo.png" className="results-company-logo"></img>
+            <Link href="/homepage">
+              <img src="../static/images/google-logo.png" className="results-company-logo"></img>
+            </Link>
             <div className="results-form-container">
               <form id="results-form" autoComplete="off">
                 <div className="results-form-input">
@@ -58,6 +65,9 @@ class Results extends React.Component{
                   <i className="fas fa-search" id="results-fa-search" onClick={this.handleClick}></i>
                 </div>
               </form>
+              <p>all</p>
+            </div>
+            <div>
             </div>
           </div>
 
@@ -76,6 +86,7 @@ class Results extends React.Component{
               )
             })}
             <p className="related-searches-header">Related searches</p>
+            
             {this.state.data.related_searches ? this.state.data.related_searches.map(search => {
               return (
                 <div className="related-searches">
