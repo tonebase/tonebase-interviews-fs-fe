@@ -1,4 +1,4 @@
-
+// Styling for navbar.
 .results-navbar {
   display: flex;
   padding-top: 30px;
@@ -43,7 +43,7 @@
   color: #4185F4;
   cursor: pointer;
 }
-
+//Styling for results section.
 .results {
   width: 785px;
   display: flex;
@@ -64,18 +64,6 @@
   font-size: 14px;
 }
 
-.loading-container {
-  background-color: #FFF1CE;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.loading-image {
-  object-fit: cover;
-  height: 100vh;
-}
-
 .result-displayed-url {
   color: #5F6368;
   font-size: 15px;
@@ -90,7 +78,7 @@
   color: #5F6368;
   font-size: 15px;
 }
-
+//Styling for related searches section.
 .related-searches-header {
   font-size: 18px;
   font-weight: 400;
@@ -106,7 +94,19 @@
 .related-searches-items {
   color: #190DAB;
 }
+//Styling for the loading page.
+.loading-container {
+  background-color: #FFF1CE;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.loading-image {
+  object-fit: cover;
+  height: 100vh;
+}
+//Styling for more results pages.
 .results-pages {
   display: flex;
   align-items: center;
