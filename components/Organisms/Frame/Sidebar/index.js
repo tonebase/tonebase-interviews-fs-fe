@@ -56,7 +56,7 @@ class Sidebar extends React.Component {
             <SidebarItem SVGMarkup={auth} title="Login" href="/login" />
             {/* <SidebarItem SVGMarkup={upgrade} title="Upgrade" /> */}
             <SidebarItem SVGMarkup={dashboard} title="Home" href="/home" />
-            <SidebarItem active SVGMarkup={counter} title="Counter" href="/counter" />
+            <SidebarItem SVGMarkup={counter} title="Counter" href="/counter" />
             <SidebarItem
               SVGMarkup={library}
               title="Library"
