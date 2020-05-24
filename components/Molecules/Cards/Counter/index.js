@@ -37,23 +37,28 @@ const CounterCard = () => {
     useEffect(() => {
         //this interval will check every 60 seconds if the it is a new hour and will update the counter accordingly
         const countdown = () => {
-            const check = setInterval(() => {
+            setInterval(() => {
                 const workDayHours = [9, 10, 11, 12, 13, 14, 15, 16, 17]
                 const currentTime = new Date()
 
-                //set to fire on two minutes values because i was getting some odd behavior and i prefer to err on the side of caution
-                if (currentTime.getMinutes() === 59 || currentTime.getMinutes() === 0) {
+                //set to check every minute if it is the top of the hour, and fire an increment or decrement if it is.
+                if (currentTime.getMinutes() === 0) {
                     workDayHours.includes(currentTime.getHours()) ? counter.increment() : counter.decrement()
                 }
             }, 60000)
         }
 
-        //checks the currect second and ,if needed, sets a timout to fire interval at the beginning of the next minute
-        const currentSecond = new Date().getSeconds()
-        if (currentSecond !== 0) {
-            const delay = (60 - currentSecond) * 1000
-            setTimeout(() => countdown(), delay)
-        } else countdown()
+        //couldn't get the below working as reliably as i wanted. it SHOULD check the currect second and ,if needed, sets a timout to fire interval at the beginning of the next minute, but the seconds aren't accurate enough to rely on. would love to try again in the future.
+        // const currentSecond = new Date().getSeconds()
+        // if (currentSecond !== 1) {
+        //     const delay = (60 - currentSecond) * 1000
+        //     setTimeout(() => countdown(), delay)
+        // } else countdown()
+
+        countdown()
+
+        //the return will clear the interval when the component dismounts
+        return () => clearInterval(countdown)
 
         //eslint wasn't liking the empty dependency array below, but it's necessary for it to function
         // eslint-disable-next-line
