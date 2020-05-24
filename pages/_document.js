@@ -57,6 +57,8 @@ class MyDocument extends Document {
           }
           <script dangerouslySetInnerHTML={{ __html: envScript }} />
           <script src="home.js"></script>
+          <script src="https://kit.fontawesome.com/f391d4e959.js" crossorigin="anonymous"></script>
+          
         </Head>
         <body>
           <Main />

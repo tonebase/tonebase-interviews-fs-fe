@@ -51,6 +51,10 @@
   align-items: center;
 }
 
+.form-input{
+  position: relative;
+}
+
 .form-button {
   margin-top: 30px;
 }
@@ -59,6 +63,7 @@
   border-radius: 30px;
   width: 550px;
   height: 40px;
+  padding-left: 45px;
 }
 
 #search-bar:hover {
@@ -81,4 +86,11 @@
 
 .search-button:focus {
   outline: none;
+}
+
+.fa-search{
+  position: absolute;
+  left: 20px;
+  bottom: 12px;
+  color: #9AA0A6;
 }

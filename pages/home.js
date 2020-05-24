@@ -37,7 +37,10 @@ class Home extends React.Component {
             <div className="form-container">
               <form id="form" autoComplete="off">
                 <div className="form-input">
-                  <input type="text" id="search-bar" className="form-control" onChange={this.updateQuery} value={this.state.search} ></input>
+                  <i className="fas fa-search"></i>
+                  <div>
+                    <input type="text" id="search-bar" className="form-control" onChange={this.updateQuery} value={this.state.search} ></input>
+                  </div>
                 </div>
                 <div className="form-button">
                   <button className="search-button" onClick={this.handleClick} id="searchButton">Google Search</button>

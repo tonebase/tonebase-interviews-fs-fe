@@ -13,6 +13,8 @@ class Results extends React.Component{
       data: {}
     }
     this.loadResults = this.loadResults.bind(this);
+    this.updateQuery = this.updateQuery.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount(){
@@ -21,7 +23,7 @@ class Results extends React.Component{
 
   loadResults = async () => {
     var query = window.location.search.split("=")[1];
-    var API_KEY = "32944db1034927e41f76ff42c17267af"
+    var API_KEY = "605c6c6018d2ad327294f089ad5bb6cf"
     var url = "http://api.serpstack.com/search?access_key=" + API_KEY + "&type=web&query=" + query
 
     const response = await axios.get(url);
@@ -32,13 +34,36 @@ class Results extends React.Component{
     this.setState({loaded: true});
   }
   
+  updateQuery(e) {
+    this.setState({ search: e.currentTarget.value })
+  }
+
+  handleClick = (e) => {
+    e.preventDefault();
+    window.location.href = `/results?searchQuery=${this.state.search}`
+  }
+
   render(){
     if (this.state.loaded === true){
       return(
         <div className="results-container">
           <style jsx>{ResultsStyle}</style>
+
+          <div className="results-navbar">
+            <img src="../static/images/google-logo.png" className="results-company-logo"></img>
+            <div className="results-form-container">
+              <form id="results-form" autoComplete="off">
+                <div className="results-form-input">
+                  <input type="text" id="results-search-bar" onChange={this.updateQuery} value={this.state.search} ></input>
+                  <i className="fas fa-search" id="results-fa-search" onClick={this.handleClick}></i>
+                </div>
+              </form>
+            </div>
+          </div>
+
+
           <div className="results">
-            <p className="result-about">About {this.state.data.search_information.total_results} results({this.state.data.request.total_time_taken} seconds)</p>
+            <p className="result-about">About {this.state.data.search_information.total_results} results ({this.state.data.request.total_time_taken} seconds)</p>
             {this.state.searchResults.map(result => {
               return (
                 <div className="result-item">
@@ -55,11 +80,21 @@ class Results extends React.Component{
               return (
                 <div className="related-searches">
                   <a href={search.url}>
-                    <span>{search.query}</span>
+                    <span className="related-searches-items">{search.query}</span>
                   </a>
                 </div>
               )
             }) : null}
+            <div className="results-pages">
+              <img src="../static/images/google-logo.png" className="results-page-company-logo"></img>
+              <div className="results-page-numbers">
+                {/* <p>{this.state.data.pagination.current_page}</p> */}
+                <a href={this.state.data.pagination.next_page_url} className="results-page-next">
+                  <p>Next</p>
+                </a>
+              </div>
+            </div>
+
           </div>
         </div>
       )
