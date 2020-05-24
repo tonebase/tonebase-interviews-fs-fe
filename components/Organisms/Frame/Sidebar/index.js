@@ -18,7 +18,8 @@ import {
   lessons,
   courses,
   composers,
-  collections
+  collections,
+  counter
 } from "../../../../lib/assets/icons";
 
 // === CUSTOM ===
@@ -55,8 +56,8 @@ class Sidebar extends React.Component {
             <SidebarItem SVGMarkup={auth} title="Login" href="/login" />
             {/* <SidebarItem SVGMarkup={upgrade} title="Upgrade" /> */}
             <SidebarItem SVGMarkup={dashboard} title="Home" href="/home" />
+            <SidebarItem active SVGMarkup={counter} title="Counter" href="/counter" />
             <SidebarItem
-              active
               SVGMarkup={library}
               title="Library"
               href="/library"
