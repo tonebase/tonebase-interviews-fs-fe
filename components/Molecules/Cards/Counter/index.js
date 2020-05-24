@@ -14,6 +14,12 @@
 import { useEffect } from "react";
 import { store, view } from "react-easy-state";
 
+// === CUSTOM ===
+//
+// 1. Molecules
+
+import { Spacer } from "../../../Molecules/Layout";
+
 // ==============================
 // COMPONENT
 // ==============================
@@ -35,6 +41,7 @@ const CounterCard = () => {
                 const workDayHours = [9, 10, 11, 12, 13, 14, 15, 16, 17]
                 const currentTime = new Date()
 
+                //set to fire on two minutes values because i was getting some odd behavior and i prefer to err on the side of caution
                 if (currentTime.getMinutes() === 59 || currentTime.getMinutes() === 0) {
                     workDayHours.includes(currentTime.getHours()) ? counter.increment() : counter.decrement()
                 }
@@ -50,14 +57,57 @@ const CounterCard = () => {
 
         //The return of a useEffect can be used to remove effects when a component dismounts, in this case an interval
         return () => clearInterval(check)
-        // eslint-disable-next-line , eslint wasn't liking the empty dependency array below, but it's necessary for it to function
+
+        //eslint wasn't liking the empty dependency array below, but it's necessary for it to function
+        // eslint-disable-next-line
     }, [])
 
+    const buttonMaker = (text, action) => (
+        //makes the increment and decrement buttons without having to repeat all the props in the return
+        <button
+            onClick={action}
+            className="actionButton d-flex flex-row alignItems-center justifyContent-center bgColor-primary--main fontSize-sm breakLg-fontSize-sm fontFamily-primary textTransform-uppercase letterSpacing-sm paddingRight-sm paddingLeft-sm paddingTop-xs paddingBottom-xs marginRight-md lineHeight-lg textAlign-center borderRadius-sm">
+            <span
+                className="buttonText"
+            >
+                {text}
+            </span>
+        </button>
+    )
+
     return (
-        <div>
-            <p onClick={counter.increment}>{counter.num}</p>
-            <span onClick={counter.increment}>plus</span>
-            <span onClick={counter.decrement}>minus</span>
+        <div className="titleWrapper">
+            {
+                //Title
+            }
+            <h3 className="fontFamily-primary fontSize-xxl color-primary--main textTransform-uppercase letterSpacing-md">
+                Counter
+            </h3>
+
+            <Spacer vertical space={24} />
+
+            {
+                //Counter content
+            }
+            <h1 className="fontFamily-primary color-white--main fontSize-xxxxl fontWeight-lg">
+                {counter.num}
+            </h1>
+
+            <Spacer vertical space={24} />
+
+            <div className="d-flex flex-row">
+                {
+                    //Buttons
+                }
+                {buttonMaker("Decrement", counter.decrement)}
+                {buttonMaker("Increment", counter.increment)}
+            </div>
+
+            <Spacer vertical space={16} />
+
+            <p className="breakMd-fontSize-md lineHeight-lg color-black--text">
+                This counter features automatic incrementation on work hours and decrementation on all others.
+            </p>
         </div>
     )
 };

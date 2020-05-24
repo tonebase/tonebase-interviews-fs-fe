@@ -18,7 +18,6 @@ import {
 //
 // 1. Molecules
 
-
 import {
     Spacer
 } from "../../components/Molecules/Layout";
@@ -33,6 +32,7 @@ import { FullWidthCard } from "../../components/Molecules/Cards";
 import {
     Navbar,
     Sidebar,
+    Tabbar
 } from "../../components/Organisms/Frame";
 
 // ==============================
@@ -103,43 +103,17 @@ class Counter extends React.Component {
                             id="lessonsContent"
                             className="tabContent paddingLeft-md paddingRight-md"
                         >
-                            <FullWidthCard >
+                            <FullWidthCard
+                                hasImage
+                                className="cardImage" imageURL="https://www.pianoarticlesweekly.com/wp-content/uploads/2019/04/Metronome-practice-photo.jpg"
+                            >
                                 <CounterCard />
                             </FullWidthCard>
-                            {/* <FullWidthCard
-                                onClick={ModalStore.openModal("composerProfileModal", {
-                                    slug: "Brouwer"
-                                })}
-                                hasVideo
-                                videoID="328027322"
-                            >
-                                <div className="labelWrapper paddingRight-md">
-                                    <h6 className="fontFamily-primary fontSize-sm color-primary--main textTransform-uppercase letterSpacing-md">
-                                        Lesson Of The Week
-                  </h6>
-                                </div>
-                                <div className="titleWrapper max-w-420px paddingBottom-xs paddingRight-md">
-                                    <h4 className="fontFamily-primary fontSize-xxl fontWeight-xl color-white--main textTransform-uppercase letterSpacing-xs lineHeight-md">
-                                        Leo Brouwer Teaches Un Dia De Noviembre
-                  </h4>
-                                </div>
-                                <div className="messageWrapper max-w-480px paddingRight-xl paddingBottom-lg">
-                                    <p className="fontSize-sm breakMd-fontSize-md lineHeight-lg color-black--text">
-                                        Legendary guitarist and composer Leo Brouwer shares the
-                                        inspiration behind Un Dia De Noviembre and his overall
-                                        approach to composing for film.
-                  </p>
-                                </div>
-                                <div className="actionTriggers w-100">
-                                    <button className="actionButton d-flex flex-row alignItems-center justifyContent-center bgColor-primary--main fontSize-sm breakLg-fontSize-sm fontFamily-primary textTransform-uppercase letterSpacing-sm paddingRight-sm paddingLeft-sm paddingTop-xs paddingBottom-xs lineHeight-lg textAlign-center borderRadius-sm">
-                                        <span className="buttonText">Lesson Details &rarr;</span>
-                                    </button>
-                                </div>
-                            </FullWidthCard> */}
                         </div>
                     </div>
                 </div>
-            </div>
+                <Tabbar />
+            </div >
         );
     }
 }
@@ -152,18 +126,9 @@ class PageTitle extends React.Component {
                     className="pageTitleInner w-100 paddingBottom-lg"
                     style={{ borderBottom: "1px solid #333" }}
                 >
-                    <div className="titleText">
-                        <h2 className="fontFamily-primary fontSize-xxl breakLg-fontSize-xxxl fontWeight-xl color-white--main textTransform-uppercase letterSpacing-md">
-                            {this.props.title}
-                        </h2>
-                    </div>
-                    {this.props.subtitle && (
-                        <div className="subtitleText">
-                            <p className="fontSize-sm breakMd-fontSize-md lineHeight-lg">
-                                {this.props.subtitle}
-                            </p>
-                        </div>
-                    )}
+                    <h2 className="fontFamily-primary fontSize-xxl breakLg-fontSize-xxxl fontWeight-xl color-white--main textTransform-uppercase letterSpacing-md">
+                        {this.props.title}
+                    </h2>
                 </div>
             </div>
         );
