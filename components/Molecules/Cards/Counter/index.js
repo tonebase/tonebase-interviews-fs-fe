@@ -55,9 +55,6 @@ const CounterCard = () => {
             setTimeout(() => countdown(), delay)
         } else countdown()
 
-        //The return of a useEffect can be used to remove effects when a component dismounts, in this case an interval
-        return () => clearInterval(check)
-
         //eslint wasn't liking the empty dependency array below, but it's necessary for it to function
         // eslint-disable-next-line
     }, [])
