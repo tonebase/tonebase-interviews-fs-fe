@@ -27,7 +27,7 @@ class SidebarItem extends React.Component {
       <div
         className={`sidebarItem w-100 h-100 ${
           this.props.active ? "active" : ""
-        } ${this.props.small ? "small" : ""}`}
+          } ${this.props.small ? "small" : ""}`}
         style={{
           display: itemDisplay
         }}

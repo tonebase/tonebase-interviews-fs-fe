@@ -51,11 +51,30 @@ Okay, with all that out of the way let's dive into the question section!
 
 ### 1. What made you interested in/choose React as a framework? Was it a choice you made? Regardless, what is the one thing you enjoy most about it compared to other frameworks you've used and what is one thing you dislike about it?
 
+React was the first proper JavaScript frontend framework that I was introduced to. 
+I began using it as it was what was taught during my course at General Assembly. I have a small bit of experience with Angular and the number one thing that I enjoy in React over Angular is the community. 
+There are so many great plugins, libraries and articles to consume regarding React, and there’s always someone pushing the limits of what can be done with it and dutifully documenting that limit pushing. Other frameworks(not just Angular, but Vue, Svelte etc.) have their ecosystems too of course, but let’s be honest, none of them are quite on the scale of React.
+That said, I do wish that there had been more resources provided directly from the React team regarding transitioning from class components to hooks. As much as I enjoy hooks, it took a while to wrap my head around them and I can’t help but think that more one to one examples right from the team making the change would have sped it along immensely.
+
 ### 2. Why do the component names in JSX start with capital letters?
+
+JSX component names start with a capital letter to differentiate them from regular html tags. 
+
+If React sees something inside <angled brackets> in the return or render() return of a component it knows to do one of two things. In the case of a lower case letter it will attempt to render it as a regular html tag i.e. (<p>Hi, I’m Tim</p>). In the case of an upper case letter it will look for another component, usually defined at another place in the same file or imported from another file i.e. (<MyName name=”Tim” /> => <p>Hi, I’m {name}</p>).
 
 ### 3. What are the main types of components you can render in React? When do you choose one over the other?
 
+Components are broadly split up into two categories: class based and functional.
+
+Prior to React v16, a common pattern was to use class based (so called “smart components”) to process stateful logic, lifecycle methods etc. and to use functional components (“dumb components”)  for rendering data once logical operations were completed.
+
+Since the introduction of hooks in React v16, this paradigm has shifted. Hooks allow you to use stateful logic and lifecycle methods in functional components.
+
 ### 4. How much experience do you have with testing frameworks? While our testing is light at the moment (read: nonexistent) this is something we'd like to move to in the future so this is a 'nice-to-know' for us!
+
+I have done some unit tests in the Mocha framework using the Chai assertion library. However, I prefer Jest, the framework developed by Facebook Open Source and included with create-react-app.
+
+I am also seeking to get better with unit testing, so I think we would work well together in this.
 
 ---
 
@@ -74,6 +93,24 @@ class App extends React.Component {
   render() {
     return (
       <p>Hello {this.state.name}</p>
+    );
+  }
+}
+```
+
+Two things stand out to me. 
+
+Most often the App level component is the first source of stateful logic in an React app. Therefore, it would be unlikely for an App level component to receive props, though it could happen if for instance you needed props passed down from a Higher Order Component.
+
+Mixing props and state is generally bad practice, can lead to bugs and lends little to nothing to performance for the app. It’s best to choose one at a time to render with and use that as the single source of truth for the rendering. There is no need for state to be involved in this rendering.
+
+I would redo this component as: 
+
+```
+class App extends React.Component {
+  render() {
+    return (
+      <p>Hello {this.props.name || 'Anonymous'}</p>
     );
   }
 }
@@ -102,6 +139,37 @@ render() {
     return (
       <div>
         <input type="text" onChange={this.handleChange} />
+        {this.state.search ? <p>Search for: {this.state.search}</p> : null}
+      </div>
+    )
+  }
+}
+```
+
+There are a few things here that need to be fixed for this code to work as intended.
+
+1)Firstly the call to this.handleChange needs to be done with an event handler, as it is expecting one.
+
+2)On the provided event handler, you need to call the event.persist() method so that the event data will be usable in the asynchronous operations, set and clear Timeout. If you do not do this, the event data will read as null when accessed by setState, and React will throw an error.
+
+After making these changes, the code would read as:
+
+```
+class App extends React.Component {
+state = { search: '' }
+handleChange = event => {
+    event.persist()
+    clearTimeout(this.timeout);
+    this.timeout = setTimeout(() => {
+      this.setState({
+        search: event.target.value
+      })
+    }, 250);
+  }
+render() {
+    return (
+      <div>
+        <input type="text" onChange={(event) => this.handleChange(event)} />
         {this.state.search ? <p>Search for: {this.state.search}</p> : null}
       </div>
     )
@@ -159,9 +227,31 @@ Thus writing, and the ability to write clearly, logically and to formulate argum
 
 ### 1. Tell me about componentWillMount and the issues with it?
 
+componentWillMount is a lifecycle method and the main way to call an effect before a component mounts in a class based component. After componentWillMount is called the component will be mounted to the DOM. It is not recommended to use componentWillMount to change state or to make an API call as it will be called before the render cycle and the data will be lost or behave unpredictably. 
+Because of the myriad problems with componentWillMount, it was officially deprecated in React v16.3. 
+
 ### 2. Can you walk me through the cycle of mounting a stateful component? What functions are called in what order? Where would you place a request for data from the API? Why?
 
+The lifecycle of a React component can be broadly broken down into three main parts:
+
+1) Mounting ,the “birth” of the component, wherein props and state are declared and configured and the component is inserted into the DOM.
+
+2) Updating, the “life” of the component, wherein props and state can be changed and the component can interact with other components and other effects. Unlike mounting or unmounting, which only occur once, the update cycle can last indefinitely.
+
+3) Lastly there is the Unmounting, or “death” of the component. This occurs when a user navigates away from a component, the component is hidden or the UI changes and no longer requires the component. The component will close down, ready to be called again if the React app needs it.
+There are two main places where I would place an API call, depending if I needed it more than once.
+ 
+If I only needed it upon loading of the component, I would place the API call in the componentDidMount lifecycle method of a class based component or a useEffect hook with an empty dependency array on a functional component. A use case for this would be if I wanted to call all of the user’s documents from a database as soon as the component mounts.
+
+If I needed to call the API more than once, I would place it in a componentDidUpdate lifecycle method of a class based component or a useEffect hook without a dependency array in a functional component. An example of this would be if i needed to make an API call every time a user created input for a field, like a search.
+
 ### 3. If you had unlimited time budget and could fix / improve / change one thing in your last project, what would it be and why?
+
+My last project was a brand new [portfolio](https://timmalstead.com/) from scratch using as much vanilla React as I could and as few libraries and helpers as I could. One of the things that I’m proudest of is creating a component that cycles through color stories. All in all, It went quite well and I’m happy with the result.
+
+That said, I would love to take the theme idea even further and introduce different layouts and text features depending on the theme. I think a performant way to go about the second would be to introduce inline SVGs for the titles on my splash page. This would be better and make more sense than bogging down my load time calling a font I’m only going to use once.
+
+As you say, I have neither unlimited time nor money, but I’m hoping to get back to this soon!
 
 ---
 
