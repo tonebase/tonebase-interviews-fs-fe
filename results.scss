@@ -1,9 +1,10 @@
 // Styling for navbar.
+
 .results-navbar {
   display: flex;
   padding-top: 30px;
   padding-left: 28px;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
   border-bottom: 1px solid #F3F3F4;
 }
 
@@ -15,6 +16,7 @@
 
 .results-form-container {
   display: flex;
+  flex-direction: column;
   margin-left: 50px;
 }
 
@@ -43,9 +45,26 @@
   color: #4185F4;
   cursor: pointer;
 }
+//Styling for navbar category tabs
+.navbar-tabs{
+  margin-top: 20px;
+}
+
+.navbar-tab-all{
+  color:#1973E7;
+  border-bottom: 3px solid #1973E7;
+  font-size: 14px;
+  width: 30px;
+  padding: 10px;
+  margin-top: 5px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
 //Styling for results section.
+
 .results {
-  width: 785px;
+  width: 650px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -59,7 +78,7 @@
 }
 
 .result-about {
-  color: #70757A;
+  color: #4D5156;
   padding-top: 20px;
   font-size: 14px;
 }
@@ -79,8 +98,9 @@
   font-size: 15px;
 }
 //Styling for related searches section.
+
 .related-searches-header {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 400;
 }
 
@@ -95,6 +115,7 @@
   color: #190DAB;
 }
 //Styling for the loading page.
+
 .loading-container {
   background-color: #FFF1CE;
   display: flex;
@@ -107,6 +128,7 @@
   height: 100vh;
 }
 //Styling for more results pages.
+
 .results-pages {
   display: flex;
   align-items: center;
