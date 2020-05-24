@@ -50,7 +50,7 @@ const CounterCard = () => {
 
         //The return of a useEffect can be used to remove effects when a component dismounts, in this case an interval
         return () => clearInterval(check)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line , eslint wasn't liking the empty dependency array below, but it's necessary for it to function
     }, [])
 
     return (
