@@ -50,10 +50,13 @@ class MyDocument extends Document {
             href="//fonts.googleapis.com/css?family=Oswald:400,700"
             rel="stylesheet"
           />
+          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
+
           {
             // === NEXT DEFAULT
           }
           <script dangerouslySetInnerHTML={{ __html: envScript }} />
+          <script src="home.js"></script>
         </Head>
         <body>
           <Main />

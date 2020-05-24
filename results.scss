@@ -1,0 +1,59 @@
+// .results-container{
+//   align-items: center;
+// }
+
+.results {
+  width: 785px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 150px;
+}
+
+.result-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
+.result-about {
+  color: #70757A;
+}
+
+.loading-container {
+  background-color: #FFF1CE;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-image {
+  object-fit: cover;
+  height: 100vh;
+}
+
+.result-displayed-url {
+  color: #5F6368;
+  font-size: 15px;
+}
+
+.result-title {
+  font-size: 20px;
+  color: #190DAB;
+}
+
+.result-snippet {
+  color: #5F6368;
+  font-size: 15px;
+}
+
+.related-searches-header {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.related-searches {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}

@@ -1,0 +1,84 @@
+
+.home-center-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 190px;
+}
+
+.company-letter {
+  font-family: sans-serif;
+}
+
+.company-letter:nth-child(1) {
+  color: #4185F4;
+  font-size: 80px;
+}
+
+.company-letter:nth-child(2) {
+  color: #EA4235;
+  font-size: 80px;
+}
+
+.company-letter:nth-child(3) {
+  color: #FBBC03;
+  font-size: 80px;
+}
+
+.company-letter:nth-child(4) {
+  color: #4185F4;
+  font-size: 80px;
+}
+
+.company-letter:nth-child(5) {
+  color: #33A853;
+  font-size: 80px;
+}
+
+.company-letter:nth-child(6) {
+  color: #EA4235;
+  font-size: 80px;
+}
+
+.form-container {
+  display: flex;
+}
+
+#form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-button {
+  margin-top: 30px;
+}
+
+#search-bar {
+  border-radius: 30px;
+  width: 550px;
+  height: 40px;
+}
+
+#search-bar:hover {
+  box-shadow: 2px 2px 2px 2px rgb(224, 223, 223);
+}
+
+.search-button {
+  border: 1px solid #F5F5F5;
+  background-color: #F5F5F5;
+  color: #5F6368;
+  padding: 5px;
+  border-radius: 5px;
+  width: 135px;
+}
+
+.search-button:hover {
+  color: black;
+  border: 1px solid rgb(204, 204, 204);
+}
+
+.search-button:focus {
+  outline: none;
+}
