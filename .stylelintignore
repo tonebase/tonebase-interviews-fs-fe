@@ -129,3 +129,5 @@ logs
 stats.json
 vendor/
 normalize.scss
+styleSystem.scss
+./lib/styleGuide/typography.scss
