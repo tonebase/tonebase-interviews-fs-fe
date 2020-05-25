@@ -7,18 +7,18 @@
 // define all environments you expect here
 const environments = {
   development: {
-    PUBLIC_URL: "http://localhost:3000"
+    PUBLIC_URL: 'http://localhost:3000'
   },
   staging: {
-    PUBLIC_URL: "http://tonebase-client-nightingale.herokuapp.com"
+    PUBLIC_URL: 'http://tonebase-client-nightingale.herokuapp.com'
   },
   production: {
-    PUBLIC_URL: "https://tonebase.co"
+    PUBLIC_URL: 'https://tonebase.co'
   }
 };
 
 // could be imported by the client or the server
 const env =
-  (typeof window !== "undefined" ? window.ENV : process.env.WILD_ENV) ||
-  "development";
+  (typeof window !== 'undefined' ? window.ENV : process.env.WILD_ENV) ||
+  'development';
 module.exports = environments[env.toLowerCase()];

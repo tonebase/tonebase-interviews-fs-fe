@@ -127,3 +127,9 @@ bower_components/
 .vscode
 logs
 stats.json
+
+
+# vi
+*.swo
+*.swp
+*.un~
