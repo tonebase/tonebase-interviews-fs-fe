@@ -25,7 +25,7 @@ class Results extends React.Component{
   // this function uses an API to obtain search results from Google and we set the data to state.
   loadResults = async () => {
     var query = window.location.search.split("=")[1]; //searches for the query from the url
-    var API_KEY = "b2ec3bc90834b32505758a84553825bc"
+    var API_KEY = "bac7e32e4f73e24f99958b3f59d7ba5d"
     var url = "http://api.serpstack.com/search?access_key=" + API_KEY + "&type=web&query=" + query
 
     const response = await axios.get(url);
@@ -49,11 +49,15 @@ class Results extends React.Component{
   //this function redirects them to the the results page again but with updated search query.
   handleClick = (e) => {
     e.preventDefault();
-    window.location.href = `/results?searchQuery=${this.state.search}`
+    if (this.state.search != ""){
+      window.location.href = `/results?searchQuery=${this.state.search}`
+    }
   }
 
   render(){
+    //Destructured the state for cleaner code.
     const {data, loaded, search, searchResults} = this.state;
+    // Saved no results render into a constant for later use when determining if there is a result for a search.
     const noResults = (
       <div className="no-results">
         <style jsx>{ResultsStyle}</style>
@@ -77,12 +81,14 @@ class Results extends React.Component{
         </div>
       )
     }
+    // Saved the page with results in another constant for cleaner code. 
+    // React fragment lets you group children without adding extra nodes to DOM.
     
     const withResults = (
       <div className="results">
         <style jsx>{ResultsStyle}</style>
         <p className="result-about">About {data.search_information.total_results} results ({data.request.total_time_taken} seconds)</p>
-      
+        
         {data.inline_videos && 
           <React.Fragment>
             <p className="results-videos-header">Videos</p>
@@ -141,7 +147,6 @@ class Results extends React.Component{
           <div className="results-page-numbers">
             {data.pagination && 
             <React.Fragment>
-              
               <p>
                 {Object.values(data.pagination.other_page_urls).map((url, i) => {
                     if (i === 0) return <span key={"p-first"} className="first-result-page">1</span>;
@@ -152,7 +157,6 @@ class Results extends React.Component{
                     )
                 })}
               </p>
-           
               <a href={data.pagination.next_page_url} className="results-page-next">
                 <p>Next</p>
               </a>
@@ -162,6 +166,7 @@ class Results extends React.Component{
         </div>
       </div>
     )
+    //Return contains the navbar, and the page will render based on the result from the search (with or without result).
     return(
       <div className="results-container">
         <style jsx>{ResultsStyle}</style>
@@ -174,7 +179,7 @@ class Results extends React.Component{
                 <form id="results-form" autoComplete="off">
                   <div className="results-form-input">
                     <input type="text" id="results-search-bar" onChange={this.updateQuery}></input>
-                    <button className="results-search-button" onClick={this.handleClick}>
+                    <button className="results-search-button" onClick={this.handleClick}> 
                       <i className="fas fa-search" id="results-fa-search"></i>
                     </button>
                   </div>
@@ -187,11 +192,21 @@ class Results extends React.Component{
           </div>
           </div>
             <div className="rv-right">
+              <div className="results-dropdown">
+                <i className="fas fa-th" id="r-drop-icon"></i>
+                <div className="r-dropdown-content">
+                  <a href="https://www.linkedin.com/in/cindy-kuo-92621a1a5/" target="_blank"><i className="fab fa-linkedin" id="r-linkedin"></i><span>LinkedIn</span></a>
+                  <a href="https://www.cindycwkuo.com/" target="_blank"><i className="far fa-folder-open" id="r-portfolio"></i><span>Portfolio</span></a>
+                  <a href="https://github.com/ckuo15" target="_blank"><i className="fab fa-github" id="r-github"></i><span>Github</span></a>
+                  <a href="https://angel.co/u/cindy-kuo-2" target="_blank"><i className="fab fa-angellist" id="r-angel"></i><span>AngelList</span></a>
+
+                </div>
+              </div>
               <a href="https://www.tonebase.co/" target="_blank" >
                 <img src="../static/images/tonebase.png" className="user-icon" />
               </a>
             </div>
-        </div>
+           </div>
 
         {searchResults.length > 0 && withResults}
         {searchResults.length === 0 && noResults}
@@ -204,4 +219,3 @@ class Results extends React.Component{
 
 export default Results;
 
-//slice items
