@@ -23,7 +23,8 @@ function Searchbar() {
         <input
           name="q"
           id="searchform__input"
-          className={`searchform__input`}
+          className={`form-control searchform__input`}
+          size={1}
           type="text"
           ref={textInput}
           onChange={(e) => enterTerm(e)}

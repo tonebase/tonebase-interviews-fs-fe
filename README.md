@@ -53,7 +53,7 @@ Okay, with all that out of the way let's dive into the question section!
 
 I didn't choose to use React - it's part of the Thinkful curriculum where I learned full stack web development. I don’t have experience with any other frameworks so I can't compare, but I have been enjoying writing functional components with hooks. It's just quicker and simpler to write than class components.  
 
-This probably isn't so much a problem with React, but with frameworks in general, but there is a lot of boilerplate. React is great for larger projects, especially where you can re-use components but in the small-scale projects I've been working on to learn three.js, I've been writing in raw html and js. With all of the extra code out of the way, it's easier to pinpoint where issues are and more quickly get an understanding of the entire project. Personally, I've also had some trouble finding good learning resources for three.js online, so I opted not to use React in case anyone interested in learning finds my three.js projects.  
+This probably isn't so much a problem with React, but with frameworks in general, but there is a lot of extra code, obviously necesssary. React is great for larger projects, especially where you can re-use components but in the small-scale projects I've been working on to learn three.js, I've been writing in raw html and js. With all of the extra code out of the way, it's easier to pinpoint where issues are and get an understanding of an entire project more quickly. Personally, I've also had some trouble finding good learning resources for three.js online, so I opted not to use React in case anyone interested in learning finds my three.js projects helpful.  
 
 ### 2. Why do the component names in JSX start with capital letters?
 

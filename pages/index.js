@@ -51,7 +51,7 @@ function Home() {
           }
 
           .home__tagline {
-            margin: 2rem 2rem;
+            margin: 2rem 1rem;
           }
         `}
       </style>
