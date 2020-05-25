@@ -15,6 +15,7 @@
   padding: 0.15em 0.25em;
   padding-right: 2rem;
   flex: 1 1 auto;
+  background-color: white;
 
   &:hover {
     outline: 2px inset white;
@@ -30,8 +31,7 @@
     background-color: black;
     color: white;
 
-    // on input focused and hovering clear button, style clear button
-
+    // input focused and hovering clear button, style clear button
     & + div button:first-child:hover {
       color: white;
     }
@@ -54,13 +54,14 @@
   color: grey;
   font-size: 1.2rem;
   font-weight: 500;
+  transition: visibility 0ms, opacity 250ms ease-out; // fade in button, transition doesn't support display: hidden, so using visiblity + margin + width attributes
 
-  &--d-none {
+  &--hidden {
     visibility: hidden;
     width: 0;
     padding: 0;
     opacity: 0;
-    transition: visibility 0ms, opacity 250ms ease-out; // fade in button, transition doesn't support display: hidden, so using visiblity + margin + width attributes
+    transition: visibility 0ms, opacity 250ms ease-out; 
   }
 
   &:hover {
@@ -86,6 +87,10 @@
   padding: 0.15em 0.25em;
   flex-grow: 0;
   height: 100%;
+  background-color: white;
+  &:disabled {
+      color: grey;
+  }
 
   &:hover {
     outline: none;

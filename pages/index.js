@@ -1,16 +1,12 @@
-import Head from 'next/head';
-
-// === STORES ===
-import {view } from 'react-easy-state';
+import Head from "next/head";
 
 // === COMPONENTS ===
-import Logo from '../components/UI/logo';
-import Searchbar from '../components/Search/searchbar';
+import Logo from "../components/UI/logo";
+import Searchbar from "../components/Search/searchbar";
 
-import style from '../styleSystem.scss';
+import style from "../styleSystem.scss";
 
-function Home() {
-
+export default function Home() {
   return (
     <>
       <Head>
@@ -20,7 +16,10 @@ function Home() {
         <Logo />
         <Searchbar />
         {/* cheeky unfunny joke based off duckduckgo's homepage tagline*/}
-        <h2 className='home__tagline'>The search engine that tracks your entire search history. Kneel to your monochrome overlord.</h2>
+        <h2 className="home__tagline">
+          The search engine that tracks your every move. Kneel to
+          your monochrome overlord.
+        </h2>
       </section>
       <style jsx global>
         {`
@@ -40,6 +39,7 @@ function Home() {
           }
         `}
       </style>
+      {/* normalize css */}
       <style jsx>{style}</style>
       <style jsx>
         {`
@@ -51,6 +51,7 @@ function Home() {
           }
 
           .home__tagline {
+            background-color: white;
             margin: 2rem 1rem;
           }
         `}
@@ -58,5 +59,3 @@ function Home() {
     </>
   );
 }
-
-export default view(Home);

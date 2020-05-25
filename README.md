@@ -1,3 +1,7 @@
+<p align="center">
+<img src="./static/images/monochrome-google.jpg" width="600">
+</p>
+
 # tonebase Technical Interview - FullStack (Front-End Focus)
 
 Welcome to the tonebase Technical Interview! Congratulations, if you're here it means we think you'd make a great addition to the team, based on your past experience, personality and kick-ass skills!
