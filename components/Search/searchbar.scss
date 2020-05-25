@@ -11,17 +11,44 @@
   text-align: left;
 }
 
-#searchform__input {
-  //   border: 1px solid black;
+.searchform__input {
   padding: 0.15em 0.25em;
   flex: 1 1 auto;
+
+  &:hover {
+    outline: 2px inset white;
+    outline-offset: -2px;
+  }
+
+  &:active {
+    background-color: black;
+    color: white;
+  }
+
+  &:focus {
+    background-color: black;
+    color: white;
+
+    // on input focused and hovering clear button, style clear button
+    & + div button:first-child:hover {
+      color: white;
+    }
+  }
+}
+
+.searchform-buttons {
+  display: flex;
+  position: relative;
+  align-items: center;
 }
 
 .searchform__clear {
+  position: absolute;
+  left: -75%;
   visibility: visible;
   opacity: 1;
-  padding: 0.1rem 0.5rem;
-  margin-right: 0.15rem;
+  padding: 0.1rem 0.65rem;
+  margin: 0;
   transition: opacity 300ms ease-out;
   color: grey;
   font-size: 1.2rem;
@@ -29,6 +56,8 @@
 
   &--d-none {
     visibility: hidden;
+    width: 0;
+    padding: 0;
     opacity: 0;
     transition: visibility 0ms, opacity 250ms ease-out; // fade in button
   }
@@ -55,21 +84,16 @@
   border-left: 1px solid black;
   padding: 0.15em 0.25em;
   flex-grow: 0;
+  height: 100%;
 
   &:hover {
     outline: none;
-    background: black;
-    color: white;
-  }
-
-  &:active {
-    outline: none;
-    background: black;
+    background-color: black;
     color: white;
   }
 
   &:focus {
-    background: black;
+    background-color: black;
     color: white;
   }
 }

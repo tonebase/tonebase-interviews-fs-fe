@@ -1,6 +1,6 @@
 // Core
 import App, { Container } from 'next/app';
-import '../styleSystem.scss';
+
 
 class TonebaseApp extends App {
   static async getInitialProps({ Component, ctx }) {

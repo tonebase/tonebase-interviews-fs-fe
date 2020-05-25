@@ -1,7 +1,3 @@
-// === CORE ===
-import { Fragment } from 'react';
-import NextLink from 'next/link';
-
 import Head from 'next/head';
 
 // === STORES ===
@@ -18,13 +14,13 @@ function Home() {
   return (
     <>
       <Head>
-        <title>Quasar Frontend Challenge @ Tonebase</title>
+        <title>Monochrome Google</title>
       </Head>
       <section className="home">
         <Logo />
         <Searchbar />
         {/* cheeky unfunny joke based off duckduckgo's homepage tagline*/}
-        <h2 className='home__tagline'>The search engine that tracks your entire search history. Kneel to your robot overlord.</h2>
+        <h2 className='home__tagline'>The search engine that tracks your entire search history. Kneel to your monochrome overlord.</h2>
       </section>
       <style jsx global>
         {`
