@@ -10,8 +10,8 @@ import { store, view, autoEffect } from 'react-easy-state';
 
 // components
 import Logo from '../components/UI/logo';
-// import style from '../styleSystem.scss';
-import style from './index.scss';
+import Searchbar from '../components/Search/searchbar';
+import '../styleSystem.scss';
 
 function Home() {
   const searchInput = store({ str: '', num: 0 });
@@ -30,20 +30,10 @@ function Home() {
       <Head>
         <title>Quasar Frontend Challenge @ Tonebase</title>
       </Head>
-      <section className="home">
+      <section className="home ">
         <Logo />
-        <form className="searchbar">
-          <input id="search-input" type="text" onChange={e => enterTerm(e)} />
-          {/* <input */}
-          {/*   id="search-input" */}
-          {/*   type="text" */}
-          {/*   // value={searchInput.str} */}
-          {/*   onKeyDown={e => enterTerm2(e)} */}
-          {/* /> */}
-          <button type="submit">Search</button>
-        </form>
+        <Searchbar />
       </section>
-      <style jsx>{style}</style>
       <style jsx global>
         {`
           html,
@@ -70,33 +60,8 @@ function Home() {
       </style>
       <style jsx>
         {`
-          .home {
-            margin: 0 2rem;
-            text-align: center;
-            width: 100%;
-          }
-
           .searchbar {
-            border: 1px solid black;
-            width: 100%;
-            max-width: 600px;
-            margin: 0 auto;
-            display: flex;
-            font-size: 1.5rem;
-          }
-
-          input {
-            border: 1px solid black;
-            text-align: left;
-            padding: 0.15em 0.25em;
-            width: 100%;
-            font-size: inherit;
-          }
-
-          button {
-            background: white;
-            border-style: none;
-            border: 1px solid black;
+            margin: 0 2rem;
           }
         `}
       </style>
