@@ -55,17 +55,17 @@ Okay, with all that out of the way let's dive into the question section!
 
 ### 1. What made you interested in/choose React as a framework? Was it a choice you made? Regardless, what is the one thing you enjoy most about it compared to other frameworks you've used and what is one thing you dislike about it?
 
-I didn't choose to use React - it's part of the Thinkful curriculum where I learned full stack web development. I don’t have experience with any other frameworks so I can't compare, but I have been enjoying writing functional components with hooks. It's just quicker and simpler to write than class components.  
+I didn't choose to use React - it's part of the Thinkful curriculum where I learned full stack web development. I don’t have experience with any other frameworks so I can't compare, but I have been enjoying writing functional components with hooks. It's just quicker and simpler to write than class components. Even so, the structure of a React component is pretty simple and easy to get started with.  
 
-This probably isn't so much a problem with React, but with frameworks in general, but there is a lot of extra code, obviously necesssary. React is great for larger projects, especially where you can re-use components but in the small-scale projects I've been working on to learn three.js, I've been writing in raw html and js. With all of the extra code out of the way, it's easier to pinpoint where issues are and get an understanding of an entire project more quickly. Personally, I've also had some trouble finding good learning resources for three.js online, so I opted not to use React in case anyone interested in learning finds my three.js projects helpful.  
+This probably isn't so much a problem with React, but with frameworks in general: there is a lot of extra code, obviously necessary. React is great for large projects but in the small-scale projects I've been working on to learn three.js, I've been writing in raw html and js. With all of the extra code out of the way, it's easier to pinpoint where issues are and peek through an entire project. Personally, I've also had some trouble finding good learning resources for three.js online, so I opted not to use React in case anyone interested in learning finds my three.js projects helpful.  
 
 ### 2. Why do the component names in JSX start with capital letters?
 
-Components that start with lower-case letters default to html elements. Hence, <button> refers to the actual html element. If you have a custom button component you've made, you could name it 'Button', so if you use <Button>, React will use your custom component.   
+Components that start with lower-case letters default to html elements. Hence, ```<button>``` refers to the actual html element. If you have a custom button component you've made, you could name it 'Button', so if you use ```<Button>```, React will use your custom component.   
 
 ### 3. What are the main types of components you can render in React? When do you choose one over the other?
 
-The main types are class and functional components. Functional components are lighter, simpler, thus easier to write. They're best used if the component is purely visual, but with React hooks, you can implement features that are normally present in class components, such as state and lifecycle methods with useEffect().  
+The main types are class and functional components. Functional components are lighter, simpler, thus easier to write. They're best used if the component is purely visual, but with React hooks, you can implement features that are normally present in class components, such as state and lifecycle methods with ```useEffect()```.  
 
 I can't say I know of any specific features functional components + hooks lack vs class components. I've begun defaulting to functional components and if there's something I need that React hooks can't cover, I'd switch to class components. So far I haven't run into that issue.  
 
@@ -192,19 +192,19 @@ Thus writing, and the ability to write clearly, logically and to formulate argum
 
 ### 1. Tell me about componentWillMount and the issues with it?
 
-componentWillMount is called right before the component is mounted. Because of this, if you make any asynchronous calls inside of it, the component will have already mounted by the time the asynchronous call finishes, and anything the component depends on that comes from that call will result in an error since it will be null.   
+```componentWillMount``` is called right before the component is mounted. Because of this, if you make any asynchronous calls inside of it, the component will have already mounted by the time the asynchronous call finishes, and anything the component depends on that comes from that call will result in an error since it will be null.   
 
 ### 2. Can you walk me through the cycle of mounting a stateful component? What functions are called in what order? Where would you place a request for data from the API? Why?
 
-The lifecycle methods that are called in order are componentWillMount -> componentDidMount -> componentWillUnmount -> componentDidUpdate ->componentWillUnmount. componentDidMount is called after the initial render. I'd place a request to the API in componentDidMount and not in WillMount due to the issues with rendering and the asynchronous nature of a request.  
+The lifecycle methods that are called in order are ```componentWillMount``` -> ```componentDidMount``` -> ```componentWillUnmount``` -> ```componentDidUpdate``` -> ```componentWillUnmount```. ```componentDidMount``` is called after the initial render. I'd place a request to the API in ```componentDidMount``` and not in ```componentWillMount``` due to the issues with rendering and the asynchronous nature of a request.  
 
 ### 3. If you had unlimited time budget and could fix / improve / change one thing in your last project, what would it be and why?
 
 The last project I completed was this: https://3d-keyboard.now.sh, a 3D interactive keyboard. Since it's one of a series of small projects I am working on to learn three.js and build interactive webpages (I am working towards building a 3D interactive synthesizer), I wanted to keep it simple, but if I had unlimited time, I'd want to build deeper interactivity into it.  
 
-An idea I had early on was to build a sort of keyboard customization webpage. In it's current state, I have one keyboard model loaded in. I'd like to make it so users can customize the keyboard and change attributes such as the keycap profiles, colors, switch types, and maybe add backlighting. I'd also like to build some light text-adventure features and make it into a sort of mini-game: display the text the user types on screen and build in different commands that change the environment when entered by the user. The way I envision it is similar to the game 'Stories Untold' (https://www.newgamenetwork.com/media/20291/stories-untold/).  
+An idea I had early on was to build a sort of keyboard customization webpage. In it's current state, I have one keyboard model loaded in. I'd like to make it so users can customize the keyboard and change attributes such as the keycap profiles, colors, switch types, and maybe add backlighting. I'd also like to build some light text-adventure features and make it into a sort of mini-game: display the text the user types on screen and build in different commands that change the environment when entered by the user. The way I envision it is similar to the game 'Stories Untold' (https://www.youtube.com/watch?v=SokHO_XlMnk).  
 
-Why? I love doing 3D art and am passionate about games and interactive experiences, and since this is where it intersects with the web, I’m building on my skills so maybe I can make something cool someday.  
+Why? I love doing 3D art and am passionate about games and immersive/interactive experiences, and since this is where it intersects with the web, I’m building on my skills so maybe I can make something cool someday.  
 
 ---
 

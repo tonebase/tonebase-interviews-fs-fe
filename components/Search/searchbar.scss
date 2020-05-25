@@ -32,6 +32,7 @@
     color: white;
 
     // input focused and hovering clear button, style clear button
+
     & + div button:first-child:hover {
       color: white;
     }
@@ -61,7 +62,7 @@
     width: 0;
     padding: 0;
     opacity: 0;
-    transition: visibility 0ms, opacity 250ms ease-out; 
+    transition: visibility 0ms, opacity 250ms ease-out;
   }
 
   &:hover {
@@ -88,8 +89,9 @@
   flex-grow: 0;
   height: 100%;
   background-color: white;
+
   &:disabled {
-      color: grey;
+    color: grey;
   }
 
   &:hover {
