@@ -155,6 +155,18 @@
   justify-content: center;
 }
 
+.first-result-page{
+  margin-right: 15px;
+  margin-top: 5px;
+  font-size: 15px;
+}
+
+.results-page{
+  margin-right: 15px;
+  margin-top: 5px;
+  font-size: 15px;
+}
+
 .results-page-numbers {
   display: flex;
   justify-content: center;
@@ -169,4 +181,41 @@
   height: 40px;
   margin-top: 20px;
   margin-bottom: 10px;
+}
+
+//Styling for videos related to search
+
+.results-video-container{
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.results-videos-header{
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.results-video{
+  border: 1px solid #E0E1E5;
+  width: 300px;
+  box-sizing: border-box;
+  margin-right: 10px;
+  border-radius: 8px;
+}
+
+.result-video-title{
+  color: #190DAB;
+}
+
+.video-info{
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 188px;
+}
+
+.video-info p {
+  margin: 0;
+  
 }

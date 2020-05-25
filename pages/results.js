@@ -2,6 +2,7 @@ import axios from "axios";
 import React from "react";
 import ResultsStyle from "../results.scss";
 import Link from "next/link";
+import ReactPlayer from "react-player";
 
 class Results extends React.Component{
   constructor(props){
@@ -24,7 +25,7 @@ class Results extends React.Component{
   // this function uses an API to obtain search results from Google and we set the data to state.
   loadResults = async () => {
     var query = window.location.search.split("=")[1];
-    var API_KEY = "d099ee0ec9e95bace6d49f7a07931ef2"
+    var API_KEY = "649b8c4cf059cafc50ee8551b3ac81af"
     var url = "http://api.serpstack.com/search?access_key=" + API_KEY + "&type=web&query=" + query
 
     const response = await axios.get(url);
@@ -81,9 +82,34 @@ class Results extends React.Component{
       <div className="results">
         <style jsx>{ResultsStyle}</style>
         <p className="result-about">About {data.search_information.total_results} results ({data.request.total_time_taken} seconds)</p>
-        {searchResults.map(result => {
+      
+        {data.inline_videos && 
+          <React.Fragment>
+            <p className="results-videos-header">Videos</p>
+             <div className="results-video-container">
+            {data.inline_videos.map((video,i) => {
+              return(
+                <div className="results-video" key={"v-"+i}>
+                  <ReactPlayer url={video.url} width="220px" height="120px" style={{ borderTopLeftRadius: 8, borderTopRightRadius: 8, overflow: "hidden"}}/>
+                  <div className="video-info">
+                    <a href={video.url}>
+                      <p className="result-video-title">{video.title}</p>
+                    </a>
+                    <div className="result-video-details">
+                      <p>{video.length}</p>
+                      <p>{video.source} - {video.uploaded}</p>
+                    </div>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+          </React.Fragment>
+        }
+
+        {searchResults.map((result,i) => {
           return (
-            <div className="result-item">
+            <div className="result-item" key={"r-" + i}>
               <span className="result-displayed-url">{result.displayed_url.split("http://")[1]}</span>
               <a href={result.url}>
                 <span className="result-title">{result.title}</span>
@@ -92,23 +118,13 @@ class Results extends React.Component{
             </div>
           )
         })}
-      
-        {/* {data.inline_videos && data.inline_videos.map(video => {
-          return(
-            <div>
-              <iframe width="420" height="345" src={video.url.slice(5, video.url.indexOf("m")) + "m/embed" + video.url.slice(video.url.indexOf("m") + 1)}>
-                  {video.title}
-                </iframe>
-            </div>
-          )
-        })} */}
         
         {data.related_searches && 
           <React.Fragment>
             <p className="related-searches-header">Searches related to {data.search_information.query_displayed}</p>
-            {data.related_searches.map(search => {
+            {data.related_searches.map((search,i) => {
               return (
-                <div className="related-searches">
+                <div className="related-searches" key={"rs-" + i}>
                   <a href={search.url}>
                     <span className="related-searches-items">{search.query}</span>
                   </a>
@@ -126,14 +142,13 @@ class Results extends React.Component{
             <React.Fragment>
               
               <p>
-                {data.pagination.current_page + "".split("").slice(1, data.pagination.current_page + "".split("").length).map(page => {
-                  {for (const pageurl in data.pagination.other_page_urls){
+                {Object.values(data.pagination.other_page_urls).map((url, i) => {
+                    if (i === 0) return <span key={"p-first"} className="first-result-page">1</span>;
                     return(
-                      <a href={data.pagination.other_page_urls[pageurl]}>
-                        <span>{page}</span>
+                      <a href={url} key={"p-" + i}>
+                        <span className="results-page">{i+1}</span>
                       </a>
                     )
-                  }}
                 })}
               </p>
            
@@ -176,7 +191,6 @@ class Results extends React.Component{
           {searchResults.length > 0 && withResults}
           {searchResults.length === 0 && noResults}
 
-          
         </div>
       )
   }
