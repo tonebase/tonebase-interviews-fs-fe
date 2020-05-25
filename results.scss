@@ -6,18 +6,34 @@
   padding-left: 28px;
   padding-bottom: 10px;
   border-bottom: 1px solid #F3F3F4;
+  justify-content: space-between;
+
+}
+
+.rv-left{
+  display:flex;
+}
+
+.rv-right{
+  margin-left: 20px;
+}
+
+.user-icon{
+  height: 44px;
+  width: 51px;
+  padding-right: 10px;
 }
 
 .results-company-logo {
   width: 90px;
   height: 30px;
   cursor: pointer;
+  margin-right: 50px;
 }
 
 .results-form-container {
   display: flex;
   flex-direction: column;
-  margin-left: 50px;
 }
 
 .results-form-input {
@@ -155,13 +171,13 @@
   justify-content: center;
 }
 
-.first-result-page{
+.first-result-page {
   margin-right: 15px;
   margin-top: 5px;
   font-size: 15px;
 }
 
-.results-page{
+.results-page {
   margin-right: 15px;
   margin-top: 5px;
   font-size: 15px;
@@ -185,17 +201,17 @@
 
 //Styling for videos related to search
 
-.results-video-container{
+.results-video-container {
   display: flex;
   margin-bottom: 20px;
 }
 
-.results-videos-header{
+.results-videos-header {
   font-size: 20px;
   font-weight: 500;
 }
 
-.results-video{
+.results-video {
   border: 1px solid #E0E1E5;
   width: 300px;
   box-sizing: border-box;
@@ -203,11 +219,11 @@
   border-radius: 8px;
 }
 
-.result-video-title{
+.result-video-title {
   color: #190DAB;
 }
 
-.video-info{
+.video-info {
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -217,5 +233,5 @@
 
 .video-info p {
   margin: 0;
-  
+
 }

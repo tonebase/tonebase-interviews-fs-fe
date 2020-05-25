@@ -24,8 +24,8 @@ class Results extends React.Component{
 
   // this function uses an API to obtain search results from Google and we set the data to state.
   loadResults = async () => {
-    var query = window.location.search.split("=")[1];
-    var API_KEY = "649b8c4cf059cafc50ee8551b3ac81af"
+    var query = window.location.search.split("=")[1]; //searches for the query from the url
+    var API_KEY = "b2ec3bc90834b32505758a84553825bc"
     var url = "http://api.serpstack.com/search?access_key=" + API_KEY + "&type=web&query=" + query
 
     const response = await axios.get(url);
@@ -118,22 +118,23 @@ class Results extends React.Component{
             </div>
           )
         })}
-        
+
         {data.related_searches && 
           <React.Fragment>
             <p className="related-searches-header">Searches related to {data.search_information.query_displayed}</p>
-            {data.related_searches.map((search,i) => {
-              return (
-                <div className="related-searches" key={"rs-" + i}>
-                  <a href={search.url}>
-                    <span className="related-searches-items">{search.query}</span>
-                  </a>
-                </div>
-              )
-            })}
+            <div className="related-searches-container">
+              {data.related_searches.map((search,i) => {
+                return (
+                      <div className="related-searches" key={"rs-" + i}>
+                        <a href={search.url}>
+                          <span className="related-searches-items">{search.query}</span>
+                        </a>
+                      </div>
+                )
+              })}
+            </div>
           </React.Fragment>
         }
-
 
         <div className="results-pages">
           <img src="../static/images/google-logo.png" className="results-page-company-logo"></img>
@@ -161,38 +162,42 @@ class Results extends React.Component{
         </div>
       </div>
     )
-      return(
-        <div className="results-container">
-          <style jsx>{ResultsStyle}</style>
-
-          <div className="results-navbar">
-            <Link href="/homepage">
-              <img src="../static/images/google-logo.png" className="results-company-logo"></img>
-            </Link>
-            <div className="results-form-container">
-              <form id="results-form" autoComplete="off">
-                <div className="results-form-input">
-                  <input type="text" id="results-search-bar" onChange={this.updateQuery}></input>
-                  <button className="results-search-button" onClick={this.handleClick}>
-                    <i className="fas fa-search" id="results-fa-search"></i>
-                  </button>
+    return(
+      <div className="results-container">
+        <style jsx>{ResultsStyle}</style>
+        <div className="results-navbar">
+          <div className="rv-left">
+              <Link href="/homepage">
+                <img src="../static/images/google-logo.png" className="results-company-logo"></img>
+              </Link>
+              <div className="results-form-container">
+                <form id="results-form" autoComplete="off">
+                  <div className="results-form-input">
+                    <input type="text" id="results-search-bar" onChange={this.updateQuery}></input>
+                    <button className="results-search-button" onClick={this.handleClick}>
+                      <i className="fas fa-search" id="results-fa-search"></i>
+                    </button>
+                  </div>
+                </form>
+                <div className="navbar-tabs">
+                  <span className="navbar-tab-all">
+                    <i className="fas fa-search" id="resultstab-fa-search"></i> All
+                  </span>
                 </div>
-              </form>
-              <div className="navbar-tabs">
-                <span className="navbar-tab-all">
-                  <i className="fas fa-search" id="resultstab-fa-search"></i> All
-                </span>
-              </div>
-            </div>
-            <div>
-            </div>
           </div>
-
-          {searchResults.length > 0 && withResults}
-          {searchResults.length === 0 && noResults}
-
+          </div>
+            <div className="rv-right">
+              <a href="https://www.tonebase.co/" target="_blank" >
+                <img src="../static/images/tonebase.png" className="user-icon" />
+              </a>
+            </div>
         </div>
-      )
+
+        {searchResults.length > 0 && withResults}
+        {searchResults.length === 0 && noResults}
+
+      </div>
+    )
   }
 }
 
