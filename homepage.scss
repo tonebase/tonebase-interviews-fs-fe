@@ -13,27 +13,28 @@
 
 //Styling for the navbar
 
-.home-navbar{
+.home-navbar {
   display: flex;
   justify-content: flex-end;
-  align-content: center
+  align-content: center;
 
 }
 
-.home-dropdown{
+.home-dropdown {
   position: relative;
   display: inline-block;
 }
 
-.dropdown-content{
+.dropdown-content {
   display: none;
   position: absolute;
   right: 17px;
-  background-color: #f1f1f1;
+  background-color: #f3f1f1;
   min-width: 150px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   z-index: 1;
   min-height: 150px;
+  border-radius: 10px;
 }
 
 .dropdown-content a:hover {
@@ -42,6 +43,8 @@
 
 .home-dropdown:hover .dropdown-content {
   display: block;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .dropdown-content a {
@@ -50,41 +53,43 @@
   font-size: 30px;
 }
 
-.fa-linkedin{
+.fa-linkedin {
   margin-left: 10px;
 
 }
-.fa-folder-open{
+
+.fa-folder-open {
   color: #FBBC03;
   margin-left: 10px;
   font-size: 25px;
 }
 
-.fa-github{
+.fa-github {
   color: #EA4235;
   margin-left: 10px;
 
 }
 
-.fa-angellist{
+.fa-angellist {
   color: #33A853;
   margin-left: 10px;
 
 }
 
-.dropdown-content span{
+.dropdown-content span {
   font-size: 15px;
   margin-left: 20px;
   color: #737373;
 }
-.home-user-icon{
+
+.home-user-icon {
   height: 60px;
   width: 78px;
   padding-right: 40px;
   padding-top: 20px;
 }
 
-.fa-th{
+.fa-th {
   margin-right: 20px;
   margin-top: 30px;
   font-size: 22px;
@@ -93,7 +98,7 @@
 
 //stylings for company logo
 
-.company-title{
+.company-title {
   margin-bottom: 50px;
 }
 
@@ -189,7 +194,7 @@
 
 //Styling for developer's info
 
-.developer-info{
+.developer-info {
   margin-top: 30px;
   font-size: 13px;
   color: #190DAB;
