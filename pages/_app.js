@@ -1,5 +1,6 @@
 // Core
-import App, { Container } from "next/app";
+import App, { Container } from 'next/app';
+
 
 class TonebaseApp extends App {
   static async getInitialProps({ Component, ctx }) {

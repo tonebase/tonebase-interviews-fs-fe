@@ -1,21 +1,21 @@
 // === CORE ===
-const express = require("express");
-const next = require("next");
+const express = require('express');
+const next = require('next');
 
 // === 3RD PARTY ===
-require("dotenv").config();
+require('dotenv').config();
 
 // === PARAMETRIZED ROUTING ===
-const routes = require("./routes");
+const routes = require('./routes');
 
 // === FUNCTIONS ===
-const { serverStartMessages } = require("./lib/functions");
+const { serverStartMessages } = require('./lib/functions');
 
 // === CONSTANTS ===
 const PORT = process.env.PORT || 3000;
 
 // === SETUP APP ===
-const app = next({ dev: process.env.NODE_ENV !== "production" });
+const app = next({ dev: process.env.NODE_ENV !== 'production' });
 const handler = routes.getRequestHandler(app);
 
 app.prepare().then(() => {

@@ -1,7 +1,9 @@
+/* stylelint-disable */
+
 // === 1. FONT FAMILIES
 
 .fontFamily-primary {
-  font-family: "Oswald";
+  font-family: "axia, sans-serif";
 }
 
 .fontFamily-secondary {
@@ -9,6 +11,10 @@
 }
 
 // === 2. FONT SIZING
+
+.fontSize-xxxxxl {
+  font-size: 64px;
+}
 
 .fontSize-xxxxl {
   font-size: 46px;
