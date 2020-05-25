@@ -24,12 +24,14 @@ class Results extends React.Component{
   // this function uses an API to obtain search results from Google and we set the data to state.
   loadResults = async () => {
     var query = window.location.search.split("=")[1];
-    var API_KEY = "e5c78541224599d03db2f163269f6a43"
+    var API_KEY = "d099ee0ec9e95bace6d49f7a07931ef2"
     var url = "http://api.serpstack.com/search?access_key=" + API_KEY + "&type=web&query=" + query
 
     const response = await axios.get(url);
     // debugger;
     console.log(response);
+    // console.log(response.data.inline_videos.map(video => video.url.slice(0,video.url.indexOf("m")) + "m/embed" + video.url.slice(video.url.indexOf("m")+1)))
+    // console.log(response.data.inline_videos.map(video => video.url.map(singleUrl => `${singleUrl.slice(0, url.indexOf("m")) + "m/embed" + (url.slice(url.indexOf("m") + 1))}`)));
     this.setState({ 
       searchResults: response.data.organic_results, 
       data: response.data, 
@@ -52,15 +54,16 @@ class Results extends React.Component{
   render(){
     const {data, loaded, search, searchResults} = this.state;
     const noResults = (
-      <div>
-        {data.search_information && <p>Your search - {data.search_information.query_displayed} - did not match any documents.</p>}
-        <ul>
+      <div className="no-results">
+        <style jsx>{ResultsStyle}</style>
+        {data.search_information && <p>Your search - <span className="noresult-query-display">{data.search_information.query_displayed}</span> - did not match any documents.</p>}
+        <p>
           Suggestions:
-            <li>Make sure all words are spelled correctly.</li>
-            <li>Try different keywords.</li>
-            <li>Try more general keywords.</li>
-            <li>Try fewer keywords.</li>
-        </ul>
+        </p>
+        <li>Make sure all words are spelled correctly.</li>
+        <li>Try different keywords.</li>
+        <li>Try more general keywords.</li>
+        <li>Try fewer keywords.</li>
       </div>
     )
     // Conditional statement that checks if the results are loaded.
@@ -89,24 +92,56 @@ class Results extends React.Component{
             </div>
           )
         })}
-        <p className="related-searches-header">Searches related to {data.search_information.query_displayed}</p>
-
-        {data.related_searches ? data.related_searches.map(search => {
-          return (
-            <div className="related-searches">
-              <a href={search.url}>
-                <span className="related-searches-items">{search.query}</span>
-              </a>
+      
+        {/* {data.inline_videos && data.inline_videos.map(video => {
+          return(
+            <div>
+              <iframe width="420" height="345" src={video.url.slice(5, video.url.indexOf("m")) + "m/embed" + video.url.slice(video.url.indexOf("m") + 1)}>
+                  {video.title}
+                </iframe>
             </div>
           )
-        }) : null}
+        })} */}
+        
+        {data.related_searches && 
+          <React.Fragment>
+            <p className="related-searches-header">Searches related to {data.search_information.query_displayed}</p>
+            {data.related_searches.map(search => {
+              return (
+                <div className="related-searches">
+                  <a href={search.url}>
+                    <span className="related-searches-items">{search.query}</span>
+                  </a>
+                </div>
+              )
+            })}
+          </React.Fragment>
+        }
+
+
         <div className="results-pages">
           <img src="../static/images/google-logo.png" className="results-page-company-logo"></img>
           <div className="results-page-numbers">
-            {data.pagination && <a href={data.pagination.next_page_url} className="results-page-next">
-              {/* <p>{data.pagination.current_page}</p> */}
-              <p>Next</p>
-            </a>}
+            {data.pagination && 
+            <React.Fragment>
+              
+              <p>
+                {data.pagination.current_page + "".split("").slice(1, data.pagination.current_page + "".split("").length).map(page => {
+                  {for (const pageurl in data.pagination.other_page_urls){
+                    return(
+                      <a href={data.pagination.other_page_urls[pageurl]}>
+                        <span>{page}</span>
+                      </a>
+                    )
+                  }}
+                })}
+              </p>
+           
+              <a href={data.pagination.next_page_url} className="results-page-next">
+                <p>Next</p>
+              </a>
+            </React.Fragment>
+            }
           </div>
         </div>
       </div>
@@ -122,8 +157,10 @@ class Results extends React.Component{
             <div className="results-form-container">
               <form id="results-form" autoComplete="off">
                 <div className="results-form-input">
-                  <input type="text" id="results-search-bar" onChange={this.updateQuery} value={search} ></input>
-                  <i className="fas fa-search" id="results-fa-search" onClick={this.handleClick}></i>
+                  <input type="text" id="results-search-bar" onChange={this.updateQuery}></input>
+                  <button className="results-search-button" onClick={this.handleClick}>
+                    <i className="fas fa-search" id="results-fa-search"></i>
+                  </button>
                 </div>
               </form>
               <div className="navbar-tabs">
@@ -141,15 +178,7 @@ class Results extends React.Component{
 
           
         </div>
-      ) 
-    // else {
-    //   return(
-    //     <div className="loading-container">
-    //       <style jsx>{ResultsStyle}</style>
-    //       <img src="./static/images/loading.gif" className="loading-image"></img>
-    //     </div>
-    //   )
-    // }
+      )
   }
 }
 

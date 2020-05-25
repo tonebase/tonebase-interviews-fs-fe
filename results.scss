@@ -24,6 +24,10 @@
   position: relative;
 }
 
+.results-search-button{
+  border: none;
+}
+
 #results-search-bar {
   width: 700px;
   border-radius: 30px;
@@ -41,17 +45,18 @@
 #results-fa-search {
   position: absolute;
   top: 15px;
-  right: 23px;
+  right: 40px;
   color: #4185F4;
   cursor: pointer;
 }
 //Styling for navbar category tabs
-.navbar-tabs{
+
+.navbar-tabs {
   margin-top: 20px;
 }
 
-.navbar-tab-all{
-  color:#1973E7;
+.navbar-tab-all {
+  color: #1973E7;
   border-bottom: 3px solid #1973E7;
   font-size: 14px;
   width: 30px;
@@ -61,6 +66,20 @@
   cursor: pointer;
 }
 
+//Styling for no results page.
+
+.no-results{
+  width: 650px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 180px;
+  margin-top: 50px;
+}
+
+.noresult-query-display{
+  font-weight: bold;
+}
 //Styling for results section.
 
 .results {
@@ -131,13 +150,14 @@
 
 .results-pages {
   display: flex;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
 }
 
 .results-page-numbers {
   display: flex;
+  justify-content: center;
 }
 
 .results-page-next {
@@ -145,8 +165,8 @@
 }
 
 .results-page-company-logo {
-  width: 90px;
-  height: 30px;
+  width: 120px;
+  height: 40px;
   margin-top: 20px;
   margin-bottom: 10px;
 }
