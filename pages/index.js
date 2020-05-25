@@ -5,34 +5,26 @@ import NextLink from 'next/link';
 import Head from 'next/head';
 
 // === STORES ===
-import { ModalStore, TabNavStore } from '../stores';
-import { store, view, autoEffect } from 'react-easy-state';
+import {view } from 'react-easy-state';
 
-// components
+// === COMPONENTS ===
 import Logo from '../components/UI/logo';
 import Searchbar from '../components/Search/searchbar';
-import '../styleSystem.scss';
+
+import style from '../styleSystem.scss';
 
 function Home() {
-  const searchInput = store({ str: '', num: 0 });
-  const enterTerm = e => {
-    searchInput.str = e.target.value;
-    if (e.target.value && !searchInput.num) searchInput.num = 1;
-  };
-
-  const clearInput = () => {
-    // document.getElementById('search-input').value = '';
-    // searchInput.str = '';
-  };
 
   return (
     <>
       <Head>
         <title>Quasar Frontend Challenge @ Tonebase</title>
       </Head>
-      <section className="home ">
+      <section className="home">
         <Logo />
         <Searchbar />
+        {/* cheeky unfunny joke based off duckduckgo's homepage tagline*/}
+        <h2 className='home__tagline'>The search engine that tracks your entire search history. Kneel to your robot overlord.</h2>
       </section>
       <style jsx global>
         {`
@@ -41,12 +33,6 @@ function Home() {
             height: 100%;
             margin: 0;
           }
-
-          // body {
-          //   display: flex;
-          //   align-items: center;
-          //   justify-content: center;
-          // }
 
           #__next {
             margin: 0 auto;
@@ -58,10 +44,18 @@ function Home() {
           }
         `}
       </style>
+      <style jsx>{style}</style>
       <style jsx>
         {`
-          .searchbar {
+          .home {
             margin: 0 2rem;
+            text-align: center;
+            width: 100%;
+            font-family: axia;
+          }
+
+          .home__tagline {
+            margin: 2rem 2rem;
           }
         `}
       </style>

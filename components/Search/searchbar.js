@@ -1,29 +1,43 @@
-import { store, view, autoEffect } from 'react-easy-state';
+import { useRef } from "react";
+import { store, view, autoEffect } from "react-easy-state";
+
 import style from "./searchbar.scss";
 
-export default function Searchbar() {
-
-  const searchInput = store({ str: '', num: 0 });
-  const enterTerm = e => {
+function Searchbar() {
+  const textInput = useRef(null);
+  const searchInput = store({ str: "" });
+  const enterTerm = (e) => {
     searchInput.str = e.target.value;
-    if (e.target.value && !searchInput.num) searchInput.num = 1;
   };
 
   const clearInput = () => {
-    // document.getElementById('search-input').value = '';
-    // searchInput.str = '';
+    document.getElementById("searchform__input").value = "";
+    searchInput.str = "";
+    textInput.current.focus();
   };
+
   return (
     <>
-      <form className="searchbar">
-        <input id="search-input" type="text" onChange={(e) => enterTerm(e)} />
-        {/* <input */}
-        {/*   id="search-input" */}
-        {/*   type="text" */}
-        {/*   // value={searchInput.str} */}
-        {/*   onKeyDown={e => enterTerm2(e)} */}
-        {/* /> */}
-        <button type="submit" className="fontSize-sm">
+      <form className="searchform">
+        <input
+          name="q"
+          id="searchform__input"
+          type="text"
+          ref={textInput}
+          onChange={(e) => enterTerm(e)}
+          tabIndex={1}
+          autoFocus
+        />
+        {/* hide clear button if input is empty */}
+        <button
+          type="button"
+          className={`searchform__clear fontSize-sm ${searchInput.str ? "" : "searchform__clear--d-none"}`}
+          onClick={clearInput}
+          tabIndex={3}
+        >
+          X
+        </button>
+        <button type="submit" className="searchform__submit fontSize-sm" tabIndex={2}>
           Search
         </button>
       </form>
@@ -31,3 +45,5 @@ export default function Searchbar() {
     </>
   );
 }
+
+export default view(Searchbar);

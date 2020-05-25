@@ -1,0 +1,75 @@
+@import "styleSystem.scss";
+
+.searchform {
+  border: 1px solid black;
+  width: 100%;
+  max-width: 600px;
+  font-size: 1.5rem;
+  display: flex;
+  font-family: $primaryFont;
+  margin: 0 auto;
+  text-align: left;
+}
+
+#searchform__input {
+  //   border: 1px solid black;
+  padding: 0.15em 0.25em;
+  flex: 1 1 auto;
+}
+
+.searchform__clear {
+  visibility: visible;
+  opacity: 1;
+  padding: 0.1rem 0.5rem;
+  margin-right: 0.15rem;
+  transition: opacity 300ms ease-out;
+  color: grey;
+  font-size: 1.2rem;
+  font-weight: 500;
+
+  &--d-none {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0ms, opacity 250ms ease-out; // fade in button
+  }
+
+  &:hover {
+    outline: none;
+    color: black;
+    font-weight: 700;
+  }
+
+  &:active {
+    outline: none;
+    color: black;
+    font-weight: 700;
+  }
+
+  &:focus {
+    color: black;
+    font-weight: 700;
+  }
+}
+
+.searchform__submit {
+  border-left: 1px solid black;
+  padding: 0.15em 0.25em;
+  flex-grow: 0;
+
+  &:hover {
+    outline: none;
+    background: black;
+    color: white;
+  }
+
+  &:active {
+    outline: none;
+    background: black;
+    color: white;
+  }
+
+  &:focus {
+    background: black;
+    color: white;
+  }
+}
