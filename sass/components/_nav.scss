@@ -1,0 +1,22 @@
+.nav {
+  width: 100vw;
+  font-size: 1.3rem;
+  color: #FFF;
+  justify-content: space-between;
+
+  &__container-left {
+    margin-left: 3rem;
+
+  }
+
+  &__container {
+    margin-right: 3rem;
+
+    &-link {
+      padding: 1.5rem;
+    }
+  }
+
+
+}
+
