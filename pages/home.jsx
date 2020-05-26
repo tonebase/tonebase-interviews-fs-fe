@@ -1,15 +1,15 @@
-import React, { useReducer } from 'react';
-import Nav from '../components/Nav/nav'
+import React, { useReducer, useContext } from 'react';
+import { Context } from "../lib/helpers/reducer";    
 import SearchForm from '../components/SearchForm/searchForm'
 import style from '../sass/main.scss';
-import { reducer } from "../lib/helpers/reducer";
-
+import { INITIAL_STATE } from "../lib/helpers/reducer";
 
 
 const Home = () => {
+    const { store: { theme} } = useContext(Context)
     return (
       <div className="home">
-        <Nav />
+      
         <style jsx>{style}</style>
         <style jsx global>
           {`

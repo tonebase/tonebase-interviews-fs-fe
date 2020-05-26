@@ -1,13 +1,12 @@
-import React, { useState, useReducer } from 'react';
+import React, { useState, useContext } from 'react';
+import { Context } from "../../lib/helpers/reducer"    
 import Switch from '../Switch/Switch';
-import { reducer, setTheme, INITIAL_STATE } from '../../lib/helpers/reducer'
 import style from '../../sass/main.scss';
 
 
 const Nav = () => {
     const [value, setValue] = useState(false)
-    const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
-    const { theme } = state;
+    const { store: { theme }, dispatch } = useContext(Context);
 
     return (
       <nav className="nav flex-row">
@@ -17,7 +16,7 @@ const Nav = () => {
           <div className="nav__container-link">Store</div>
         </div>
         <div className="nav__container flex-row">
-          <div onClick={(e) => dispatch(setTheme(theme))} className="btn">
+          <div onClick={() => dispatch({ type: 'SET_THEME' })} className="btn">
             Burn my eyes
           </div>
           <Switch
