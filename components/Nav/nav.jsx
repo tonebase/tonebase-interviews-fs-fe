@@ -16,18 +16,21 @@ const Nav = () => {
           <div className="nav__container-link">Store</div>
         </div>
         <div className="nav__container flex-row">
-          <div onClick={() => dispatch({ type: 'SET_THEME' })} className="btn">
-            Burn my eyes
-          </div>
-          <Switch
-            className="switch__container"
-            isOn={value}
-            onColor="#EF476F"
-            handleToggle={() => setValue(!value)}
-          />
-          <div className="nav__container-link">Gmail</div>
-          <div className="nav__container-link">Images </div>
-          <div className="nav__container-link">Stan</div>
+            <div className="nav__container-theme">
+                Switch to {theme === 'dark' ? 'light' : 'dark'} mode &rarr;
+            </div>
+            <Switch
+                className="switch__container"
+                isOn={value}
+                onColor="#EF476F"
+                handleToggle={() => {
+                    dispatch({ type: 'SET_THEME'})
+                    setValue(!value)}
+                }
+            />
+            <div className="nav__container-link">Gmail</div>
+            <div className="nav__container-link">Images </div>
+            <div className="nav__container-link">Stan</div>
         </div>
       </nav>
     );
