@@ -4,19 +4,16 @@
   color: #FFF;
   justify-content: space-between;
 
-  &__container-left {
-    margin-left: 3rem;
-
-  }
-
   &__container {
     margin-right: 3rem;
+    align-items: center;
 
     &-link {
       padding: 1.5rem;
     }
   }
-
-
 }
 
+// .switch__container {
+//     padding: 1.5rem;
+// }
