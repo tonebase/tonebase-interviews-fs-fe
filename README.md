@@ -51,11 +51,19 @@ Okay, with all that out of the way let's dive into the question section!
 
 ### 1. What made you interested in/choose React as a framework? Was it a choice you made? Regardless, what is the one thing you enjoy most about it compared to other frameworks you've used and what is one thing you dislike about it?
 
+I have not had hands on experience with Angular or Vue, but Angular has rich documentation with many built in functions such as routing while Vue has less features than Angular but more than React. Angular also requires knowledge of TypeScript while Vue uses HTML and JavaScript. I chose to use React as a framework because I was building social media web applications and I thought React would be great to use because it was invented specifically to manage a social media application. One thing that I like about React while working on my apps is its one-direction data flow, in which components receive props and state and return HTML and changes to child structures will not affect parents’. This makes building apps more enjoyable because you have more control over your data and it’s also easier to debug when paired with Redux since you can follow the trail from the source of error. However, the downside of React is that the documentations are not as rich as Angular. When I ran into problems with React, oftentimes I had to find the solutions through communities rather than official documentation. As a result, it can also be difficult for someone to learn React since it requires more in-depth knowledge and it could be challenging for people with no knowledge of React to begin.
+
 ### 2. Why do the component names in JSX start with capital letters?
+
+Component names in JSX start with capital letters because lower case letters are considered to be HTML tags. For instance, lower case letters will compile down to React.createElement(‘button’), and render HTML button tag instead of React.createElement(Button).
 
 ### 3. What are the main types of components you can render in React? When do you choose one over the other?
 
+The main types of components are functional components and class components. Functional components are used for displaying information and are stateless but can still access state with hooks, which are great for reusability between components and staying dry, but the downside is that it takes more time to master and it’s easy for people to misuse them. There are also no lifecycle methods for functional components. Class components, on the other hand, have states and lifecycle methods that you can use for managing states. You can choose to use functional components if you just want to display information or if you’re looking to avoid redundancy and use class components if you are looking to manage states for your application.
+
 ### 4. How much experience do you have with testing frameworks? While our testing is light at the moment (read: nonexistent) this is something we'd like to move to in the future so this is a 'nice-to-know' for us!
+
+I have some experience with RSpec and Capybara for Ruby where I tested my functions and made sure they perform what I intend them to do. I have also used Jasmine for testing JavaScript code. Even though I don’t have writing experience with Jasmine, I am familiar with reading tests and I can learn the methods quickly through documentation.
 
 ---
 
@@ -78,6 +86,7 @@ class App extends React.Component {
   }
 }
 ```
+The issue with this example is initializing the state with props because it only runs when the component is first created. As a result, if the props get updated the new props will not update the current state of the component and it will also not be displayed. One way to improve the component could be to use the useEffect hook method and then specify the props you want to keep track of for changes.
 
 ### 2. What's the issue with this component. Why? How would you go about fixing it?
 
@@ -108,7 +117,7 @@ render() {
   }
 }
 ```
-
+The issue with this component is the React’s nature of event pooling. The onChange event is an instance of SyntheticEvent, which acts like a wrapper around the browser’s event. The example will error out because the onChange event object will be reused and then all properties will be cleared after the event callback has been invoked. As a result, the event.target.value will error out because we are trying to access it after 250ms when it is null. To fix this, we can simply add “event.persist();” at the very top of the function to let React know that the event object will be used again in the future to prevent the object from being nullified.
 ---
 
 Onto just a teensy bit of code + introducing you to our system! This part can be done on your own, and you can ping me when it's good to go!
@@ -159,9 +168,15 @@ Thus writing, and the ability to write clearly, logically and to formulate argum
 
 ### 1. Tell me about componentWillMount and the issues with it?
 
+componentWillMount is one of the React lifecycle methods that occurs before mounting to the DOM, it happens before the render method is called and there is no access to the DOM. The issue with componentWillMount is that it was not meant for asynchronous rendering. When I was building my music streaming application, I kept running into “cannot read property ‘map’ of undefined” error. At first I was confused because I was sure my array was not empty. However, after doing some research I realized that because React doesn’t wait for componentWillMount so the component proceeds to render. In the end, I used componentdidMount to resolve the error since componentDidMount is fired after the initial render and before the data is displayed on the browser.
+
 ### 2. Can you walk me through the cycle of mounting a stateful component? What functions are called in what order? Where would you place a request for data from the API? Why?
 
+The cycle of mounting a stateful component begins when the component begins to create an instance through the constructor and then sets up its props and state. Once this is done, the component mounts on to the DOM (componentWillMount) and the render method is called. After that, componentDidMount gets called once and we can then place a request for data from the API because we now have access to the DOM. Next, we can update the component’s state and trigger a re-render. ComponentWillUpdate is one of the updating lifecycle methods that takes in new props and new state, which will be called before the render method, and is used to perform some functions before re-rendering the component and after updating the prop and state. ComponentDidUpdate is another method that takes in previous props and previous state, and is called after the component has been re-rendered and updated on the DOM. The last phase of the cycle is unmounting where the component is removed from the DOM. ComponentWillMount is the method called before the component gets unmounted and finally marks the end of the component’s lifecycle.
+
 ### 3. If you had unlimited time budget and could fix / improve / change one thing in your last project, what would it be and why?
+
+The last project I worked on is an Instagram inspired web application (https://life-share.herokuapp.com/#/). The one thing that I would change to my last project is by implementing websockets. I thought this feature will improve my project the most because websockets can not only be used as a direct messaging feature, but also a notification function as well. This implementation would be a significant update to my application because users will be able to subscribe to the same channel as others to perform instant messaging and they can also be notified when others message them back or when their photos obtain likes from others. That way, the application will be more engaging to users and it will also add dimensions to the application so it is not just a platform for sharing photos.
 
 ---
 

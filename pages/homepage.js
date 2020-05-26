@@ -1,5 +1,4 @@
 import HomeStyle from "../homepage.scss";
-import axios from "axios";
 
 class Home extends React.Component {
 
@@ -17,7 +16,7 @@ class Home extends React.Component {
     this.setState({search: e.currentTarget.value})
   }
 
-  // this function redirects users to the search results page.
+  // this function redirects users to the search results page based on the query.
   handleClick = (e) => {
     e.preventDefault();
     if (this.state.search != ""){
@@ -38,7 +37,6 @@ class Home extends React.Component {
               <a href="https://www.cindycwkuo.com/" target="_blank"><i className="far fa-folder-open"></i><span>Portfolio</span></a>
               <a href="https://github.com/ckuo15" target="_blank"><i className="fab fa-github"></i><span>Github</span></a>
               <a href="https://angel.co/u/cindy-kuo-2" target="_blank"><i className="fab fa-angellist"></i><span>AngelList</span></a>
-
             </div>
           </div>
           <a href="https://www.tonebase.co/" target="_blank" >
@@ -69,7 +67,6 @@ class Home extends React.Component {
             </div>
             <div className="developer-info">Developed by Cindy Kuo</div>
         </div>
-       
       </div>
     )
   }

@@ -18,6 +18,7 @@ class Results extends React.Component{
     this.handleClick = this.handleClick.bind(this);
   }
 
+  //Call the load results method
   componentDidMount(){
     this.loadResults();
   }
@@ -25,14 +26,11 @@ class Results extends React.Component{
   // this function uses an API to obtain search results from Google and we set the data to state.
   loadResults = async () => {
     var query = window.location.search.split("=")[1]; //searches for the query from the url
-    var API_KEY = "bac7e32e4f73e24f99958b3f59d7ba5d"
+    var API_KEY = "32f5c8bec37352fc6f4fdce375fbdf53" //Normally the key will be git ignored
     var url = "http://api.serpstack.com/search?access_key=" + API_KEY + "&type=web&query=" + query
 
     const response = await axios.get(url);
-    // debugger;
-    console.log(response);
-    // console.log(response.data.inline_videos.map(video => video.url.slice(0,video.url.indexOf("m")) + "m/embed" + video.url.slice(video.url.indexOf("m")+1)))
-    // console.log(response.data.inline_videos.map(video => video.url.map(singleUrl => `${singleUrl.slice(0, url.indexOf("m")) + "m/embed" + (url.slice(url.indexOf("m") + 1))}`)));
+
     this.setState({ 
       searchResults: response.data.organic_results, 
       data: response.data, 
@@ -199,7 +197,6 @@ class Results extends React.Component{
                   <a href="https://www.cindycwkuo.com/" target="_blank"><i className="far fa-folder-open" id="r-portfolio"></i><span>Portfolio</span></a>
                   <a href="https://github.com/ckuo15" target="_blank"><i className="fab fa-github" id="r-github"></i><span>Github</span></a>
                   <a href="https://angel.co/u/cindy-kuo-2" target="_blank"><i className="fab fa-angellist" id="r-angel"></i><span>AngelList</span></a>
-
                 </div>
               </div>
               <a href="https://www.tonebase.co/" target="_blank" >
@@ -207,15 +204,11 @@ class Results extends React.Component{
               </a>
             </div>
            </div>
-
         {searchResults.length > 0 && withResults}
         {searchResults.length === 0 && noResults}
-
       </div>
     )
   }
 }
-
-
 export default Results;
 
