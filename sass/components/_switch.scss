@@ -1,3 +1,6 @@
+// SCSS taken from 'https://upmostly.com/tutorials/build-a-react-switch-toggle-component'
+// I modified the width, height, and a few other declarations in order to have it fit perfectly in the nav bar and have it customized to my liking
+
 .react-switch-checkbox {
   height: 0;
   width: 0;
@@ -9,7 +12,7 @@
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
-  width: 6rem;
+  width: 5.5rem;
   height: 2.4rem;
   background: grey;
   border-radius: 100px;

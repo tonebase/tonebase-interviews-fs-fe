@@ -5,11 +5,11 @@ const SearchForm = () => {
     const [searchQuery, setQuery] = useState("");
          
     return (
-      <form className="home__content__form">
+      <form className="search-form">
         <style jsx>{style}</style>
         <input
           type="text"
-          className="home__content__form__search"
+          className="search-form__input"
           placeholder="Search Google or type a url"
         />
         <div className="buttons">

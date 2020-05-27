@@ -1,9 +1,11 @@
 import React, { useReducer, useContext } from 'react';
 import { Context } from "../lib/helpers/reducer";    
 import SearchForm from '../components/SearchForm/searchForm'
+import themeSwitcher from '../lib/functions/themeSwitcher';
 import style from '../sass/main.scss';
 
 const Home = () => {
+    // retrieve current theme state from the context
     const { store: { theme } } = useContext(Context)
     return (
       <div className="home">
@@ -12,16 +14,26 @@ const Home = () => {
           {`
             html {
               font-size: 62.5%; //sets default font size to 10px to allow for responsive design with rems
-              background-color: ${theme === 'dark' ? 'rgb(53, 54, 58)' : '#fff'};
+              background-color: ${themeSwitcher(
+                theme,
+                "rgb(53, 54, 58)",
+                "#fff"
+              )}; //dynamically changes background color based on current theme state
               font-family: Lato, sans-serif;
-              color: ${theme === 'dark' ? '#FFFFFF' : '#000'};
+              color: ${theme === "dark" ? "#FFFFFF" : "#000"};
             }
           `}
         </style>
         <div className="home__content">
-          <h1 className="home__content__logo">Google</h1>
+          <h1
+            style={{
+              fontSize: "9rem",
+              color: `${themeSwitcher(theme, "#EEEEEE", "#9BA0A5")}`,
+            }}
+          >
+            Google
+          </h1>
           <SearchForm />
- 
         </div>
       </div>
     );
