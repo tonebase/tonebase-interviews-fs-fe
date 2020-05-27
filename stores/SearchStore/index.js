@@ -17,7 +17,12 @@ const SearchStore = store({
     showRecents: false,
     setSearchQuery: (value) => {
         SearchStore.searchQuery = value;
-        if (!value) SearchStore.searchResults = []
+        if (!value.length) {
+            SearchStore.searchResults = []
+            SearchStore.active = false;
+            console.log(SearchStore.searchResults)
+        }
+
     },
 
     getToken: async () => {

@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { view } from 'react-easy-state';
 import SearchStore from '../../../../stores/SearchStore';
-const activeInput = `active-search-input paddingLeft-xl paddingTop-md paddingBottom-md d-flex bgColor-black--lighter color-primary--lighter w-100`
-const idleInput = `search-input paddingLeft-xl paddingTop-md paddingBottom-md d-flex bgColor-black--lighter color-primary--lighter w-100`
-
 function SearchInput() {
     const [searchInput, setSearchInput] = useState('');
     const handleSearchChange = (e) => {
@@ -15,6 +12,7 @@ function SearchInput() {
             SearchStore.search(e);
         } else {
             SearchStore.active = false;
+            SearchStore.searchResults = [];
         }
         console.log(SearchStore.active)
     }
@@ -22,14 +20,24 @@ function SearchInput() {
     return (
         <form onSubmit={SearchStore.search} className='w-100'>
             <input
-                className={!SearchStore.active ? idleInput : activeInput}
+                className='noBorder marginTop-xxl paddingLeft-xl paddingTop-md paddingBottom-md d-flex bgColor-black--lighter color-primary--lighter min-w-420px  breakMd-min-w-540px'
                 type='text'
                 value={searchInput}
                 onChange={handleSearchChange}
-                onClick={SearchStore.preview}
+                style={{
+                    border: 'none',
+                    height: '42px',
+                    borderRadius: '85px',
+                    '&:hover': {
+                        boxShadow: '0 2px 8px rgba(0, 0, 0, 0.16)'
+                    },
+                    borderBottomLeftRadius: SearchStore.active ? '0' : '85px',
+                    borderBottomRightRadius: SearchStore.active ? '0' : '85px',
+                }
+                }
             >
             </input>
-        </form>
+        </form >
     )
 }
 export default view(SearchInput);
