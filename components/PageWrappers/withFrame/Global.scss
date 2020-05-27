@@ -2,7 +2,6 @@
 
 // === STYLE SYSTEM ===
 @import "styleSystem.scss";
-
 // ===============================
 // ===============================
 // ===============================
@@ -40,11 +39,16 @@ html {
 // ===============================
 // BODY ELEMENT
 // ===============================
+h1 {
+  font-size: 3rem;
+  font-family: "PT Sans";
+  color: #212b36;
+}
 
 body {
   min-height: 100vh;
 
-  color: #fff;
+  color: #212b36;
   font-size: 16px;
   line-height: 22pt;
   -webkit-font-smoothing: antialiased;
@@ -52,7 +56,6 @@ body {
   -ms-font-smoothing: antialiased;
   font-family: Arial, Helvetica, "Roboto", sans-serif;
 
-  background-color: #1c1c1f;
   overflow-x: hidden;
 
   // Handle no scroll for modals
@@ -118,8 +121,6 @@ body {
 // <<< The actual page component wrapper
 
 .pageBody {
-  padding-top: 50px;
-
   width: 100%;
   max-width: 100%;
   min-height: 0;
@@ -132,7 +133,6 @@ body {
   flex-direction: column;
 
   @media (min-width: 768px) {
-    padding-top: 60px;
     padding-left: 80px;
   }
 }
@@ -140,12 +140,10 @@ body {
 // <<< Wrapped from within each page component
 
 .appWrapper {
-  position: relative;
-  padding-top: 0;
-  padding-bottom: 64px;
-
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   min-height: 100%;
   min-height: 100vh;
   max-width: 1680px;
@@ -158,8 +156,6 @@ body {
   // &.__modalOpen {
   //   filter: blur(2px);
   // }
-
-  padding-bottom: 6000px;
 
   @media (min-width: 1680px) {
     min-width: 1680px;

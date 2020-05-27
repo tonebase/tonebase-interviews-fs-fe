@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { view, store } from 'react-easy-state';
 import SearchStore from '../../../../stores/SearchStore';
+import { search } from '../../../../lib/assets/icons/general';
 
 
 function SearchInput() {
@@ -13,17 +14,21 @@ function SearchInput() {
         SearchStore.getToken();
     })
     return (
-        <form onSubmit={SearchStore.search}>
-            <input
-                placeholder=''
-                type='text'
-                value={searchInput}
-                onChange={handleSearchChange}
-                onClick={SearchStore.preview}
-            >
+        <div tabindex="0" class='search-wrapper d-flex'>
+            <div class='search-input-wrapper flex-wrapAll d-flex w-100'>
+                <form onSubmit={SearchStore.search} className='w-100'>
+                    <input
+                        className='search-input paddingLeft-xs d-flex bgColor-transparent w-100'
+                        type='text'
+                        value={searchInput}
+                        onChange={handleSearchChange}
+                        onClick={SearchStore.preview}
+                    >
 
-            </input>
-        </form>
+                    </input>
+                </form>
+            </div>
+        </div>
     )
 }
 export default view(SearchInput);

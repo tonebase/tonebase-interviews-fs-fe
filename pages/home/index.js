@@ -2,13 +2,21 @@ import React from 'react';
 import { view } from "react-easy-state";
 import { SearchStore } from '../../stores';
 import { SearchBar } from '../../components/Organisms/Frame';
-import './Home.scss';
+import { withFrame } from '../../components/PageWrappers';
 
-const Home = props => {
+function Home() {
     return (
-        <div id='search-container'>
-            <SearchBar />
+        <div id='bodyWrapper' className='bodyWrapper'>
+            <div id='pageBody' className='pageBody'>
+                <div id='appWrapper' className='appWrapper d-flex'>
+                    <h1>Spoogle</h1>
+                    <SearchBar className='search-input' />
+                </div>
+            </div>
         </div>
-    )
+
+
+    );
+
 };
-export default view(Home);
+export default withFrame(view(Home));

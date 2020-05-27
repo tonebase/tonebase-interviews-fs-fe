@@ -1,0 +1,28 @@
+@import "colors.scss";
+.search-wrapper {
+  margin-top: 20px;
+  width: 500px;
+  border: 1px solid #dfe1e5;
+  border-radius: 450px;
+  height: 42px;
+  &:focus {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16);
+  }
+  &:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16);
+  }
+}
+.search-input-wrapper {
+  display: flex;
+  padding: 5px 8px 0px 16px;
+  padding-left: 14px;
+  word-wrap: break-word;
+}
+.search-input {
+  border: none;
+}
+@media (min-width: 540px) {
+  .breakSm-input-sm {
+    width: 320px;
+  }
+}
