@@ -1,0 +1,9 @@
+.search__list {
+  width: 480px;
+  margin: 0 auto;
+
+  &:focus,
+  &:hover {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
+  }
+}

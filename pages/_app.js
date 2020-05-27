@@ -1,5 +1,5 @@
 // Core
-import App, { Container } from "next/app";
+import App from "next/app";
 
 class TonebaseApp extends App {
   static async getInitialProps({ Component, ctx }) {
@@ -15,11 +15,7 @@ class TonebaseApp extends App {
   render() {
     const { Component, pageProps } = this.props;
 
-    return (
-      <Container>
-        <Component {...pageProps} />
-      </Container>
-    );
+    return <Component {...pageProps} />
   }
 }
 
