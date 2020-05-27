@@ -3,51 +3,30 @@ import { view } from "react-easy-state";
 import { SearchInput, SearchResult } from '../../../Molecules/Search'
 
 import SearchStore from '../../../../stores/SearchStore';
+const activeWrapper = `active-search-wrapper d-flex bgColor-black--lighter borderColor-positive--main`;
+const idleWrapper = 'search-wrapper d-flex bgColor-black--lighter borderColor-positive--main';
 
 
-function SearchBar(props) {
-    const [active, setActive] = useState(false);
+function SearchBar() {
     const renderResults = () => {
-        console.log(SearchStore.searchResults)
-        SearchStore.searchResults.forEach((result, index) => {
-            <li key={index}>{result.name}</li>
-        })
+        return (
+            <div>
+                <div className='results-seperator color-black--lighter'></div>
+                <div className='results-container'>
+                    <div className='results-wrapper'>
+                        <ul className='results-list'>
+                            {SearchStore.searchResults.map((result) => <SearchResult result={result} />)}
+                        </ul>
 
-    }
-    const renderRecents = () => {
-        console.log(active)
-        if (SearchStore.recentSearches && !SearchStore.searchQuery.length) {
-            SearchStore.recentSearches.map(search => {
-                return <li>{search}</li>
-            })
-        }
-    }
-    const handleSearchClick = () => {
-        setActive(!active)
+                    </div>
+                </div >
+            </div>
+        );
     }
     return (
-        <div>
-            <SearchInput className='search-input' onClick={handleSearchClick} />
-            {
-                // Render Results if input is in focus and 
-            }
-            <div>
-                {active &&
-                    renderRecents()
-                }
-            </div>
-
-
-
-            {
-                // Render Search Results
-            }
-            <ul>
-                {!SearchStore.searchResults.length & SearchStore.searchQuery.length > 3
-                    ? <h1>We couldn't find any results.</h1>
-                    : SearchStore.searchResults.map((result) => <SearchResult result={result} />)}
-            </ul>
-
+        <div className='search-wrapper'>
+            <SearchInput className={!SearchStore.active ? 'search-input' : `active search-input`} />
+            {SearchStore.searchResults.length ? renderResults() : <></>}
         </div >
     )
 }

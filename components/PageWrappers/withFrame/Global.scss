@@ -9,6 +9,7 @@
 // ===============================
 
 html {
+
   &::-webkit-scrollbar {
     width: 9px;
     background-color: #f5f5f5;
@@ -26,6 +27,7 @@ html {
   }
 
   &.__showScrollbar {
+
     &::-webkit-scrollbar,
     &::-webkit-scrollbar-track,
     &::-webkit-scrollbar-thumb {
@@ -39,10 +41,11 @@ html {
 // ===============================
 // BODY ELEMENT
 // ===============================
+
 h1 {
-  font-size: 3rem;
+  font-size: 4.5rem;
   font-family: "PT Sans";
-  color: #212b36;
+  color: rgb(100, 201, 100);
 }
 
 body {
@@ -55,7 +58,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   -ms-font-smoothing: antialiased;
   font-family: Arial, Helvetica, "Roboto", sans-serif;
-
+  background-color: #1c1c1f;
   overflow-x: hidden;
 
   // Handle no scroll for modals
@@ -122,7 +125,6 @@ body {
 
 .pageBody {
   width: 100%;
-  max-width: 100%;
   min-height: 0;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -132,9 +134,7 @@ body {
   -ms-flex-direction: column;
   flex-direction: column;
 
-  @media (min-width: 768px) {
-    padding-left: 80px;
-  }
+ 
 }
 
 // <<< Wrapped from within each page component
@@ -145,7 +145,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100%;
-  min-height: 100vh;
+  min-height: 60vh;
   max-width: 1680px;
 
   transform: translateZ(0); /*for older browsers*/
@@ -181,6 +181,7 @@ body {
 // <<< "Clearfix" for major page items
 
 .pageContentItem {
+
   &::before {
     display: flex;
     content: "";
@@ -202,7 +203,7 @@ body {
 // << Loading Animation
 
 .blackAnimated {
-  background-color: #333333;
+  background-color: #333;
 
   animation-name: pulse;
   animation-duration: 2.1s;
@@ -217,25 +218,31 @@ body {
 }
 
 @keyframes pulse {
+
   0% {
-    background-color: #333333;
+    background-color: #333;
   }
+
   50% {
-    background-color: #555555;
+    background-color: #555;
   }
+
   100% {
-    background-color: #333333;
+    background-color: #333;
   }
 }
 
 @keyframes pulse {
+
   0% {
-    background-color: #111111;
+    background-color: #111;
   }
+
   50% {
-    background-color: #333333;
+    background-color: #333;
   }
+
   100% {
-    background-color: #111111;
+    background-color: #111;
   }
 }
