@@ -9,7 +9,6 @@
 // ===============================
 
 html {
-
   &::-webkit-scrollbar {
     width: 9px;
     background-color: #f5f5f5;
@@ -27,7 +26,6 @@ html {
   }
 
   &.__showScrollbar {
-
     &::-webkit-scrollbar,
     &::-webkit-scrollbar-track,
     &::-webkit-scrollbar-thumb {
@@ -42,18 +40,9 @@ html {
 // BODY ELEMENT
 // ===============================
 
-h1 {
-  font-size: 4.5rem;
-  font-weight: 550;
-  font-family: "PT Sans";
-  color: rgb(100, 201, 100);
-}
 h2 {
-  font-size: 1rem;
-  font-family: "PT Sans";
   color: rgb(100, 201, 100);
 }
-
 body {
   min-height: 100vh;
   color: #212b36;
@@ -138,8 +127,6 @@ body {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-
- 
 }
 
 // <<< Wrapped from within each page component
@@ -149,9 +136,9 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 75vh;
+  min-height: 100vh;
   max-width: 1680px;
-  
+  margin-top:-50px;
   transform: translateZ(0); /*for older browsers*/
   will-change: transform;
   overflow-anchor: none;
@@ -185,7 +172,6 @@ body {
 // <<< "Clearfix" for major page items
 
 .pageContentItem {
-
   &::before {
     display: flex;
     content: "";
@@ -222,7 +208,6 @@ body {
 }
 
 @keyframes pulse {
-
   0% {
     background-color: #333;
   }
@@ -237,7 +222,6 @@ body {
 }
 
 @keyframes pulse {
-
   0% {
     background-color: #111;
   }

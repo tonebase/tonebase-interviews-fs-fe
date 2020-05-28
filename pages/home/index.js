@@ -17,16 +17,31 @@ function Home() {
     useEffect(() => {
         SearchStore.getToken();
     })
+
+    /* Render our Home Page */
     return (
         <div id='bodyWrapper' className='bodyWrapper'>
             <div id='pageBody' className='pageBody alignItems-center'>
                 <Navbar />
                 <div className='appWrapper'>
-                    <h1>Google</h1>
+                    <h1 className='search-header'>Google</h1>
                     <SearchBar className='search-input' />
-                    <h2 className='paddingTop-md marginTop-xxl z-0'>Google, but for Spotify.</h2>
+                    <h2 className='search-subtitle fontWeight-lg paddingTop-md marginTop-xl z-0'>Google, but for Spotify.</h2>
+                    <h2 className='search-subtitle fontWeight-lg z-0'>Search for artists and visit their Spotify page.</h2>
                 </div>
             </div>
+            {
+                // Custom CSS  
+            }
+            <style jsx>{`
+            .search-header{
+                 font-size: 5rem;
+                 color: rgb(100, 201, 100);
+            }
+            .search-subtitle{
+                color: rgb(100, 201, 100);
+            }
+            `}</style>
         </div>
     );
 };

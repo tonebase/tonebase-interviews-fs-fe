@@ -53,8 +53,8 @@ class Navbar extends React.Component {
           }
           <div className="navItem d-flex alignItems-center justifyContent-spaceBetween h-100 hidden-xs hidden-sm">
             <div className="d-flex h-100 alignItems-center justifyContent-spaceBetween">
-              <h2>About</h2>
-              <h2 className='paddingLeft-xl'>Store</h2>
+              <h2 className='fontWeight-lg'>About</h2>
+              <h2 className='paddingLeft-xl fontWeight-lg'>Store</h2>
             </div>
           </div>
 
@@ -63,13 +63,13 @@ class Navbar extends React.Component {
             // === ACTION BUTTON
           }
           <div className="navItem actionTriggers d-flex alignItems-center justifyContent-spaceBetween h-100 marginTop-sm">
-            <h2>Playlists</h2>
-            <h2 className='paddingLeft-xl paddingRight-xl'>Podcasts</h2>
+            <h2 className='fontWeight-lg'>Playlists</h2>
+            <h2 className='paddingLeft-xl paddingRight-xl fontWeight-lg'>Podcasts</h2>
             <button
-              className="actionButton d-flex flex-row alignItems-center justifyContent-center fontSize-md breakLg-fontSize-sm letterSpacing-sm paddingRight-xs paddingLeft-xs paddingTop-xxs paddingBottom-xxs lineHeight-lg  borderRadius-sm"
+              className="actionButton d-flex flex-row alignItems-center justifyContent-center fontSize-md fontWeight-lg breakLg-fontSize-sm letterSpacing-sm paddingRight-xs paddingLeft-xs paddingTop-xxs paddingBottom-xxs lineHeight-lg  borderRadius-sm"
             >
 
-              <span className="buttonText">Signup</span>
+              <span className="buttonText">Sign up</span>
             </button>
           </div>
         </div>
@@ -84,8 +84,8 @@ class Navbar extends React.Component {
           }
           .menuSVG{
             fill: rgb(100, 201, 100);
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 35px;
             margin-top:25px;
             margin-left:-10px;
 

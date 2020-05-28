@@ -9,6 +9,8 @@ function SearchResult(props) {
                 <a href={props.result.external_urls['spotify']}>
                     <div className='artist-name paddingLeft-xl d-flex'>
                         <h2 className='search-result color-primary--lighter paddingTop-xs paddingBottom-xs'>{props.result.name}</h2>
+                        <h2 className='search-result fontSize-sm color-black--main paddingTop-xs paddingLeft-md paddingBottom-xs textTransform-capitalize'>{props.result.genres[0]}</h2>
+                        <h2 className='search-result fontSize-sm color-black--main paddingTop-xs paddingLeft-sm paddingBottom-xs'>{props.result.followers.total.toLocaleString()} Followers</h2>
                     </div>
                 </a>
             </div>

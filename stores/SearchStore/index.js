@@ -43,12 +43,9 @@ const SearchStore = store({
     /* Fetches results from the Spotify Api based on the current searchQuery value, stores those results into searchResults */
     search: async (e) => {
         e.preventDefault();
-        await spotifyApi.search(SearchStore.searchQuery, ['artist', 'track', 'playlist'], { limit: 10 })
+        await spotifyApi.search(SearchStore.searchQuery, ['artist', 'track', 'playlist'], { limit: 7 })
             .then(res => {
-                return res;
-            })
-            .then(artistInfo => {
-                SearchStore.searchResults = artistInfo.body.artists.items;
+                SearchStore.searchResults= res.body.artists.items;
             })
             .catch(err => {
                 console.log(err)
