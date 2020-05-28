@@ -2,6 +2,7 @@
 
 .clock-container {
   height: 100vh;
+  position: relative;
 }
 
 .clock {
@@ -14,4 +15,17 @@
   border-color: $prim;
   background-color: $offWhite;
   box-shadow: -2px 2px 0 $primMedium, inset 0 0 20px rgba(0, 0, 0, 0.5);
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: calc(
+      50% - 5px
+    ); /* -5px because that is half the height of the clock arm (10px) */
+    left: 50%;
+    width: 40%;
+    height: 10px; /* Thickness of the clock arm */
+    background: $darkBorder;
+    border-radius: 5px;
+  }
 }
