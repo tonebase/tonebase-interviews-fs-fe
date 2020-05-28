@@ -1,16 +1,27 @@
-import React from 'react';
+/* Import Store */
 import { view } from 'react-easy-state';
+
+/* SearchResult molecule: accepts props and renders a result with the given information */
 function SearchResult(props) {
     return (
-        <div className='pageContentItem z-3 fullWidthCard w-100'>
-            <div className="cardInner cardVisualWrapper w-100 h-100 d-inline-block">
+        <div className='result-item-wrapper z-3 w-100'>
+            <div className=" w-100 h-100 d-inline-block">
                 <a href={props.result.external_urls['spotify']}>
                     <div className='artist-name paddingLeft-xl d-flex'>
                         <h2 className='search-result color-primary--lighter paddingTop-xs paddingBottom-xs'>{props.result.name}</h2>
-
                     </div>
                 </a>
             </div>
+            {
+                /* Custom CSS */
+            }
+            <style jsx>{`
+            .artist-name:hover {
+                cursor: pointer;
+                background-color: rgb(100, 201, 100);
+            }
+        `}
+            </style>
         </div>
     )
 

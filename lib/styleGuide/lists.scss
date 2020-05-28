@@ -1,10 +1,6 @@
 
-.pageContentItem:last-child {
+.result-item-wrapper:last-child {
   .artist-name {
     border-radius: 0 0 24px 24px;
   }
-}
-.artist-name:hover {
-  cursor: pointer;
-  background-color: rgb(100, 201, 100);
 }
