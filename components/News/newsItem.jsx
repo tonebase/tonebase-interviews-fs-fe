@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import themeSwitcher from '../../lib/functions/themeSwitcher';
+import { Context } from '../../lib/helpers/reducer'
 import style from '../../sass/main.scss';
 
 
 const NewsItem = props => {
-    console.log(props)
+    const { store: { theme } } = useContext(Context)
+
     return (
-        <div className="news-item flex-row">
+        <a href={props.url} style={{ color: `${themeSwitcher(theme, "#FFFFFF", "#000")}`}} className="news-item flex-row">
             <style jsx>{style}</style>
             <div className="news-item__content__info flex-col">
                 <div className="news-item__content__info-title">{props.title}</div>
@@ -18,8 +21,7 @@ const NewsItem = props => {
                     className="news-item__content-container-img"
                 />
             </div>
-            
-        </div>
+        </a>
     )
 }
 
