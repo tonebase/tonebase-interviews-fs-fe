@@ -1,0 +1,23 @@
+.dropdown {
+    position: absolute;
+    top: 5.8rem;
+    width: 30rem;
+    transform: translateY(-45%);
+    background-color: orangered;
+    border: 1px solid #dfe1e5;
+    border-radius: .8rem;
+    padding: 1rem;
+    overflow: hidden;
+}
+
+.menu-item {
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    padding: .5rem;
+
+    &:hover {
+        background-color: #525357;
+    }
+}
+

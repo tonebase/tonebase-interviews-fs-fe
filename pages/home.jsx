@@ -22,12 +22,12 @@ const Home = () => {
                 "#fff"
               )}; //dynamically changes background color based on current theme state
               font-family: Lato, sans-serif;
-              color: ${theme === "dark" ? "#FFFFFF" : "#000"};
+              color: ${theme === "light" ? "#000" : "#FFFFFF"};
             }
-            
+
             ::-webkit-scrollbar {
               width: 0px;
-              background: transparent; 
+              background: transparent;
             }
           `}
         </style>

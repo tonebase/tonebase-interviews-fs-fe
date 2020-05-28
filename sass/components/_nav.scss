@@ -14,8 +14,20 @@
       cursor: pointer;
 
       &:hover {
-          text-decoration: underline;
+        text-decoration: underline;
       }
+
+      @media only screen and (max-width: 35em) {
+        display: none;
+      }
+    }
+
+    &__apps {
+      border: 1px solid #dfe1e5;
+      border-radius: 4px;
+      padding: .5rem;
+      cursor: pointer;
+      position: relative;
     }
 
     &__photo {
