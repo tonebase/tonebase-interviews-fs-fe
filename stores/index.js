@@ -1,4 +1,4 @@
 import ModalStore from "./ModalStore";
 import TabNavStore from "./TabNavStore";
-
-export { ModalStore, TabNavStore };
+import SearchStore from './SearchStore';
+export { ModalStore, TabNavStore, SearchStore };

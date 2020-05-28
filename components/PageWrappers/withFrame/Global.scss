@@ -2,7 +2,6 @@
 
 // === STYLE SYSTEM ===
 @import "styleSystem.scss";
-
 // ===============================
 // ===============================
 // ===============================
@@ -41,17 +40,18 @@ html {
 // BODY ELEMENT
 // ===============================
 
+h2 {
+  color: rgb(100, 201, 100);
+}
 body {
   min-height: 100vh;
-
-  color: #fff;
+  color: #212b36;
   font-size: 16px;
   line-height: 22pt;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -ms-font-smoothing: antialiased;
   font-family: Arial, Helvetica, "Roboto", sans-serif;
-
   background-color: #1c1c1f;
   overflow-x: hidden;
 
@@ -118,10 +118,7 @@ body {
 // <<< The actual page component wrapper
 
 .pageBody {
-  padding-top: 50px;
-
   width: 100%;
-  max-width: 100%;
   min-height: 0;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -130,26 +127,18 @@ body {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-
-  @media (min-width: 768px) {
-    padding-top: 60px;
-    padding-left: 80px;
-  }
 }
 
 // <<< Wrapped from within each page component
 
 .appWrapper {
-  position: relative;
-  padding-top: 0;
-  padding-bottom: 64px;
-
   display: flex;
   flex-direction: column;
-  min-height: 100%;
+  justify-content: center;
+  align-items: center;
   min-height: 100vh;
   max-width: 1680px;
-
+  margin-top:-50px;
   transform: translateZ(0); /*for older browsers*/
   will-change: transform;
   overflow-anchor: none;
@@ -158,8 +147,6 @@ body {
   // &.__modalOpen {
   //   filter: blur(2px);
   // }
-
-  padding-bottom: 6000px;
 
   @media (min-width: 1680px) {
     min-width: 1680px;
@@ -206,7 +193,7 @@ body {
 // << Loading Animation
 
 .blackAnimated {
-  background-color: #333333;
+  background-color: #333;
 
   animation-name: pulse;
   animation-duration: 2.1s;
@@ -222,24 +209,28 @@ body {
 
 @keyframes pulse {
   0% {
-    background-color: #333333;
+    background-color: #333;
   }
+
   50% {
-    background-color: #555555;
+    background-color: #555;
   }
+
   100% {
-    background-color: #333333;
+    background-color: #333;
   }
 }
 
 @keyframes pulse {
   0% {
-    background-color: #111111;
+    background-color: #111;
   }
+
   50% {
-    background-color: #333333;
+    background-color: #333;
   }
+
   100% {
-    background-color: #111111;
+    background-color: #111;
   }
 }
