@@ -14,7 +14,9 @@ const Counter = () => {
       <Head>
         <title>Counter</title>
       </Head>
-      <div></div>
+      <div className='clock-container gradient-transToDark'>
+        {/* Clock to increment/decrement will go here */}
+      </div>
       <style jsx>{style}</style>
     </Fragment>
   );
