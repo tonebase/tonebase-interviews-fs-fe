@@ -27,7 +27,7 @@ function SearchInput() {
     return (
         <div>
             <input
-                className='search-input noBorder marginTop-xxl paddingLeft-xl paddingTop-md paddingBottom-md d-flex bgColor-black--lighter color-primary--lighter min-w-420px  breakMd-min-w-540px'
+                className='search-input noBorder marginTop-xxl paddingLeft-xl paddingTop-md paddingBottom-xs d-flex bgColor-black--lighter color-white--main min-w-420px  breakMd-min-w-540px'
                 type='text'
                 value={searchInput}
                 onChange={handleSearchChange}
