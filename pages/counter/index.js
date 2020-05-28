@@ -5,8 +5,19 @@ import Head from 'next/head';
 import { withFrame } from '../../components/PageWrappers';
 import { store, view } from 'react-easy-state';
 
+// === STYLING ===
+import style from './Counter.scss';
+
 const Counter = () => {
-  return <div></div>;
+  return (
+    <Fragment>
+      <Head>
+        <title>Counter</title>
+      </Head>
+      <div></div>
+      <style jsx>{style}</style>
+    </Fragment>
+  );
 };
 
 export default withFrame(view(Counter));
