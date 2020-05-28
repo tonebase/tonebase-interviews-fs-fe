@@ -16,6 +16,7 @@ const Counter = () => {
       </Head>
       <div className='clock-container gradient-transToDark'>
         {/* Clock to increment/decrement will go here */}
+        <div className='clock borderSolid borderWidth-xl'></div>
       </div>
       <style jsx>{style}</style>
     </Fragment>
