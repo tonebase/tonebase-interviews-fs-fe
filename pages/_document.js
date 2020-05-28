@@ -22,7 +22,7 @@ class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const sheet = new ServerStyleSheets();
     const originalRenderPage = ctx.renderPage;
-    // return Document.getInitialProps(ctx);
+
     try{
       ctx.renderPage = () => originalRenderPage({
           enhanceApp: App => props => sheet.collect(<App {...props}/>)
