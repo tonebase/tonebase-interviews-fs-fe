@@ -1,8 +1,8 @@
 import React from 'react';
-import { Icon } from '@material-ui/core';
-import Link from 'next/link';
 import withFrame from '../components/PageWrappers/withFrame';
 import { view } from 'react-easy-state';
+import { Icon } from '@material-ui/core';
+import Link from 'next/link';
 
 function Home() {
   

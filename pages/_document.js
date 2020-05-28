@@ -8,6 +8,7 @@
 
 // === CORE ===
 import Document, { Head, Main, NextScript } from "next/document";
+import {ServerStyleSheets} from "@material-ui/styles";
 
 // ==============================
 // ==============================
@@ -19,7 +20,26 @@ import Document, { Head, Main, NextScript } from "next/document";
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
-    return Document.getInitialProps(ctx);
+    const sheet = new ServerStyleSheets();
+    const originalRenderPage = ctx.renderPage;
+    // return Document.getInitialProps(ctx);
+    try{
+      ctx.renderPage = () => originalRenderPage({
+          enhanceApp: App => props => sheet.collect(<App {...props}/>)
+      });
+
+      const initialProps = await Document.getInitialProps(ctx);
+      return { ...initialProps,
+          styles: (
+              <>
+                  {initialProps.styles}
+                  {sheet.getStyleElement()}
+              </>
+          )
+      }
+    } finally {
+        ctx.renderPage(sheet)
+    }
   }
 
   render() {
@@ -50,6 +70,8 @@ class MyDocument extends Document {
             href="//fonts.googleapis.com/css?family=Oswald:400,700"
             rel="stylesheet"
           />
+          <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet" />
+          <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
           {
             // === NEXT DEFAULT
           }
