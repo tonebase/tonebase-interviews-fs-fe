@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import NewsItem from './newsItem';
 import Spinner from '../Spinner/spinner'
-import { Context } from "../../lib/helpers/reducer";    
+import { Context } from "../../lib/helpers/store";    
 
 import themeSwitcher from '../../lib/functions/themeSwitcher';
 import axios from 'axios'
@@ -10,9 +10,10 @@ import style from "../../sass/main.scss";
 
 const News = () => {
   const [articles, setArticles] = useState(null)
-  const { store: { theme } } = useContext(Context)
+  const { store: { theme } } = useContext(Context) 
 
   useEffect(() => {
+    // useEffect will only run once after the initial render of the component since the dependency array is empty
     axios
       .get(
         "https://newsapi.org/v2/top-headlines?country=us&apiKey=ef82b8a9600940688b24de439e53ce2c&pageSize=10"
@@ -20,10 +21,10 @@ const News = () => {
       .then((res) => setArticles(res.data.articles));
   }, [])
 
-  if (!articles) {
-    return <Spinner />
-  } else {
-    return (
+  // If there are no articles, render a Spinner until the API call comes back with the data and updates the articles state 
+  return !articles ? (
+    <Spinner />
+   ) : (
       <div className="news">
         <style jsx>{style}</style>
         <div 
@@ -41,8 +42,8 @@ const News = () => {
         </div>
 
       </div>
-    )
-  }
+  )
 }
+
 
 export default News

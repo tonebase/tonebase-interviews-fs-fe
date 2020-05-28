@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import themeSwitcher from '../../lib/functions/themeSwitcher';
-import { Context } from '../../lib/helpers/reducer'
+import { Context } from '../../lib/helpers/store'
 import style from '../../sass/main.scss';
 
 

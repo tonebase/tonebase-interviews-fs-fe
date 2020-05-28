@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react'
 import Nav from '../components/Nav/nav'
 // import App from 'next/app'
-import { Context, reducer, INITIAL_STATE } from "../lib/helpers/reducer";
+import { Context, reducer, INITIAL_STATE } from "../lib/helpers/store";
 
 function App({ Component, pageProps}) {
   const [store, dispatch] = useReducer(reducer, INITIAL_STATE)

@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Context } from "../../lib/helpers/reducer"   
+import { Context } from "../../lib/helpers/store"   
 import Switch from '../Switch/switch';
 import themeSwitcher from '../../lib/functions/themeSwitcher'
 import style from '../../sass/main.scss';

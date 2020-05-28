@@ -1,5 +1,5 @@
-import React, { useReducer, useContext } from 'react';
-import { Context } from "../lib/helpers/reducer";    
+import React, { useContext } from 'react';
+import { Context } from "../lib/helpers/store";    
 import SearchForm from '../components/SearchForm/searchForm'
 import News from '../components/News/news'
 import themeSwitcher from '../lib/functions/themeSwitcher';
