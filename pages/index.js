@@ -5,7 +5,6 @@ import { Icon } from '@material-ui/core';
 import Link from 'next/link';
 
 function Home() {
-  
   return (
       <div className="content">
           <h1>Welcome home</h1>
