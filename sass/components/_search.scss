@@ -5,10 +5,10 @@
       &__input {
         border-radius: 3rem;
         padding: 1.25rem 1rem;
-        width: 85%;
+        width: 90%;
         font-family: inherit;
         font-size: 1.6rem;
-        border: 1px solid #dfe1e5;;
+        border: 1px solid #dfe1e5;
         outline: none;
         transition: .2s;
         text-align: center;
@@ -16,8 +16,14 @@
         background-repeat:no-repeat;
         background-position: 3% ;
         background-size: 2rem;
+        background-color: #e6e6e6;
+
+        &:hover {
+            box-shadow: 0 .1rem .6rem 0 rgba(32,33,36,0.28);
+        }
+
         &:focus {
-            width: 100%;
+            background-color: #fff;
 
         }
       }

@@ -5,7 +5,10 @@
 
 @import "./components/home";
 @import "./components/nav";
+@import "./components/news/news";
+@import "./components/news/newsItem";
 @import "./components/search";
+@import "./components/spinner";
 @import "./components/switch";
 
 @import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");

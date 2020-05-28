@@ -1,6 +1,7 @@
 import React, { useReducer, useContext } from 'react';
 import { Context } from "../lib/helpers/reducer";    
 import SearchForm from '../components/SearchForm/searchForm'
+import News from '../components/News/news'
 import themeSwitcher from '../lib/functions/themeSwitcher';
 import style from '../sass/main.scss';
 
@@ -14,6 +15,7 @@ const Home = () => {
           {`
             html {
               font-size: 62.5%; //sets default font size to 10px to allow for responsive design with rems
+              width: 97.5vw;
               background-color: ${themeSwitcher(
                 theme,
                 "rgb(53, 54, 58)",
@@ -22,9 +24,14 @@ const Home = () => {
               font-family: Lato, sans-serif;
               color: ${theme === "dark" ? "#FFFFFF" : "#000"};
             }
+            
+            ::-webkit-scrollbar {
+              width: 0px;
+              background: transparent; 
+            }
           `}
         </style>
-        <div className="home__content">
+        <div className="home__content flex-col">
           <h1
             style={{
               fontSize: "9rem",
@@ -34,6 +41,7 @@ const Home = () => {
             Google
           </h1>
           <SearchForm />
+          <News />
         </div>
       </div>
     );
