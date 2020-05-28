@@ -51,11 +51,22 @@ Okay, with all that out of the way let's dive into the question section!
 
 ### 1. What made you interested in/choose React as a framework? Was it a choice you made? Regardless, what is the one thing you enjoy most about it compared to other frameworks you've used and what is one thing you dislike about it?
 
+Mostly I liked the way that React allowed me to think about the frontend as an expression of its underlying state, while keeping them cleanly separated. Vanilla DOM manipulation has a tendency to think about the entire webapp/website as a series of processes, rather than a structure, which can make it a bit difficult to track. Angular also tries to solve these problems, but the Angular codebase I've worked in continued to lean very heavily on JQuery and direct DOM manipulation in order to use vanilla JS libraries, which made the code a bit difficult to follow and maintain. One thing that I dislike is that it's fairly easy to over-modularize your code and end up having to jump between several different files to change a single simple form input.
+
 ### 2. Why do the component names in JSX start with capital letters?
+
+Component names in JSX start with capital letters to distinguish them from native DOM elements (i.e. `<div>`)
 
 ### 3. What are the main types of components you can render in React? When do you choose one over the other?
 
+ I'm not entirely sure what you mean by "types". There are a variety of patterns, but they tend to control the "how" and "why" of rendering react rather than the "what", which are always ultimately DOM elements. 
+
+ The biggest distinction is between stateful/stateless components, which differ in that they either do or don't create and maintain a "state". Stateless components have information passed in as properties, and simply render/re-render in response to changes in those properties, without being able to modify them. There are various patterns for designing components, such as containers, providers, etc
+
+
 ### 4. How much experience do you have with testing frameworks? While our testing is light at the moment (read: nonexistent) this is something we'd like to move to in the future so this is a 'nice-to-know' for us!
+
+I have unit testing experience with Jest, and some experience with API testing in supertest, though it's been a bit since I've implemented either.
 
 ---
 
@@ -78,6 +89,7 @@ class App extends React.Component {
   }
 }
 ```
+There's no reason for this component to have its own state. it never modifies state and it is wholly dependent on props being passed in. We could rewrite it as a stateless component, and simply have `this.props.name || 'Anonymous'` render from the jsx
 
 ### 2. What's the issue with this component. Why? How would you go about fixing it?
 
@@ -108,6 +120,8 @@ render() {
   }
 }
 ```
+
+The issue with this component has three parts: Objects are passed by reference in JS, setTimeout is asynchronous, and synthetic events in React are reused. Thus, in the context in which `setTimeout` executes its callback, `event.target.value` does not exist, since `event` has been reused by React for some other purpose. You can solve this by either assigning a variable to directly hold the value of `event.target.value`, or calling `event.persist()`
 
 ---
 
@@ -159,9 +173,16 @@ Thus writing, and the ability to write clearly, logically and to formulate argum
 
 ### 1. Tell me about componentWillMount and the issues with it?
 
+`componentWillMount` is deprecated in current implementations of React. Mostly, it doesn't seem to do anything that isn't better accomplished in either the `constructor` or `componentDidMount`. (`Constructor` for initializing state, and `componentDidMount` for doing initial data fetches- `componentWillMount` doesn't actually block the thread and wait for async requests, so it can be a bit deceptive if you expect an async call to complete before your component gets mounted)
+
+
 ### 2. Can you walk me through the cycle of mounting a stateful component? What functions are called in what order? Where would you place a request for data from the API? Why?
 
+Mounting is the process of initializing and doing a first rendering of the component, which starts with the constructor, does a first run of the render method, and finishes with componentDidMount. API requests should go in componentDidMount, as async calls in the constructor create race conditions that may attempt to modify your state before the component mounts, which can cause issues with rerendering. Instead, the usual pattern is to have a placeholder component that can be rendered while waiting for a fetch to return with some data, at which point the state gets updated and the component is rerendered
+
 ### 3. If you had unlimited time budget and could fix / improve / change one thing in your last project, what would it be and why?
+
+Given unlimited time and budget, I'd migrate the entire frontend off of Kibana, except insofar as it can be used as a GUI tool with its built in visualization functionality. Developing custom plugins on top of Kibana is a nightmarish experience where the internal APIs are very lightly documented, even minor version updates introduce breaking changes, state cannot be shared between plugins, and performance is slowed by the overhead of loading in all of its built-in functionality. A separate platform would be more performant, easier to maintain, and let us leverage our own component libraries to speed up development.
 
 ---
 
