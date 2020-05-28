@@ -45,7 +45,7 @@ function SearchInput() {
                     border-bottom-right-radius: ${!SearchStore.active ? `85px` : `0`};
             }
             .search-input:hover{
-                        boxShadow: 0 2px 8px rgba(0, 0, 0, 0.16);
+                    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16);
             }
          
 
