@@ -9,6 +9,10 @@ import { store, view } from 'react-easy-state';
 import style from './Counter.scss';
 
 const Counter = () => {
+  const degrees = store({ num: 0 });
+  const rotateClockwise = () => (degrees.num += 30);
+  const rotateCounterClockwise = () => (degrees.num -= 30);
+
   return (
     <Fragment>
       <Head>
@@ -20,8 +24,19 @@ const Counter = () => {
           <span className='clock__hand-hinge borderRadius-50'></span>
         </div>
         <div className='buttons'>
-          <div className='btn buttons__increment borderRadius-lg'>+</div>
-          <div className='btn buttons__decrement borderRadius-lg'>−</div>
+          <div
+            onClick={rotateClockwise}
+            className='btn buttons__increment borderRadius-lg'
+          >
+            +
+          </div>
+          <div
+            onClick={rotateCounterClockwise}
+            className='btn buttons__decrement borderRadius-lg'
+          >
+            −
+          </div>
+          <div>{degrees.num}</div>
         </div>
       </div>
 
