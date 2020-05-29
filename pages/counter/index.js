@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useRef } from 'react';
 import Head from 'next/head';
 
 // === PAGE WRAPPERS ===
@@ -10,10 +10,12 @@ import style from './Counter.scss';
 
 const Counter = () => {
   const clockStore = store({
+    hoursReal: new Date().getHours(),
     deg: null,
-    hoursMilitary: null,
+    hoursMilitary: new Date().getHours(),
     hours: null,
     minutes: null,
+    seconds: null,
     ampm: null,
   });
 
@@ -30,26 +32,29 @@ const Counter = () => {
   const decrement = (militaryHour) => {
     militaryHour -= 1;
     let hours = militaryHour % 12; // If the hour is greater than 12, change it to the remainder instead
-    clockStore.hours = hours ? hours : 12; // If the hour is '0', this ternary operator will return 12 instead due to 0 being dynamically typed to false
     if (militaryHour <= 0) {
       militaryHour = 24;
     }
     clockStore.hoursMilitary = militaryHour;
-    console.log(militaryHour);
+    if (hours === -1) {
+      clockStore.hours = 11;
+    }
+    clockStore.hours = hours ? hours : 12; // If the hour is '0', this ternary operator will return 12 instead due to 0 being dynamically typed to false
     clockStore.ampm = militaryHour <= 12 ? 'AM' : 'PM'; // if the hour is greater than 12, set ampm to 'PM', otherwise 'AM'
   };
 
   const rotateClockwise = () => {
     increment(clockStore.hoursMilitary);
     calcDegrees(clockStore.hours);
+    console.log('rotated clockwise');
   };
   const rotateCounterClockwise = () => {
     decrement(clockStore.hoursMilitary);
     calcDegrees(clockStore.hours);
+    console.log('rotated counter-clockwise');
   };
 
-  const initialTime = () => {
-    const date = new Date();
+  const initialTime = (date) => {
     let hours = date.getHours();
     let minutes = date.getMinutes();
     clockStore.ampm = hours >= 12 ? 'PM' : 'AM'; // if the hour is greater than 12, set ampm to 'PM', otherwise 'AM'
@@ -64,8 +69,51 @@ const Counter = () => {
     clockStore.deg = degreesToAdd;
   };
 
+  /*   let nextHour = () => {
+    return 3600000 - (new Date().getTime() % 3600000);
+  }; */
+
+  function updateHour(realHour) {
+    if (realHour > 9 && realHour < 17) {
+      console.log('Hour of increment');
+      rotateClockwise();
+    } else {
+      console.log('Hour of decrement');
+      rotateCounterClockwise();
+    }
+  }
+
+  function updateTime() {
+    let date = new Date();
+    let minutes = date.getMinutes(); // Current minutes
+    let seconds = date.getSeconds(); // Current seconds
+    let hours = date.getHours(); // Current hours
+
+    clockStore.minutes = minutes < 10 ? `0${minutes}` : minutes; // If the minutes is less than 10, have it appear with a 0 in front, so 8 minutes will appear as 08 minutes
+    clockStore.seconds = seconds < 10 ? `0${seconds}` : seconds; // If the minutes is less than 10, have it appear with a 0 in front, so 8 minutes will appear as 08 minutes
+    clockStore.hoursReal = hours;
+
+    setTimeout(updateTime, 1000);
+  }
+
+  const customUseEffect = (func, dependencies) => {
+    const didMount = useRef(false);
+
+    useEffect(() => {
+      if (didMount.current) func();
+      else didMount.current = true;
+    }, dependencies);
+  };
+
+  customUseEffect(() => {
+    // react please run me if 'key' changes, but not on initial render
+    updateHour(clockStore.hoursReal);
+  }, [clockStore.hoursReal]);
+
   useEffect(() => {
-    initialTime();
+    clockStore.hoursReal = new Date().getHours();
+    updateTime();
+    initialTime(new Date());
     calcDegrees(clockStore.hours);
   }, []);
 
@@ -93,7 +141,8 @@ const Counter = () => {
             −
           </div>
           <div>
-            {clockStore.hours}:{clockStore.minutes} {clockStore.ampm}
+            {clockStore.hours}:{clockStore.minutes}:{clockStore.seconds}{' '}
+            {clockStore.ampm}
           </div>
         </div>
       </div>
