@@ -29,7 +29,7 @@
     z-index: 1;
   }
 
-  &:before {
+  &::before {
     content: '';
     position: absolute;
     top: calc(
@@ -42,4 +42,24 @@
     border-radius: 5px;
     transform-origin: left;
   }
+}
+
+.buttons {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  width: 300px;
+  text-align: center;
+  font-size: 50px;
+}
+
+.btn {
+  display: inline-block;
+  width: 45px;
+  margin: 0 10px;
+}
+
+.decrement {
+  transform: translate(100%, 0%);
 }

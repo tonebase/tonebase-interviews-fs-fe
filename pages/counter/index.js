@@ -19,7 +19,12 @@ const Counter = () => {
         <div className='clock borderSolid borderWidth-xl borderRadius-50 bg-cover'>
           <span className='clock__hand-hinge borderRadius-50'></span>
         </div>
+        <div className='buttons'>
+          <div className='btn buttons__increment borderRadius-lg'>+</div>
+          <div className='btn buttons__decrement borderRadius-lg'>−</div>
+        </div>
       </div>
+
       <style jsx>{style}</style>
     </Fragment>
   );
