@@ -106,7 +106,7 @@ const Counter = () => {
   };
 
   customUseEffect(() => {
-    // react please run me if 'key' changes, but not on initial render
+    // Only run if clockStore.hoursReal changes, but NOT on initial page load to keep the initial time accurate
     updateHour(clockStore.hoursReal);
   }, [clockStore.hoursReal]);
 
@@ -122,27 +122,31 @@ const Counter = () => {
       <Head>
         <title>Counter</title>
       </Head>
-      <div className='clock-container gradient-transToDark'>
-        {/* Clock to increment/decrement will go here */}
-        <div className='clock borderSolid borderWidth-xl borderRadius-50 bg-cover'>
-          <span className='clock__hand-hinge borderRadius-50'></span>
+      <div className='app-container gradient-transToDark'>
+        <div className='clock-container'>
+          {/* Clock to increment/decrement will go here */}
+          <div className='clock borderSolid borderWidth-xl borderRadius-50 bg-cover'>
+            <span className='clock__hand-hinge borderRadius-50'></span>
+          </div>
         </div>
-        <div className='buttons'>
-          <div
-            onClick={rotateClockwise}
-            className='btn buttons__increment borderRadius-lg'
-          >
-            +
-          </div>
-          <div
-            onClick={rotateCounterClockwise}
-            className='btn buttons__decrement borderRadius-lg'
-          >
-            −
-          </div>
-          <div>
-            {clockStore.hours}:{clockStore.minutes}:{clockStore.seconds}{' '}
-            {clockStore.ampm}
+        <div className='buttons-container'>
+          <div className='buttons'>
+            <div
+              onClick={rotateClockwise}
+              className='buttons__btn borderRadius-lg'
+            >
+              <span>+</span>
+            </div>
+            <div
+              onClick={rotateCounterClockwise}
+              className='buttons__btn borderRadius-lg'
+            >
+              <span>−</span>
+            </div>
+            <div className='buttons__time'>
+              {clockStore.hours}:{clockStore.minutes}:{clockStore.seconds}{' '}
+              {clockStore.ampm}
+            </div>
           </div>
         </div>
       </div>

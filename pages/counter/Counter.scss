@@ -1,62 +1,93 @@
 @import '../../styleSystem.scss';
 
-.clock-container {
+.app-container {
   height: 100vh;
-  position: relative;
-}
 
-.clock {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 300px;
-  height: 300px;
-  border-color: $prim;
-  background: url(../../static/images/Clock_large.png);
-  background-size: cover;
-  box-shadow: -2px 2px 0 $primMedium, inset 0 0 20px rgba(0, 0, 0, 0.5);
+  .clock-container {
+    height: 65vh;
+    position: relative;
 
-  &__hand-hinge {
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 25px;
-    height: 25px;
-    background: $prim;
-    box-shadow: -1px 1px 0 $primMedium, inset 0 0 20px rgba(0, 0, 0, 0);
-    z-index: 1;
+    .clock {
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 300px;
+      height: 300px;
+      border-color: $prim;
+      background: url(../../static/images/Clock_large.png);
+      background-size: cover;
+      /*       box-shadow: -2px 2px 0 $primMedium, inset 0 0 20px rgba(0, 0, 0, 0.5); */
+
+      &__hand-hinge {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 25px;
+        height: 25px;
+        background: $prim;
+        /*         box-shadow: -1px 1px 0 $primMedium, inset 0 0 20px rgba(0, 0, 0, 0); */
+        z-index: 1;
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: calc(
+          50% - 4px
+        ); /* -5px because that is half the height of the clock arm (10px) */
+        left: 50%;
+        width: 32%;
+        height: 8px; /* Thickness of the clock arm */
+        background: $darkBorder;
+        border-radius: 5px;
+        transform-origin: left;
+      }
+    }
   }
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: calc(
-      50% - 4px
-    ); /* -5px because that is half the height of the clock arm (10px) */
-    left: 50%;
-    width: 32%;
-    height: 8px; /* Thickness of the clock arm */
-    background: $darkBorder;
-    border-radius: 5px;
-    transform-origin: left;
+  .buttons-container {
+    height: 30vh;
+    position: relative;
+    width: 100vw;
+    text-align: center;
+
+    .buttons {
+      position: absolute;
+      top: 0%;
+      left: 50%;
+      transform: translate(-50%, 0%);
+
+      &__btn {
+        line-height: 60%;
+        text-align: center;
+        display: inline-block;
+        width: 45px;
+        margin: 10px 20px 20px 20px;
+        font-size: 60px;
+
+        padding: 4px;
+        background-color: $prim;
+
+        box-shadow: 0 4px $primDark;
+
+        &:hover {
+          background-color: rgba($prim, 0.8);
+        }
+
+        &:active {
+          transform: translateY(3px);
+          box-shadow: 0 2px $primDark;
+        }
+      }
+
+      &__time {
+        line-height: 100%;
+        display: block;
+        font-size: 50px;
+      }
+    }
   }
-}
-
-.buttons {
-  position: absolute;
-  top: 70%;
-  left: 50%;
-  transform: translate(-50%, 0%);
-  width: 300px;
-  text-align: center;
-  font-size: 50px;
-}
-
-.btn {
-  display: inline-block;
-  width: 45px;
-  margin: 0 10px;
 }
