@@ -20,7 +20,7 @@ const Counter = () => {
   });
 
   const increment = (militaryHour) => {
-    militaryHour += 1;
+    militaryHour++;
     let hours = militaryHour % 12; // If the hour is greater than 12, change it to the remainder instead
     clockStore.hours = hours ? hours : 12; // If the hour is '0', this ternary operator will return 12 instead due to 0 being dynamically typed to false
     if (militaryHour >= 24) {
@@ -30,7 +30,7 @@ const Counter = () => {
     clockStore.ampm = militaryHour >= 12 ? 'PM' : 'AM'; // if the hour is greater than 12, set ampm to 'PM', otherwise 'AM'
   };
   const decrement = (militaryHour) => {
-    militaryHour -= 1;
+    militaryHour--;
     let hours = militaryHour % 12; // If the hour is greater than 12, change it to the remainder instead
     if (militaryHour <= 0) {
       militaryHour = 24;
@@ -135,13 +135,13 @@ const Counter = () => {
               onClick={rotateClockwise}
               className='buttons__btn borderRadius-lg'
             >
-              <span>+</span>
+              +
             </div>
             <div
               onClick={rotateCounterClockwise}
               className='buttons__btn borderRadius-lg'
             >
-              <span>−</span>
+              −
             </div>
             <div className='buttons__time'>
               {clockStore.hours}:{clockStore.minutes}:{clockStore.seconds}{' '}

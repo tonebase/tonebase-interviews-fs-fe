@@ -79,6 +79,12 @@ class App extends React.Component {
 }
 ```
 
+Assuming that props.name never changes, it makes little sense to create state unnecessarily with the constructor function. Due to this, I would turn this into a functional component and not create any state at all, followed by moving the logical OR operator directly into the return statement like this:
+
+return <p>Hello {this.props.name || 'Anonymous'}</p>;
+
+Not only is the cleaner and less repetitive, but it would allow the component to update in the case that props.name changes (unlike the constructor function, which would only update once).
+
 ### 2. What's the issue with this component. Why? How would you go about fixing it?
 
 ```
@@ -109,6 +115,8 @@ render() {
 }
 ```
 
+The way that React handles event handlers is such that you cannot access the event asynchronously, which is precisely what setTimeout does. This is because React handles these events as passed instances of the SyntheticEvent object which has all its properties set to null the moment the event callback is invoked (this is because SyntheticEvent is reused/pooled). Due to this, the moment at which the 250ms delayed callback of setTimeout is invoked, the event.target.value will already be null. A solution would be to call event.persist() in the handleChange function, as this will remove the event from the SyntheticEvent object pool and allow it to be referenced.
+
 ---
 
 Onto just a teensy bit of code + introducing you to our system! This part can be done on your own, and you can ping me when it's good to go!
@@ -120,32 +128,31 @@ Here is a link to a Github repo. containing our NextJS setup. It includes everyt
 **Your challenge is to implement ONE of the following:**
 
 1. OPTION 1: Implement a simple counter
-  
-  For this assignment you may use a state management system of your choice (other than the native React state). We recommend `react-easy-state` as that is our default tool and is extremely simple to get up and running.
 
-  The counter should:
+For this assignment you may use a state management system of your choice (other than the native React state). We recommend `react-easy-state` as that is our default tool and is extremely simple to get up and running.
 
-  (a) Increment UP once per hour between 9AM and 5PM (inclusive)
+The counter should:
 
-  (b) Increment DOWN once per hour between 6PM and 8AM (inclusive)
+(a) Increment UP once per hour between 9AM and 5PM (inclusive)
 
-  (c) Increment UP when a button is clicked manually
+(b) Increment DOWN once per hour between 6PM and 8AM (inclusive)
 
-  (d) Increment DOWN when a different button is clicked manually
+(c) Increment UP when a button is clicked manually
 
+(d) Increment DOWN when a different button is clicked manually
 
 2. OPTION 2: Build the Google homepage (www.google.com)
 
-  Open-ended, go into as much or as little detail as makes sense to you. Responsiveness, functionality, modularity, etc. is all up to you -- we want to know how you interpret this prompt. Feel free to get as creative or keep it as simple as you would like. Your code will be evaluated along the following criteria:
-  - Functionality
-  - Creativity
-  - Readability
-  - Cleanliness
-  - Comments
-  - Modularity
-  - Defensiveness
-  - Declarative-ness
+Open-ended, go into as much or as little detail as makes sense to you. Responsiveness, functionality, modularity, etc. is all up to you -- we want to know how you interpret this prompt. Feel free to get as creative or keep it as simple as you would like. Your code will be evaluated along the following criteria:
 
+- Functionality
+- Creativity
+- Readability
+- Cleanliness
+- Comments
+- Modularity
+- Defensiveness
+- Declarative-ness
 
 **When Complete**
 
@@ -159,9 +166,15 @@ Thus writing, and the ability to write clearly, logically and to formulate argum
 
 ### 1. Tell me about componentWillMount and the issues with it?
 
+The only thing wrong with componentWillMount is that its use cases are few to none (and as such it is deprecated). At the time it is called, there is no component yet, which means you cannot do anything involving the DOM. The main issue that often arises from componentWillMount is when an asynchronous call (which is not a good use case for it) is made, as there is a possibility it will resolve before there is a component, so if you wanted to setState or mess with the DOM at all, for example, you would be doing so on a component that isn't mounted yet. You could use componentWillMount to set up configuration to an external API for you to access in componentDidMount, but even then you would want to do that elsewhere in your code.
+
 ### 2. Can you walk me through the cycle of mounting a stateful component? What functions are called in what order? Where would you place a request for data from the API? Why?
 
+The first step is intialization and the set up of state. Then the component mounts, which is preceded by the componentWillMount() function and followed by the initial render and componentDidMount() function. It is in the componentDidMount stage that you would start a request for data from an API because at this point there is guarunteed to be a component available to render the data to. After this, the component has finished mounting and begins updating if there are new props or state changes. Similar to the mounting stage, the updating stage consists of the componentWillUpdate() function followed by the the rerender and componentDidUpdate() function. When the component is removed from the page, the final function called is componentWillUnmount(), which marks the end of the cycle.
+
 ### 3. If you had unlimited time budget and could fix / improve / change one thing in your last project, what would it be and why?
+
+The last full project I completed was Star Jump, an education application for young children. I started as the back-end engineer but quickly completed all neccesary tasks and became full-stack, aiding in the design and development of the front-end as well as implementing global state and creating the logic for one of the game modules, which ended up getting reused for multiple. I think with unlimited time and budget, I would like to refactor the application to utilize SCSS, as well as optimize a lot of the logic I wrote. In addition I would definitely build more game modules, create a more complex reward system, as well as a level system for the modules. As for my back-end work, I want to revisit my authentication system and have give it an email address verification system.
 
 ---
 
