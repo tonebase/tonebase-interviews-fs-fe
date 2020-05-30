@@ -21,17 +21,17 @@ const Counter = () => {
 
   const increment = (militaryHour) => {
     militaryHour++;
-    let hours = militaryHour % 12; // If the hour is greater than 12, change it to the remainder instead
-    clockStore.hours = hours ? hours : 12; // If the hour is '0', this ternary operator will return 12 instead due to 0 being dynamically typed to false
+    let hours = militaryHour % 12;
+    clockStore.hours = hours ? hours : 12;
     if (militaryHour >= 24) {
       militaryHour = 0;
     }
     clockStore.hoursMilitary = militaryHour;
-    clockStore.ampm = militaryHour >= 12 ? 'PM' : 'AM'; // if the hour is greater than 12, set ampm to 'PM', otherwise 'AM'
+    clockStore.ampm = militaryHour >= 12 ? 'PM' : 'AM';
   };
   const decrement = (militaryHour) => {
     militaryHour--;
-    let hours = militaryHour % 12; // If the hour is greater than 12, change it to the remainder instead
+    let hours = militaryHour % 12;
     if (militaryHour <= 0) {
       militaryHour = 24;
     }
@@ -39,8 +39,8 @@ const Counter = () => {
     if (hours === -1) {
       clockStore.hours = 11;
     }
-    clockStore.hours = hours ? hours : 12; // If the hour is '0', this ternary operator will return 12 instead due to 0 being dynamically typed to false
-    clockStore.ampm = militaryHour <= 12 ? 'AM' : 'PM'; // if the hour is greater than 12, set ampm to 'PM', otherwise 'AM'
+    clockStore.hours = hours ? hours : 12;
+    clockStore.ampm = militaryHour <= 12 ? 'AM' : 'PM';
   };
 
   const rotateClockwise = () => {
@@ -68,10 +68,6 @@ const Counter = () => {
     const degreesToAdd = hours * 30 - 90; // minus 90 because default placement of the hand is 90 degrees past the 12 o'clock placement
     clockStore.deg = degreesToAdd;
   };
-
-  /*   let nextHour = () => {
-    return 3600000 - (new Date().getTime() % 3600000);
-  }; */
 
   function updateHour(realHour) {
     if (realHour > 9 && realHour < 17) {
@@ -124,7 +120,6 @@ const Counter = () => {
       </Head>
       <div className='app-container gradient-transToDark'>
         <div className='clock-container'>
-          {/* Clock to increment/decrement will go here */}
           <div className='clock borderSolid borderWidth-xl borderRadius-50 bg-cover'>
             <span className='clock__hand-hinge borderRadius-50'></span>
           </div>

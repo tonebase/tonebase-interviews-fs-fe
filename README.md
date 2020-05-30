@@ -81,7 +81,9 @@ class App extends React.Component {
 
 Assuming that props.name never changes, it makes little sense to create state unnecessarily with the constructor function. Due to this, I would turn this into a functional component and not create any state at all, followed by moving the logical OR operator directly into the return statement like this:
 
+```
 return <p>Hello {this.props.name || 'Anonymous'}</p>;
+```
 
 Not only is the cleaner and less repetitive, but it would allow the component to update in the case that props.name changes (unlike the constructor function, which would only update once).
 
