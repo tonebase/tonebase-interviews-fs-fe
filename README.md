@@ -1,3 +1,7 @@
+![My Counter](https://i.imgur.com/6kllqW2.png)
+# My Counter
+It is a live updating clock (accurate the moment you enter the page, and continusouly so given you don't increment or decrement the hour). You can increment or decrement the hour, which will rotate the clock hand accordingly. It will also automatically increment or decrement based on real time (not the time shown, due to it being unnaccurate once it has incremented or decremented), under the conditions specified in the interview. I hope you like it! It was very fun to make.
+
 # tonebase Technical Interview - FullStack (Front-End Focus)
 
 Welcome to the tonebase Technical Interview! Congratulations, if you're here it means we think you'd make a great addition to the team, based on your past experience, personality and kick-ass skills!
