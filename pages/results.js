@@ -53,10 +53,12 @@ class Results extends React.Component {
 
   handleClick = event => {
     event.preventDefault();
-    this.setState({
-      success: false
-    })
-    this.handleSearch(this.state.searchQuery)
+    if (this.state.searchQuery !== '') {
+      this.setState({
+        success: false
+      })
+      this.handleSearch(this.state.searchQuery);
+    }
   };
 
   render() {

@@ -16,10 +16,12 @@ class Homepage extends React.Component {
       e.preventDefault();
       // using history.push() to redirect to result page and 
       // hold searchQuery value so, we can use it in the result page
-      Router.push({
-        pathname: '/results',
-        query: { data: this.state.searchQuery },
-      })
+      if (this.state.searchQuery !== '') {
+        Router.push({
+          pathname: '/results',
+          query: { data: this.state.searchQuery },
+        })
+      }
     }
   
       render() {
