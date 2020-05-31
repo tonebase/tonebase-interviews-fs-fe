@@ -1,5 +1,6 @@
 import axios from "axios";
 import { withRouter } from 'next/router'
+import Router from 'next/router'
 
 class Results extends React.Component {
   state = {
@@ -64,7 +65,7 @@ class Results extends React.Component {
           return (
             <>
               <nav className="navbar" id="result-search-container">
-              <img src="./static/images/googlelogo.png" id='results-google-logo' alt="Google Logo"/>
+              <img src="./static/images/googlelogo.png" id='results-google-logo' alt="Google Logo" onClick={() => Router.push('/homepage')}></img>
                <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" 
                     type="search" 
@@ -120,7 +121,7 @@ class Results extends React.Component {
               </form>
               </nav>
               <div className="container" id="search-not-found">
-                  <p>Your search - {this.state.allResults.search_information.query_displayed} - did not match any documents</p>
+                  <p>Your search - <b>{this.state.allResults.search_information.query_displayed} </b> - did not match any documents</p>
                   <p>Suggestions:</p>
                   <ul>
                     <li>Make sure all words are spelled correctly.</li>

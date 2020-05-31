@@ -55,7 +55,6 @@ class MyDocument extends Document {
             // === NEXT DEFAULT
           }
           <script dangerouslySetInnerHTML={{ __html: envScript }} />
-          <script src="homepage.js"></script>
         </Head>
         <body>
           <Main />

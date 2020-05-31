@@ -5,6 +5,7 @@ const withTM = require("next-transpile-modules");
 const styledJsxLoader = require("styled-jsx/webpack");
 const withProgressBar = require("next-progressbar");
 
+
 // 2. Custom
 // Offline support
 // const withOffline = require('next-offline')
@@ -52,3 +53,6 @@ module.exports = withTM(
     }
   })
 );
+
+const withCSS = require('@zeit/next-css')
+module.exports = withCSS()

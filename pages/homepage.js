@@ -1,4 +1,4 @@
-
+import "../googleStyles.css"
 import Router from 'next/router'
 
 class Homepage extends React.Component {

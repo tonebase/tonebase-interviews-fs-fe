@@ -1,0 +1,66 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a.link-container, a.link-container:hover {
+    text-decoration: none;
+    float: left;
+}
+
+img {
+    max-width: 300px;
+    max-height: 90px;
+}
+
+input {
+    max-width: 500px;
+}
+
+.container{
+    margin-top: 30vh;
+}
+
+.container#search-container,.container#loading, .container#search-not-found {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 25vh;
+}
+
+.container.result {
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 40px;
+    box-shadow: 0px 0px 5px 5px rgba(184, 183, 183, 0.16);
+    border-radius: 5px;
+}
+
+.container.related-search {
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+
+.display-link {
+    color: black;
+}
+
+.title {
+    color: darkblue;
+    font-size: 20px;
+}
+
+.related-search-link {
+    color: darkblue;
+}
+
+#results-google-logo {
+    height: 45px;
+    margin-left: 20px;
+}
+
+#result-search-container {
+    box-shadow: 0px 0px 5px 5px rgba(184, 183, 183, 0.16);
+}
