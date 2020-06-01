@@ -89,6 +89,18 @@ class App extends React.Component {
 }
 ```
 
+This issue is a common case of "derived state" and it should be avoided, because copying props into state is unnecessary and creates bugs.
+
+To handle this, I recommend making the component fully controlled (let the parent control the props) by removing the state entirely and converting the class component to a function component. My solution is displayed below:
+
+```javascript
+const App = ({ name }) => {
+  const nameDisplay = name || 'Anonymous';
+
+  return <p>Hello {nameDisplay}</p>;
+};
+```
+
 ### 2. What's the issue with this component. Why? How would you go about fixing it?
 
 ```
@@ -117,6 +129,35 @@ render() {
     )
   }
 }
+```
+
+This issue is a little more tricky, as it pertains to React's SyntheticEvent wrapper. To optimize cross-browser compatibility, the event is defined as a synthetic event and is "pooled" - enabling the event object to be reused somewhere else in the application. This process of invoking the event callback nullifies all of the properties of the SyntheticEvent, and will result in an "Uncaught TypeError" error.
+
+To fix this, I recommend creating a closure with a function returning the debounced function (using lodash's debounce) while passing in the persisted event. By doing so, it removes the synthetic event from the pool and grants access to the event. My solution is displayed below:
+
+```javascript
+import { debounce } from 'lodash';
+
+const App = () => {
+  const [search, setSearch] = useState('');
+  const debounceEvent = (...args) => {
+    const debouncedEvent = debounce(...args);
+    return (event) => {
+      event.persist();
+      return debouncedEvent(event);
+    };
+  };
+  const handleChange = (event) => {
+    setSearch(event.target.value);
+  };
+
+  return (
+    <div>
+      <input type='text' onChange={debounceEvent(handleChange, 250)} />
+      {search ? <p>Search for: {search}</p> : null}
+    </div>
+  );
+};
 ```
 
 ---
