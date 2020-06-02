@@ -51,11 +51,21 @@ Okay, with all that out of the way let's dive into the question section!
 
 ### 1. What made you interested in/choose React as a framework? Was it a choice you made? Regardless, what is the one thing you enjoy most about it compared to other frameworks you've used and what is one thing you dislike about it?
 
+I was introduced to React in a software engineering intensive, so the choice was made for me. However after learning more about the alternatives such as Angular and Vue, I discovered that I enjoy React's integration of JSX the most. Blending the elements of HTML and JavaScript makes the development process easier by using several functionalities like map and filter to display DOM nodes. If I could change something about React, I would have React mirror Angular and be written in TypeScript instead of JavaScript. Static type checking before code execution helps to detect errors sooner and more efficiently (and saves headaches!). Once I learned TypeScript, I programmed my applications in it and haven't looked back since.
+
 ### 2. Why do the component names in JSX start with capital letters?
+
+JSX fundamentally compiles to `React.createElement(component, props, ...children)`. So when an element starts with a lowercase letter, React interprets that as an HTML element and then gets passed into `React.createElement` as a string (like 'section'), which we don't want. Alternatively, component capitalization tells React that the component has been defined or imported somewhere in the file to pass into `React.createElement`.
 
 ### 3. What are the main types of components you can render in React? When do you choose one over the other?
 
+The main types of React components are class and functional components. Class components are best suited for when declaring a state and accessing lifecycle methods. Function components are designed to display information, making them easier to read, debug, and test.
+
+However with the introduction of Hooks in React 16.8, functional components now have access to state and lifecycle methods. Hooks allows the reusability of stateful logic, consolidates related logic (like fetching data), and minifies better for performance.
+
 ### 4. How much experience do you have with testing frameworks? While our testing is light at the moment (read: nonexistent) this is something we'd like to move to in the future so this is a 'nice-to-know' for us!
+
+At my last workplace, I executed React and Redux testing in Jest and Enzyme to facilitate continuous integration and deployment, ensure product reliability for every future release, and minimize unexpected outcomes by evaluating critical edge cases. My work was primarily in unit testing, and I'm ready to take on the responsibility for other testing types. I see testing the same way I see eating vegetables: nobody likes doing it, but it's essential for growth and success.
 
 ---
 
@@ -77,6 +87,18 @@ class App extends React.Component {
     );
   }
 }
+```
+
+This issue is a common case of "derived state" and it should be avoided, because copying props into state is unnecessary and creates bugs.
+
+To handle this, I recommend making the component fully controlled (let the parent control the props) by removing the state entirely and converting the class component to a function component. My solution is displayed below:
+
+```javascript
+const App = ({ name }) => {
+  const nameDisplay = name || 'Anonymous';
+
+  return <p>Hello {nameDisplay}</p>;
+};
 ```
 
 ### 2. What's the issue with this component. Why? How would you go about fixing it?
@@ -109,6 +131,35 @@ render() {
 }
 ```
 
+This issue is a little more tricky, as it pertains to React's SyntheticEvent wrapper. To optimize cross-browser compatibility, the event is defined as a synthetic event and is "pooled" - enabling the event object to be reused somewhere else in the application. This process of invoking the event callback nullifies all of the properties of the SyntheticEvent, and will result in an "Uncaught TypeError" error.
+
+To fix this, I recommend creating a closure with a function returning the debounced function (using lodash's debounce) while passing in the persisted event. By doing so, it removes the synthetic event from the pool and grants access to the event. My solution is displayed below:
+
+```javascript
+import { debounce } from 'lodash';
+
+const App = () => {
+  const [search, setSearch] = useState('');
+  const debounceEvent = (...args) => {
+    const debouncedEvent = debounce(...args);
+    return (event) => {
+      event.persist();
+      return debouncedEvent(event);
+    };
+  };
+  const handleChange = (event) => {
+    setSearch(event.target.value);
+  };
+
+  return (
+    <div>
+      <input type='text' onChange={debounceEvent(handleChange, 250)} />
+      {search ? <p>Search for: {search}</p> : null}
+    </div>
+  );
+};
+```
+
 ---
 
 Onto just a teensy bit of code + introducing you to our system! This part can be done on your own, and you can ping me when it's good to go!
@@ -120,32 +171,31 @@ Here is a link to a Github repo. containing our NextJS setup. It includes everyt
 **Your challenge is to implement ONE of the following:**
 
 1. OPTION 1: Implement a simple counter
-  
-  For this assignment you may use a state management system of your choice (other than the native React state). We recommend `react-easy-state` as that is our default tool and is extremely simple to get up and running.
 
-  The counter should:
+For this assignment you may use a state management system of your choice (other than the native React state). We recommend `react-easy-state` as that is our default tool and is extremely simple to get up and running.
 
-  (a) Increment UP once per hour between 9AM and 5PM (inclusive)
+The counter should:
 
-  (b) Increment DOWN once per hour between 6PM and 8AM (inclusive)
+(a) Increment UP once per hour between 9AM and 5PM (inclusive)
 
-  (c) Increment UP when a button is clicked manually
+(b) Increment DOWN once per hour between 6PM and 8AM (inclusive)
 
-  (d) Increment DOWN when a different button is clicked manually
+(c) Increment UP when a button is clicked manually
 
+(d) Increment DOWN when a different button is clicked manually
 
 2. OPTION 2: Build the Google homepage (www.google.com)
 
-  Open-ended, go into as much or as little detail as makes sense to you. Responsiveness, functionality, modularity, etc. is all up to you -- we want to know how you interpret this prompt. Feel free to get as creative or keep it as simple as you would like. Your code will be evaluated along the following criteria:
-  - Functionality
-  - Creativity
-  - Readability
-  - Cleanliness
-  - Comments
-  - Modularity
-  - Defensiveness
-  - Declarative-ness
+Open-ended, go into as much or as little detail as makes sense to you. Responsiveness, functionality, modularity, etc. is all up to you -- we want to know how you interpret this prompt. Feel free to get as creative or keep it as simple as you would like. Your code will be evaluated along the following criteria:
 
+- Functionality
+- Creativity
+- Readability
+- Cleanliness
+- Comments
+- Modularity
+- Defensiveness
+- Declarative-ness
 
 **When Complete**
 
@@ -159,9 +209,33 @@ Thus writing, and the ability to write clearly, logically and to formulate argum
 
 ### 1. Tell me about componentWillMount and the issues with it?
 
+`componentWillMount` is the first lifecycle method to execute, and it only executes once. This happens before the component initilizes from the render() method, which means that there is no access to the DOM. Problems may arise because setting the state synchronously will not trigger a re-render when we expect it to. Therefore, it has been considered legacy and React advises to use `componentDidMount` instead.
+
 ### 2. Can you walk me through the cycle of mounting a stateful component? What functions are called in what order? Where would you place a request for data from the API? Why?
 
+1. constructor()
+
+   Before the component mounts, the `constructor` is invoked and is responsible for initializing state and binding event handlers. Note that super(props) should be called before any other statement inside the `constructor`.
+
+2. static getDerivedStateFromProps()
+
+   `getDerivedStateFromProps` gets called on the initial mount and subsequent updates, and it returns an object for updating the state or null. This is mainly used where the state depends on changes in props over time, which happens rarely.
+
+3. render()
+
+   `render` is the only required method in a class component, and it should be pure (returning the same result every time it's invoked). With props and state, it returns one of the following types: react elements, arrays and fragments, portals, string and numbers, or booleans or null.
+
+4. componentDidMount()
+
+   After the component mounts, `componentDidMount` will get invoked and is the recommended place for initializing DOM nodes, requesting data from the API, and setting up subscriptions. The reason being is to make sure that the state can be accessed, and to set up re-rendering when the data is received (which could take several seconds) to update said state.
+
+Note that I didn't mention `componentWillMount`, since it has been deprecated since React 16.3.
+
 ### 3. If you had unlimited time budget and could fix / improve / change one thing in your last project, what would it be and why?
+
+The last project I worked on is called, "React Blue" (reactblue.io), which is a prototyping and visualization tool that helps engineers build component trees with custom templates. I worked with a team of talented engineers in a Scrum environment, and leveraged technologies like React, Redux, D3, Bootstrap, and Sass.
+
+If I can improve one thing in this project, I would convert the entire codebase into TypeScript. One of my top priorities in development is scalability, and the strict nature of TypeScript ensures a more robust and maintainable codebase. Even though the conversion may take a lot of time upfront, it will save even more time and resources in the future.
 
 ---
 
