@@ -209,9 +209,33 @@ Thus writing, and the ability to write clearly, logically and to formulate argum
 
 ### 1. Tell me about componentWillMount and the issues with it?
 
+`componentWillMount` is the first lifecycle method to execute, and it only executes once. This happens before the component initilizes from the render() method, which means that there is no access to the DOM. Problems may arise because setting the state synchronously will not trigger a re-render when we expect it to. Therefore, it has been considered legacy and React advises to use `componentDidMount` instead.
+
 ### 2. Can you walk me through the cycle of mounting a stateful component? What functions are called in what order? Where would you place a request for data from the API? Why?
 
+1. constructor()
+
+   Before the component mounts, the `constructor` is invoked and is responsible for initializing state and binding event handlers. Note that super(props) should be called before any other statement inside the `constructor`.
+
+2. static getDerivedStateFromProps()
+
+   `getDerivedStateFromProps` gets called on the initial mount and subsequent updates, and it returns an object for updating the state or null. This is mainly used where the state depends on changes in props over time, which happens rarely.
+
+3. render()
+
+   `render` is the only required method in a class component, and it should be pure (returning the same result every time it's invoked). With props and state, it returns one of the following types: react elements, arrays and fragments, portals, string and numbers, or booleans or null.
+
+4. componentDidMount()
+
+   After the component mounts, `componentDidMount` will get invoked and is the recommended place for initializing DOM nodes, requesting data from the API, and setting up subscriptions. The reason being is to make sure that the state can be accessed, and to set up re-rendering when the data is received (which could take several seconds) to update said state.
+
+Note that I didn't mention `componentWillMount`, since it has been deprecated since React 16.3.
+
 ### 3. If you had unlimited time budget and could fix / improve / change one thing in your last project, what would it be and why?
+
+The last project I worked on is called, "React Blue" (reactblue.io), which is a prototyping and visualization tool that helps engineers build component trees with custom templates. I worked with a team of talented engineers in a Scrum environment, and leveraged technologies like React, Redux, D3, Bootstrap, and Sass.
+
+If I can improve one thing in this project, I would convert the entire codebase into TypeScript. One of my top priorities in development is scalability, and the strict nature of TypeScript ensures a more robust and maintainable codebase. Even though the conversion may take a lot of time upfront, it will save even more time and resources in the future.
 
 ---
 
