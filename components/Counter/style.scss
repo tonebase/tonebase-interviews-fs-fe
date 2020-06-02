@@ -1,0 +1,46 @@
+@mixin arrow {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  top: 15%;
+  text-align: center;
+  font-size: 40px;
+  border: none;
+  user-select: none;
+  background-color: rgba(241, 243, 244, 1);
+
+  :hover {
+    transform: scale(1.2);
+  }
+}
+
+.counter {
+  width: 250px;
+  height: 250px;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  font-size: 25px;
+  background-color: rgba(241, 243, 244, 1);
+
+
+  .count {
+    width: 60px;
+    height: 60px;
+    margin: auto; // align center
+    margin-top: 50px;
+    border-radius: 50%;
+    text-align: center;
+  }
+
+  .up {
+    @include arrow;
+    float: right;
+    margin-right: 70px;
+  }
+
+  .down {
+    @include arrow;
+    float: left;
+    margin-left: 70px;
+  }
+}
