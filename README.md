@@ -51,11 +51,28 @@ Okay, with all that out of the way let's dive into the question section!
 
 ### 1. What made you interested in/choose React as a framework? Was it a choice you made? Regardless, what is the one thing you enjoy most about it compared to other frameworks you've used and what is one thing you dislike about it?
 
+Out of curiosity I started to dip my toes in React just to check it out. After seeing how mainstream the library was I decided to make it a priority to dive deep in React.
+
+Pros: I like the robustness and community support. There’s tons of react packages and resources available. It’s definitely not going away anytime soon. There’s lots of developer-friendly features such as the React DevTools. The react team does well in easing the migration to a new major version in providing useful deprecation warnings. Another thing to mention is one-way data binding, as it simplifies “who” owns the data; this is good for reducing complexity.
+
+Cons: High pace of development. One-way data binding, as you have to pass props down to any components that need them. It can get pretty repetitive especially if your component hierarchy is quite large.
+
 ### 2. Why do the component names in JSX start with capital letters?
+
+React treats components that start with a lowercase letter as html. For example, if you use `<counter />` without any capitilization, it will throw an error because react will treat it as a native html element and the "counter" html element does not exist.
 
 ### 3. What are the main types of components you can render in React? When do you choose one over the other?
 
+There’s presentational components aka dumb components and there’s smart components aka containers.
+
+Smart containers are stateful components, they compute the output and contain the logic. These components usually make use of state.
+
+A dumb component does not have any logic. It simply renders the component hierarchy and adds style.
+
+You could also have a variation of the above so that it suites your project. For example, it’s not uncommon to have “screen/page” components or “router” components that handle routing.
+
 ### 4. How much experience do you have with testing frameworks? While our testing is light at the moment (read: nonexistent) this is something we'd like to move to in the future so this is a 'nice-to-know' for us!
+I am a big fan of writing tests. It never hurts to write too many tests, the only downside to that might be taking the time to write them but from experience I will say that in the long run it will save you time in having to go down rabbit holes just to find the origin of a bug. For unit testing, my favorite testing frameworks are Mocha and Jest. For react-specific projects I also use Enzyme to make it easier to test components. As for E2E testing, I’ve used Puppeteer and Jest.
 
 ---
 
@@ -78,6 +95,8 @@ class App extends React.Component {
   }
 }
 ```
+
+This example is using derived state as an anti-pattern. In this case it is not necessary to copy props into state. We should avoid using state as much as possible and in this case our component does not need to have state at all, we could simply read from `this.props.name` thereby making the component fully controlled.
 
 ### 2. What's the issue with this component. Why? How would you go about fixing it?
 
@@ -109,6 +128,13 @@ render() {
 }
 ```
 
+The issue with this example is in the way React handles synthetic events. The event used in this example is an instance of SyntheticEvent, which is not a DOM event but React’s implementation of events. A key difference between DOM events and React events is that synthetic events are reused, so `event.target.value` will be null when accessed after the timeout. The simplest way to fix this is by using `event.persist()`.
+
+Some improvements that could be made:
+
+1. inherit from `React.PureComponent`
+2. explicitly initialize `this.timeout = null` to avoid any unexpected side effects of having `clearTimeout(undefined)`
+
 ---
 
 Onto just a teensy bit of code + introducing you to our system! This part can be done on your own, and you can ping me when it's good to go!
@@ -120,7 +146,7 @@ Here is a link to a Github repo. containing our NextJS setup. It includes everyt
 **Your challenge is to implement ONE of the following:**
 
 1. OPTION 1: Implement a simple counter
-  
+
   For this assignment you may use a state management system of your choice (other than the native React state). We recommend `react-easy-state` as that is our default tool and is extremely simple to get up and running.
 
   The counter should:
@@ -159,9 +185,33 @@ Thus writing, and the ability to write clearly, logically and to formulate argum
 
 ### 1. Tell me about componentWillMount and the issues with it?
 
+There is nothing inherently wrong with `componentWillMount()`, it’s the way you intend to use it where issues arise. One common issue is fetching data within `componentWillMount()`, this will create unwanted side effects because `componentWillMount()` will not return before the first render. That means your component will render empty data on the initial render. Maybe that’s why it has been deprecated. As an alternative, use `componentDidMount()` and initialize state.
+
 ### 2. Can you walk me through the cycle of mounting a stateful component? What functions are called in what order? Where would you place a request for data from the API? Why?
 
+In the process of mounting, the following lifecycle methods are called in this order:
+
+1. `constructor()`
+
+This is where you initialize state, bind methods, etc; basically get the component ready.
+
+2. `getDerivedStateFromProps()`
+
+This method is rarely used in the wild. It's useful when your state is derived from props.
+
+3. `render()`
+
+Here we return what will be reconciled into react's virtual DOM. It should be pure and logic should be kept out of it.
+
+4. `componentDidMount()`
+
+Finally, the component has mounted. It is recommended that you place data requests in this lifecycle method because it will be called once, when the component mounts and when the DOM is readily available
+
+
+
 ### 3. If you had unlimited time budget and could fix / improve / change one thing in your last project, what would it be and why?
+
+Let's see... the last project I worked on was an apartment marketplace for university students. Working on a large-scale project by yourself is tedious! If I could go back in time, I would hire people to help me with the project. It's not only rewarding in that development is much faster but you also get the chance to have your ideas validated by others. That's a huge plus for me. I've worked on a lot of side projects by myself and I've also worked on production-level projects with a team. All I can say is that a highly-motivated team with the same vision in mind trumps a highly-talented team with no vision.
 
 ---
 
