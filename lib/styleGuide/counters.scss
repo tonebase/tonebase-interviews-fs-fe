@@ -1,0 +1,51 @@
+@import url(https://fonts.googleapis.com/css2?family=Oswald&display=swap);
+
+// general
+main {
+  font-family: Oswald, sans-serif;
+  text-align: center;
+  color: #222;
+}
+
+h1,
+h2 {
+  font-weight: 400;
+}
+
+h1 {
+  font-size: 72px;
+}
+
+h2 {
+  font-size: 54px;
+}
+
+button {
+  font-family: Oswald, sans-serif;
+  font-size: 16px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 2px solid;
+  border-radius: 4px;
+  padding: 10px 24px;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+
+// increment & decrement
+
+.increment {
+  border-color: #e14f3d;
+  background-color: #e14f3d;
+  margin-right: 12px;
+
+  &:hover {
+    background-color: #a81f0e;
+  }
+}
+
+.decrement {
+  border-color: #222;
+  background-color: #222;
+}
