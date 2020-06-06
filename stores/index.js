@@ -1,4 +1,4 @@
 import ModalStore from "./ModalStore";
 import TabNavStore from "./TabNavStore";
-
-export { ModalStore, TabNavStore };
+import PageStore from './PageStore'
+export { ModalStore, TabNavStore, PageStore };
