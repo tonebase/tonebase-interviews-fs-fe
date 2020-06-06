@@ -4,7 +4,7 @@
 const withTM = require("next-transpile-modules");
 const styledJsxLoader = require("styled-jsx/webpack");
 const withProgressBar = require("next-progressbar");
-
+const path = require('path')
 // 2. Custom
 // Offline support
 // const withOffline = require('next-offline')
@@ -41,6 +41,7 @@ module.exports = withTM(
           }
         ]
       });
+      config.resolve.modules.push(path.resolve('./'))
       return config;
     },
     exportPathMap: () => ({

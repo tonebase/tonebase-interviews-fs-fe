@@ -36,6 +36,9 @@
     "ext": "js json"
   },
   "dependencies": {
+    "@material-ui/core": "^4.10.1",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/styles": "^4.10.0",
     "@yolkai/next-routes": "^3.0.0",
     "@zeit/next-typescript": "^1.1.1",
     "address": "^1.0.3",
