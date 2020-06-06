@@ -143,21 +143,7 @@ Here is a link to a Github repo. containing our NextJS setup. It includes everyt
 [The Github Repo.](https://github.com/tonebase/tonebase-interviews-fs-fe)
 
 **Your challenge is to implement ONE of the following:**
-
-1. OPTION 1: Implement a simple counter
-  
-  For this assignment you may use a state management system of your choice (other than the native React state). We recommend `react-easy-state` as that is our default tool and is extremely simple to get up and running.
-
-  The counter should:
-
-  (a) Increment UP once per hour between 9AM and 5PM (inclusive)
-
-  (b) Increment DOWN once per hour between 6PM and 8AM (inclusive)
-
-  (c) Increment UP when a button is clicked manually
-
-  (d) Increment DOWN when a different button is clicked manually
-
+I did this option
 
 2. OPTION 2: Build the Google homepage (www.google.com)
 
