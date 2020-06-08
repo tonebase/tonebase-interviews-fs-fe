@@ -51,11 +51,20 @@ Okay, with all that out of the way let's dive into the question section!
 
 ### 1. What made you interested in/choose React as a framework? Was it a choice you made? Regardless, what is the one thing you enjoy most about it compared to other frameworks you've used and what is one thing you dislike about it?
 
+The first time I was exposed to React was in my Introduction to Software Engineering class, the professor said it would be one of our best friends in web development. I like it because it has several reusable components, which means its easier to maintain the codebase. I also like that your applications will have a consistent look and feel. I also think it is easier to learn compared to other JS libraries. One thing I dislike about React is that it sometimes might require you to use additional libraries like Redux.
+
+
 ### 2. Why do the component names in JSX start with capital letters?
+
+All React component names must start with a capital letter. If you were to start a component name with a lowercase it would be treated like a <div> or <span>. A component that starts with a lowercase letter will be compiled down to the equivalent of an HTML element.
 
 ### 3. What are the main types of components you can render in React? When do you choose one over the other?
 
+There are four main components that can be rendered in React. These include functional components, class components, pure components, and higher-order components. If you are going to reuse component logic you should use high-order components. Pure components are functional components that perform certain updates automatically.
+
 ### 4. How much experience do you have with testing frameworks? While our testing is light at the moment (read: nonexistent) this is something we'd like to move to in the future so this is a 'nice-to-know' for us!
+
+For JavaScript I have a lot of experience using Jest. I usually use it whenever I am creating a larger web application or when working in larger groups of engineers. It is the preferred framework for React based web applications so I main an effort to practice using it a lot.
 
 ---
 
@@ -78,6 +87,7 @@ class App extends React.Component {
   }
 }
 ```
+For this one, the state property's name doesn't need to be on the component's state. There is also a missing semicolon in line 6.
 
 ### 2. What's the issue with this component. Why? How would you go about fixing it?
 
@@ -108,7 +118,7 @@ render() {
   }
 }
 ```
-
+Firstly, the class properties should be a method. I would also fix the function syntax.
 ---
 
 Onto just a teensy bit of code + introducing you to our system! This part can be done on your own, and you can ping me when it's good to go!
@@ -120,7 +130,7 @@ Here is a link to a Github repo. containing our NextJS setup. It includes everyt
 **Your challenge is to implement ONE of the following:**
 
 1. OPTION 1: Implement a simple counter
-  
+
   For this assignment you may use a state management system of your choice (other than the native React state). We recommend `react-easy-state` as that is our default tool and is extremely simple to get up and running.
 
   The counter should:
@@ -159,9 +169,18 @@ Thus writing, and the ability to write clearly, logically and to formulate argum
 
 ### 1. Tell me about componentWillMount and the issues with it?
 
+It is a method that was deprecated in 2018, and therefore it is not best practice to use it anymore. Instead you should use UNSAFE_componentWillMount().
+
 ### 2. Can you walk me through the cycle of mounting a stateful component? What functions are called in what order? Where would you place a request for data from the API? Why?
 
+Mounting is when our React components mount on the DOM. It is usually done on the constructor method.
+The phases are:
+componentWillMount()-called before a component mounts on DOM.
+componentDidMount()-called after component gets mounted on the DOM. Called once in a lifetime. You would place a request for data from the API during this stage. 
+
 ### 3. If you had unlimited time budget and could fix / improve / change one thing in your last project, what would it be and why?
+
+One of my last projects in university was a travel planning website, which was inspired by a website called visitacity.com. We managed to create an amazing database and coded great randomizers which would help users plan great vacations. If I had unlimited time and money, I would have improved the UI of the website. I thought the result looked to sloppy and boring. I would have also increased the number of activities and itineraries for each city we featured. That would have made our website look more professional and interesting.
 
 ---
 
