@@ -50,13 +50,16 @@ The questions below are informed by our stack. I will list the details of each b
 Okay, with all that out of the way let's dive into the question section!
 
 ### 1. What made you interested in/choose React as a framework? Was it a choice you made? Regardless, what is the one thing you enjoy most about it compared to other frameworks you've used and what is one thing you dislike about it?
+-->I have prior experience with AngularJS on introduction with React I found the later easier to learn and more modular. I have not worked with React on large scale projects to explore enough and dislike.
 
 ### 2. Why do the component names in JSX start with capital letters?
+-->To differentiate JSX elements from normal HTML elements that start with lowercase letters.
 
 ### 3. What are the main types of components you can render in React? When do you choose one over the other?
+-->Functional (stateless) and Class(statefull) components. If the component does not need to maintain its state or lifecycle its better to use functional components as they easier to define, read, debug and may also be faster.
 
 ### 4. How much experience do you have with testing frameworks? While our testing is light at the moment (read: nonexistent) this is something we'd like to move to in the future so this is a 'nice-to-know' for us!
-
+-->I have used QUnit before for defining and testing JavaScript code.
 ---
 
 Whew, okay, now moving into a couple of code questions. We don't need you to code anything just yet, but this is more around optimization and undertstanding JS/React.
@@ -77,7 +80,17 @@ class App extends React.Component {
     );
   }
 }
-```
+-->In this snippet:
+name: this.props.name || 'Anonymous'
+defines a default value 'Anonymous' for the state 'name'. This can get cumbersome to use if used in many places.
+The better way would be to use 'defaultProps'
+
+class App extends React.Component {
+	...
+	name: this.props.name
+	...
+}
+App.defaultProps = { name: 'Anonymous'}```
 
 ### 2. What's the issue with this component. Why? How would you go about fixing it?
 
@@ -108,6 +121,19 @@ render() {
   }
 }
 ```
+-->There are 2 problems with the component:
+1. the event handler is not bound to the component instance so this.timeout is not recognised. It can be fixed as:
+constructor(props) {
+    super(props);
+	this.handleChange = this.handleChange.bind(this);
+}
+2. event.target.value is not accessible in function passed to setTimeout(). this can be fixed by adding a local variable in the event handler and using this in the anonymous function passed to setTimeout()
+const s = event.target.value;
+this.timeout = setTimeout(() => {
+  this.setState({
+    search: s
+  })
+}, 250);
 
 ---
 
@@ -158,10 +184,16 @@ Lastly, just a bit of writing! We are a company where members of the team are co
 Thus writing, and the ability to write clearly, logically and to formulate arguments and answers is crucial at tonebase, whether a developer, PM, or A&R manager! These questions aim to give us a better understanding of you as a writer, as well as your development skills.
 
 ### 1. Tell me about componentWillMount and the issues with it?
+-->componentWillMount is not idealplace to fetch data as it may not return before the first render call and thus causing the component to be loaded without the data.
+
 
 ### 2. Can you walk me through the cycle of mounting a stateful component? What functions are called in what order? Where would you place a request for data from the API? Why?
-
+-->There are three phases : Mounting calls constructor, render (updates DOM), componentDidMount
+Updating calls render (updates DOM), componentDidUpdate, 
+Unmounting calls componentWillUnmount
+Best place for a data request would be componentDidUpdate as it ensures that the component's initial render is done and the component state can be updated.
 ### 3. If you had unlimited time budget and could fix / improve / change one thing in your last project, what would it be and why?
+-->My last project was a game development project in Unity. One of the issues that was dropped beacuse of time constraint was the glitch in player and camera proximity. Given more time I would like to improve that because that was one of the most basic yet prominently visible glitches that spoiled both the functionality and the user experience.
 
 ---
 
