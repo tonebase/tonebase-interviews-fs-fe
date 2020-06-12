@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import ButtonsRow from '../ButtonsRow';
 import SearchOptions from '../SearchOptions';
-import Svg from './Svg';
+import Svg from '../Svg';
 import {
   getPropositionsFromLocalStorage,
   saveUniqueSearchToLocalStorage,
-} from './utils';
-import { imgX, imgVoiceSearch, imgSearch } from './images';
+} from '../utils';
+import { imgX, imgVoiceSearch, imgSearch } from '../images';
 import { GoogleStore } from '../../../stores';
 import { view } from 'react-easy-state';
 
@@ -33,19 +33,16 @@ const MainInput = () => {
 
     let cached = [];
     if (value !== '') {
-      cached = propositionsCached
-        .filter((e) => e.includes(value))
-        .slice(0, 3)
-        .reverse();
+      cached = propositionsCached.filter((e) => e.includes(value)).slice(0, 3);
     } else {
-      cached = propositionsCached.slice(0, 9).reverse();
+      cached = propositionsCached.slice(0, 9);
     }
 
     setPropositions(cached);
   };
 
   const handleInputClick = () => {
-    if (!inputValue) setPropositions(propositionsCached);
+    if (!inputValue) setPropositions(propositionsCached.slice(0, 9));
   };
 
   const handleSubmitSearch = (e) => {
@@ -60,7 +57,7 @@ const MainInput = () => {
   };
 
   const handleXMouseDown = (e) => {
-    setInputValue('');
+    handleInputChange({ target: { value: '' } });
     e.preventDefault();
   };
 
