@@ -1,4 +1,5 @@
-import ModalStore from "./ModalStore";
-import TabNavStore from "./TabNavStore";
+import ModalStore from './ModalStore';
+import TabNavStore from './TabNavStore';
+import GoogleStore from './GoogleStore';
 
-export { ModalStore, TabNavStore };
+export { ModalStore, TabNavStore, GoogleStore };

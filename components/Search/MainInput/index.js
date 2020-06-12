@@ -7,12 +7,14 @@ import {
   saveUniqueSearchToLocalStorage,
 } from './utils';
 import { imgX, imgVoiceSearch, imgSearch } from './images';
+import { GoogleStore } from '../../../stores';
+import { view } from 'react-easy-state';
 
 import styles from './styles.scss';
 
 const MainInput = () => {
   const inputRef = useRef(null);
-  const [inputValue, setInputValue] = useState('');
+  const { inputValue, setInputValue } = GoogleStore;
 
   const [propositions, setPropositions] = useState([]);
   const [propositionsCached, setPropositionsCached] = useState([]);
@@ -53,7 +55,7 @@ const MainInput = () => {
     window.location.search = `${inputValue}`;
   };
 
-  const handleViImg = () => {
+  const handleVoiceSearch = () => {
     alert('voice => search');
   };
 
@@ -87,10 +89,10 @@ const MainInput = () => {
             />
           </form>
           {inputValue && (
-            <Svg onClick={handleXMouseDown} logo={imgX} borderRight />
+            <Svg onMouseDown={handleXMouseDown} logo={imgX} borderRight />
           )}
 
-          <Svg onClick={handleViImg} logo={imgVoiceSearch} />
+          <Svg onClick={handleVoiceSearch} logo={imgVoiceSearch} />
         </div>
 
         {!!propositions.length && (
@@ -106,4 +108,4 @@ const MainInput = () => {
   );
 };
 
-export default MainInput;
+export default view(MainInput);

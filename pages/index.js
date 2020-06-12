@@ -2,6 +2,7 @@
 import MainInput from '../components/Search/MainInput';
 import Header from '../components/Search/Header';
 import Footer from '../components/Search/Footer';
+import { view } from 'react-easy-state';
 
 const FirstPage = () => {
   return (
@@ -49,4 +50,4 @@ const styles = {
   },
 };
 
-export default FirstPage;
+export default view(FirstPage);
