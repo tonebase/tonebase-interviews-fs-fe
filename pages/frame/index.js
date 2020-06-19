@@ -102,11 +102,11 @@ class Counter extends React.Component {
       start: Date.now(),
       cancel: null,
     };
-    this.autoUpdateTime = this.autoUpdateTime.bind(this);
-    this.manualUpdateTime = this.manualUpdateTime.bind(this);
+    this.autoUpdateValue = this.autoUpdateValue.bind(this);
+    this.manualUpdateValue = this.manualUpdateValue.bind(this);
   }
 
-  autoUpdateTime() {
+  autoUpdateValue() {
     let hours = new Date().getHours;
     if (hours > 9 && hours <= 17) {
       this.setState({ value: ++value });
@@ -115,7 +115,7 @@ class Counter extends React.Component {
     }
   }
 
-  manualUpdateTime(factor) {
+  manualUpdateValue(factor) {
     this.setState({ value: value + factor });
   }
 
@@ -124,7 +124,7 @@ class Counter extends React.Component {
     let cancel = setInterval(() => {
       // 3.6e6 ms === 1 hour
       if (Date.now() - this.state.start > 3.6e6) {
-        this.autoUpdateTime();
+        this.autoUpdateValue();
       } else if (Date.now() - this.state.start > 3.6e4) {
         console.log('wait a second, will ya');
       }
