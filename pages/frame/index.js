@@ -102,23 +102,40 @@ class Counter extends React.Component {
       start: Date.now(),
       cancel: null,
     };
+    this.autoUpdateTime = this.autoUpdateTime.bind(this);
+    this.manualUpdateTime = this.manualUpdateTime.bind(this);
   }
+
+  autoUpdateTime() {
+    let hours = new Date().getHours;
+    if (hours > 9 && hours <= 17) {
+      this.setState({ value: ++value });
+    } else {
+      this.setState({ value: --value });
+    }
+  }
+
+  manualUpdateTime(factor) {
+    this.setState({ value: value + factor });
+  }
+
   componentDidMount() {
     // create a timer to check every second if an hour has gone by
     let cancel = setInterval(() => {
       // 3.6e6 ms === 1 hour
       if (Date.now() - this.state.start > 3.6e6) {
-        console.log(`${(Date.now() - this.state.start) / 1000} seconds! `);
-        this.setState({ value: ++this.state.value });
+        this.autoUpdateTime();
       } else if (Date.now() - this.state.start > 3.6e4) {
         console.log('wait a second, will ya');
       }
     }, 1000);
     this.setState({ cancel: cancel });
   }
+
   componentWillUnmount() {
     clearInterval(this.state.cancel);
   }
+
   render() {
     return <>{this.state.value}</>;
   }
