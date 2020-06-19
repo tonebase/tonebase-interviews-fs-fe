@@ -109,9 +109,9 @@ class Counter extends React.Component {
   autoUpdateValue() {
     let hours = new Date().getHours;
     if (hours > 9 && hours <= 17) {
-      this.setState({ value: ++this.state.value });
+      this.setState({ value: ++this.state.value, start: Date.now() });
     } else {
-      this.setState({ value: --this.state.value });
+      this.setState({ value: --this.state.value, start: Date.now() });
     }
   }
 
