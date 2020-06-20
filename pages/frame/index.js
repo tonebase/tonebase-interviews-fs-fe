@@ -141,8 +141,8 @@ class Counter extends React.Component {
 
   render() {
     return (
-      <div className='counterContainer'>
-        <h1>Counter Value : {this.state.value}</h1>
+      <div className='counterContainer fontFamily-primary'>
+        <h1 className='fontSize-xxxl'>Counter Value : {this.state.value}</h1>
         <div className='buttonContainer'>
           <button
             className='counterButton increment'

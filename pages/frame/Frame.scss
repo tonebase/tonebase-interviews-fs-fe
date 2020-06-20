@@ -6,7 +6,6 @@
 }
 
 h1 {
-  font-size: xx-large;
   margin-bottom: 20px;
 }
 
@@ -29,6 +28,7 @@ h1 {
   &:hover {
     background-color: darken($color: $col, $amount: $hoverAmount);
   }
+
   &:active {
     background-color: darken($color: $col, $amount: $activeAmount);
   }
@@ -37,12 +37,14 @@ h1 {
 .increment {
   background-color: $prim;
   color: $white;
+
   @include changeBgColor($prim, 20, 30);
 }
 
 .decrement {
   background-color: $white;
   color: black;
+
   @include changeBgColor($white, 20, 40);
 }
 
