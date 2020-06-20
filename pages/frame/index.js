@@ -75,12 +75,12 @@ import {
 } from '../../components/Organisms/Frame';
 
 // === STYLING ===
-import style from './Frame.scss';
+import counterStyle from './Frame.scss';
 
 // ==============================
 // ==============================
 // ==============================
-// COMPONENT
+// FRAME
 // ==============================
 
 class Frame extends React.Component {
@@ -88,11 +88,16 @@ class Frame extends React.Component {
     return (
       <div id='bodyWrapper' className='bodyWrapper'>
         <Counter />
-        <style jsx>{style}</style>
       </div>
     );
   }
 }
+
+// ==============================
+// ==============================
+// ==============================
+// COMPONENT
+// ==============================
 
 class Counter extends React.Component {
   constructor() {
@@ -102,21 +107,20 @@ class Counter extends React.Component {
       start: Date.now(),
       cancel: null,
     };
-    this.autoUpdateValue = this.autoUpdateValue.bind(this);
-    this.manualUpdateValue = this.manualUpdateValue.bind(this);
+    this.autoUpdateCounterValue = this.autoUpdateCounterValue.bind(this);
+    this.manualUpdateCounterValue = this.manualUpdateCounterValue.bind(this);
   }
 
-  autoUpdateValue() {
-    let hours = new Date().getHours;
+  autoUpdateCounterValue() {
+    const hours = new Date().getHours();
     if (hours > 9 && hours <= 17) {
       this.setState({ value: ++this.state.value, start: Date.now() });
     } else {
       this.setState({ value: --this.state.value, start: Date.now() });
     }
   }
-
-  manualUpdateValue(factor) {
-    this.setState({ value: this.state.value + factor });
+  manualUpdateCounterValue(amount) {
+    this.setState({ value: this.state.value + amount });
   }
 
   componentDidMount() {
@@ -124,24 +128,35 @@ class Counter extends React.Component {
     let cancel = setInterval(() => {
       // 3.6e6 ms === 1 hour
       if (Date.now() - this.state.start > 3.6e6) {
-        this.autoUpdateValue();
+        this.autoUpdateCounterValue();
       }
     }, 1000);
     this.setState({ cancel: cancel });
   }
-
   componentWillUnmount() {
     clearInterval(this.state.cancel);
   }
 
   render() {
     return (
-      <div>
-        Counter Value:{this.state.value}
-        <div>
-          <button onClick={() => this.manualUpdateValue(1)}>Increment</button>
-          <button onClick={() => this.manualUpdateValue(-1)}>Decrement</button>
+      <div className='counterContainer'>
+        <h1>Counter Value : {this.state.value}</h1>
+        <div className='buttonContainer'>
+          <button
+            className='counterButton increment'
+            onClick={() => this.manualUpdateCounterValue(1)}
+          >
+            Increment
+          </button>
+          <span className='padding'></span>
+          <button
+            className='counterButton decrement'
+            onClick={() => this.manualUpdateCounterValue(-1)}
+          >
+            Decrement
+          </button>
         </div>
+        <style jsx>{counterStyle}</style>
       </div>
     );
   }
