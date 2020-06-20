@@ -119,6 +119,7 @@ class Counter extends React.Component {
       this.setState({ value: --this.state.value, start: Date.now() });
     }
   }
+
   manualUpdateCounterValue(amount) {
     this.setState({ value: this.state.value + amount });
   }
@@ -133,6 +134,7 @@ class Counter extends React.Component {
     }, 1000);
     this.setState({ cancel: cancel });
   }
+
   componentWillUnmount() {
     clearInterval(this.state.cancel);
   }
