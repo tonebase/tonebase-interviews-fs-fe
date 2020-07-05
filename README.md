@@ -78,6 +78,7 @@ class App extends React.Component {
   }
 }
 ```
+```
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -91,6 +92,7 @@ class App extends React.Component {
     );
   }
 }
+```
 There is no point to assign it to state when you can use the value is already saved under prop.name.
 ### 2. What's the issue with this component. Why? How would you go about fixing it?
 
@@ -121,6 +123,7 @@ render() {
   }
 }
 ```
+```
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -148,6 +151,7 @@ class App extends React.Component {
     );
   }
 }
+```
 ---
 
 Onto just a teensy bit of code + introducing you to our system! This part can be done on your own, and you can ping me when it's good to go!
