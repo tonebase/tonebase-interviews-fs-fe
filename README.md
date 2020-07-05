@@ -68,7 +68,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: this.props.name || 'Anonymous'
+      name: 'Anonymous'
     }
   }
   render() {
@@ -85,18 +85,13 @@ class App extends React.Component {
       name: 'Anonymous'
     }
   }
-  componentDidMount() {
-    if (!this.props.name) {
-      this.setState({ name: this.props.name });
-    }
-  }
   render() {
     return (
-      <p>Hello {this.state.name}</p>
+      <p>Hello {this.props.name ? this.props.name : this.state.name}</p>
     );
   }
 }
-When I initialze state I like to set it to a value and if I want to change state i want to use the appropiate method. Also I wanna use a lifecycle method to check the prop.name value.
+There is no point to assign it to state when you can use the value is already saved under prop.name.
 ### 2. What's the issue with this component. Why? How would you go about fixing it?
 
 ```
@@ -202,11 +197,11 @@ Lastly, just a bit of writing! We are a company where members of the team are co
 Thus writing, and the ability to write clearly, logically and to formulate arguments and answers is crucial at tonebase, whether a developer, PM, or A&R manager! These questions aim to give us a better understanding of you as a writer, as well as your development skills.
 
 ### 1. Tell me about componentWillMount and the issues with it?
-
+componentwillmount is called before a render so if the state is changed within componentwillmount it will not cause a re rendering also it is deprecated and is considered unsafe.
 ### 2. Can you walk me through the cycle of mounting a stateful component? What functions are called in what order? Where would you place a request for data from the API? Why?
-
+If you are using classes there are the render method and the constructor method that run then the main lifecycle methods that run are componentdidmount which runs as soon as the page is rendered. This is where you would make a call to an api. This would be the best time to load data because you can change the state with the data before the page loads visibly to the user. Then there is componentwillunmount this is called right before a component is unmounted so this is great for unsubscribing and clean up. There are other lifecycle methods as well but I do not use them often.
 ### 3. If you had unlimited time budget and could fix / improve / change one thing in your last project, what would it be and why?
-
+I would add more features and try to make it as fast as possible. It is a location based application and requires a lot of requests to be made but mainly researching the best approach and design needed for my application. And possible add some machine learning to make educated guess of certain locations. That would be cool!
 ---
 
 That's it! Now it's your time -- feel free to ask any questions you may have and we'd love to answer to the best of our abilities. Thank you so much for taking the time to do this quick interview - we can't wait to see your answers and see if there's a way for us to work together!
