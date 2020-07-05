@@ -11,10 +11,9 @@ import { store, view, autoEffect } from '@risingstack/react-easy-state';
   autoEffect(() => {
   var miliSecondsToHour = 3600000;
   let onceAnHour = setInterval(() => {
-    var upHours = [9,10,11,12,13,14,15,16,17];
-    var downHours = [18,19,20,21,22,23,24,1,2,3,4,5,6,7,8];
+    var downHour = [18,19,20,21,22,23,24,1,2,3,4,5,6,7,8];
     var getHour = new Date().getHours();
-    if(downHours.includes(getHour)) {
+    if(downHour.includes(getHour)) {
       counter.decrementCounter();
     } else {
       counter.incrementCounter();
