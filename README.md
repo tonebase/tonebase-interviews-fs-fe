@@ -50,13 +50,13 @@ The questions below are informed by our stack. I will list the details of each b
 Okay, with all that out of the way let's dive into the question section!
 
 ### 1. What made you interested in/choose React as a framework? Was it a choice you made? Regardless, what is the one thing you enjoy most about it compared to other frameworks you've used and what is one thing you dislike about it?
-
+  I chose React because the first language I got into was Javascript and the two front end frameworks that were really popular at the time were React and Angular. I decided to dive deep into React because I liked the syntax and to me it looked a little more beginner friendly. I enjoy writing JSX and I think it is easy to follow other people's JSX. I dislike that you can use classes and hooks because I think if there was just one way to do it the code would be more consistent.
 ### 2. Why do the component names in JSX start with capital letters?
-
+  I believe React may think the component is an html element if it is lowercase.
 ### 3. What are the main types of components you can render in React? When do you choose one over the other?
-
+There are functional components and class components and for me if a component does not have a state or isn't managingh state then I would use a functional component. But if I do have to manage states then I would use a class component
 ### 4. How much experience do you have with testing frameworks? While our testing is light at the moment (read: nonexistent) this is something we'd like to move to in the future so this is a 'nice-to-know' for us!
-
+I have experience with Jest and Mocha and also I have followed a TDD model. I have also used Artillery and Loader.io to run tests on the server as well.
 ---
 
 Whew, okay, now moving into a couple of code questions. We don't need you to code anything just yet, but this is more around optimization and undertstanding JS/React.
@@ -68,7 +68,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: this.props.name || 'Anonymous'
+      name: 'Anonymous'
     }
   }
   render() {
@@ -78,7 +78,22 @@ class App extends React.Component {
   }
 }
 ```
-
+```
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: 'Anonymous'
+    }
+  }
+  render() {
+    return (
+      <p>Hello {this.props.name ? this.props.name : this.state.name}</p>
+    );
+  }
+}
+```
+There is no point to assign it to state when you can use the value is already saved under prop.name.
 ### 2. What's the issue with this component. Why? How would you go about fixing it?
 
 ```
@@ -108,7 +123,35 @@ render() {
   }
 }
 ```
+```
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { search: "" };
+    this.handleChange = this.handleChange.bind(this);
+  }
 
+  handleChange(event) {
+    /**
+     * This is a simple implementation of a "debounce" function,
+     * which will queue an expression to be called in 250ms and
+     * cancel any pending queued expressions. This way we can
+     * delay the call 250ms after the user has stoped typing.
+     */
+    let value = eventValue => this.setState({ search: eventValue });
+    clearTimeout(this.timeout);
+    this.timeout = setTimeout(value.bind(this, event.target.value), 250);
+  }
+  render() {
+    return (
+      <div>
+        <input type="text" onChange={this.handleChange} />
+        {this.state.search ? <p>Search for: {this.state.search}</p> : null}
+      </div>
+    );
+  }
+}
+```
 ---
 
 Onto just a teensy bit of code + introducing you to our system! This part can be done on your own, and you can ping me when it's good to go!
@@ -120,7 +163,7 @@ Here is a link to a Github repo. containing our NextJS setup. It includes everyt
 **Your challenge is to implement ONE of the following:**
 
 1. OPTION 1: Implement a simple counter
-  
+
   For this assignment you may use a state management system of your choice (other than the native React state). We recommend `react-easy-state` as that is our default tool and is extremely simple to get up and running.
 
   The counter should:
@@ -158,11 +201,11 @@ Lastly, just a bit of writing! We are a company where members of the team are co
 Thus writing, and the ability to write clearly, logically and to formulate arguments and answers is crucial at tonebase, whether a developer, PM, or A&R manager! These questions aim to give us a better understanding of you as a writer, as well as your development skills.
 
 ### 1. Tell me about componentWillMount and the issues with it?
-
+componentwillmount is called before a render so if the state is changed within componentwillmount it will not cause a re rendering also it is deprecated and is considered unsafe.
 ### 2. Can you walk me through the cycle of mounting a stateful component? What functions are called in what order? Where would you place a request for data from the API? Why?
-
+If you are using classes there are the render method and the constructor method that run then the main lifecycle methods that run are componentdidmount which runs as soon as the page is rendered. This is where you would make a call to an api. This would be the best time to load data because you can change the state with the data before the page loads visibly to the user. Then there is componentwillunmount this is called right before a component is unmounted so this is great for unsubscribing and clean up. There are other lifecycle methods as well but I do not use them often.
 ### 3. If you had unlimited time budget and could fix / improve / change one thing in your last project, what would it be and why?
-
+I would add more features and try to make it as fast as possible. It is a location based application and requires a lot of requests to be made but mainly researching the best approach and design needed for my application. And possible add some machine learning to make educated guess of certain locations. That would be cool!
 ---
 
 That's it! Now it's your time -- feel free to ask any questions you may have and we'd love to answer to the best of our abilities. Thank you so much for taking the time to do this quick interview - we can't wait to see your answers and see if there's a way for us to work together!
