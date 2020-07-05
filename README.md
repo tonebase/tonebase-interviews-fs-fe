@@ -50,13 +50,13 @@ The questions below are informed by our stack. I will list the details of each b
 Okay, with all that out of the way let's dive into the question section!
 
 ### 1. What made you interested in/choose React as a framework? Was it a choice you made? Regardless, what is the one thing you enjoy most about it compared to other frameworks you've used and what is one thing you dislike about it?
-
+  I chose React because the first language I got into was Javascript and the two front end frameworks that were really popular at the time were React and Angular. I decided to dive deep into React because I liked the syntax and to me it looked a little more beginner friendly. I enjoy writing JSX and I think it is easy to follow other people's JSX. I dislike that you can use classes and hooks because I think if there was just one way to do it the code would be more consistent.
 ### 2. Why do the component names in JSX start with capital letters?
-
+  I believe React may think the component is an html element if it is lowercase.
 ### 3. What are the main types of components you can render in React? When do you choose one over the other?
-
+There are functional components and class components and for me if a component does not have a state or isn't managingh state then I would use a functional component. But if I do have to manage states then I would use a class component
 ### 4. How much experience do you have with testing frameworks? While our testing is light at the moment (read: nonexistent) this is something we'd like to move to in the future so this is a 'nice-to-know' for us!
-
+I have experience with Jest and Mocha and also I have followed a TDD model. I have also used Artillery and Loader.io to run tests on the server as well.
 ---
 
 Whew, okay, now moving into a couple of code questions. We don't need you to code anything just yet, but this is more around optimization and undertstanding JS/React.
@@ -78,7 +78,25 @@ class App extends React.Component {
   }
 }
 ```
-
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: 'Anonymous'
+    }
+  }
+  componentDidMount() {
+    if (!this.props.name) {
+      this.setState({ name: this.props.name });
+    }
+  }
+  render() {
+    return (
+      <p>Hello {this.state.name}</p>
+    );
+  }
+}
+When I initialze state I like to set it to a value and if I want to change state i want to use the appropiate method. Also I wanna use a lifecycle method to check the prop.name value.
 ### 2. What's the issue with this component. Why? How would you go about fixing it?
 
 ```
@@ -108,7 +126,33 @@ render() {
   }
 }
 ```
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { search: "" };
+    this.handleChange = this.handleChange.bind(this);
+  }
 
+  handleChange(event) {
+    /**
+     * This is a simple implementation of a "debounce" function,
+     * which will queue an expression to be called in 250ms and
+     * cancel any pending queued expressions. This way we can
+     * delay the call 250ms after the user has stoped typing.
+     */
+    let value = eventValue => this.setState({ search: eventValue });
+    clearTimeout(this.timeout);
+    this.timeout = setTimeout(value.bind(this, event.target.value), 250);
+  }
+  render() {
+    return (
+      <div>
+        <input type="text" onChange={this.handleChange} />
+        {this.state.search ? <p>Search for: {this.state.search}</p> : null}
+      </div>
+    );
+  }
+}
 ---
 
 Onto just a teensy bit of code + introducing you to our system! This part can be done on your own, and you can ping me when it's good to go!
@@ -120,7 +164,7 @@ Here is a link to a Github repo. containing our NextJS setup. It includes everyt
 **Your challenge is to implement ONE of the following:**
 
 1. OPTION 1: Implement a simple counter
-  
+
   For this assignment you may use a state management system of your choice (other than the native React state). We recommend `react-easy-state` as that is our default tool and is extremely simple to get up and running.
 
   The counter should:
