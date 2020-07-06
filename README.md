@@ -84,6 +84,20 @@ class App extends React.Component {
 }
 ```
 
+1. the component only renders a single <p> element based off of an unchanged input value (prop),
+so it seems unnecessary to make it a class component.
+2. the state variable 'name' is just making a copy of the prop, which creates two sources
+for the same value. There should be only "one source of truth".
+
+Here's how I would refactor this component:
+```
+const App = (props) => {
+  return (
+    <p>Hello {props.name || "Anonymous"}<p>
+  );
+}
+```
+
 ### 2. What's the issue with this component. Why? How would you go about fixing it?
 
 ```
@@ -114,6 +128,50 @@ render() {
 }
 ```
 
+1. The state is being initialized incorrectly as a private variable / the component is missing a constructor.
+2. In the handleChange method, the clearTimeout line will cause an error as this.timeout hasn't
+been defined yet. Also, handleChange itself isn't properly defined as a method, and needs to be bound to the component as well.
+3. The styling of the code is a little messy - it would benefit from better use of indentation/line spacing among other minor adjustments.
+
+Here's how I would refactor this component:
+```
+class App extends React.Component {
+  contructor(props) {
+    super(props);
+
+    this.state = {
+      search: '',
+    };
+
+    this.timeout;
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    /**
+     * This is a simple implementation of a "debounce" function,
+     * which will queue an expression to be called in 250ms and
+     * cancel any pending queued expressions. This way we can
+     * delay the call 250ms after the user has stoped typing.
+     */
+    clearTimeout(this.timeout);
+    this.timeout = setTimeout(() => {
+      this.setState({
+        search: event.target.value
+      })
+    }, 250);
+  }
+
+  render() {
+    return (
+      <div>
+        <input type="text" onChange={this.handleChange} />
+        {this.state.search ? <p>Search for: {this.state.search}</p> : null}
+      </div>
+    );
+  }
+}
+```
 ---
 
 Onto just a teensy bit of code + introducing you to our system! This part can be done on your own, and you can ping me when it's good to go!
