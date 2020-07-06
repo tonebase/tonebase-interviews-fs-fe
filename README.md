@@ -51,6 +51,8 @@ Okay, with all that out of the way let's dive into the question section!
 
 ### 1. What made you interested in/choose React as a framework? Was it a choice you made? Regardless, what is the one thing you enjoy most about it compared to other frameworks you've used and what is one thing you dislike about it?
 
+I didn't personally choose React, it was already picked as the staple front-end framework of Hack Reactor's curriculum. That said, I've been happily continuing to develop with it as opposed to learning something else. React's clear Javascript structure makes it easy for me to read and write, and I love the ability to weave JS and html together in JSX. One detraction for me is that React can require a good amount of pre-planning to avoid time-consuming refactors down the road, such as changing functional components to class components, or changing the overall app structure to avoid unnecessary re-renders or unmounting/mounting of components.
+
 ### 2. Why do the component names in JSX start with capital letters?
 
 Lower-case tag names compile as html elements; React components are capitalized to differentiate them from basic html elements so that the JSX block compiles correctly.
