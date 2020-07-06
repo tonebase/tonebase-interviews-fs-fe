@@ -64,6 +64,7 @@ There are two main React component types - class and function. In general, you w
 ### 4. How much experience do you have with testing frameworks? While our testing is light at the moment (read: nonexistent) this is something we'd like to move to in the future so this is a 'nice-to-know' for us!
 
 I have experience using Mocha/Chai/Jasmine for vanilla JS testing, and Jest/Enzyme for testing React components. I've also successfully implemented continuous integration/automated testing using CircleCI, though only used on one project.
+
 ---
 
 Whew, okay, now moving into a couple of code questions. We don't need you to code anything just yet, but this is more around optimization and undertstanding JS/React.
