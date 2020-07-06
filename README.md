@@ -53,10 +53,15 @@ Okay, with all that out of the way let's dive into the question section!
 
 ### 2. Why do the component names in JSX start with capital letters?
 
+Lower-case tag names compile as html elements; React components are capitalized to differentiate them from basic html elements so that the JSX block compiles correctly.
+
 ### 3. What are the main types of components you can render in React? When do you choose one over the other?
+
+There are two main React component types - class and function. In general, you would choose a functional component if the component is state-less, and just renders from the props being passed in (though you can introduce state capabilites with the useState hook). Class components are used when your components have state and/or you want to use lifecycle hooks.
 
 ### 4. How much experience do you have with testing frameworks? While our testing is light at the moment (read: nonexistent) this is something we'd like to move to in the future so this is a 'nice-to-know' for us!
 
+I have experience using Mocha/Chai/Jasmine for vanilla JS testing, and Jest/Enzyme for testing React components. I've also successfully implemented continuous integration/automated testing using CircleCI, though only used on one project.
 ---
 
 Whew, okay, now moving into a couple of code questions. We don't need you to code anything just yet, but this is more around optimization and undertstanding JS/React.
