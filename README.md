@@ -84,7 +84,7 @@ class App extends React.Component {
 }
 ```
 
-1. the component only renders a single <p> element based off of an unchanged input value (prop),
+1. the component only renders a single element based off of an unchanged input value (prop),
 so it seems unnecessary to make it a class component.
 2. the state variable 'name' is just making a copy of the prop, which creates two sources
 for the same value. There should be only "one source of truth".
