@@ -51,11 +51,19 @@ Okay, with all that out of the way let's dive into the question section!
 
 ### 1. What made you interested in/choose React as a framework? Was it a choice you made? Regardless, what is the one thing you enjoy most about it compared to other frameworks you've used and what is one thing you dislike about it?
 
+I didn't personally choose React, it was already picked as the staple front-end framework of Hack Reactor's curriculum. That said, I've been happily continuing to develop with it as opposed to learning something else. React's clear Javascript structure makes it easy for me to read and write, and I love the ability to weave JS and html together in JSX. One detraction for me is that React can require a good amount of pre-planning to avoid time-consuming refactors down the road, such as changing functional components to class components, or changing the overall app structure to avoid unnecessary re-renders or unmounting/mounting of components.
+
 ### 2. Why do the component names in JSX start with capital letters?
+
+Lower-case tag names compile as html elements; React components are capitalized to differentiate them from basic html elements so that the JSX block compiles correctly.
 
 ### 3. What are the main types of components you can render in React? When do you choose one over the other?
 
+There are two main React component types - class and function. In general, you would choose a functional component if the component is state-less, and just renders from the props being passed in (though you can introduce state capabilites with the useState hook). Class components are used when your components have state and/or you want to use lifecycle hooks.
+
 ### 4. How much experience do you have with testing frameworks? While our testing is light at the moment (read: nonexistent) this is something we'd like to move to in the future so this is a 'nice-to-know' for us!
+
+I have experience using Mocha/Chai/Jasmine for vanilla JS testing, and Jest/Enzyme for testing React components. I've also successfully implemented continuous integration/automated testing using CircleCI.
 
 ---
 
@@ -76,6 +84,18 @@ class App extends React.Component {
       <p>Hello {this.state.name}</p>
     );
   }
+}
+```
+
+1. the component only renders a single element based off of an unchanged prop, so it seems unnecessary to make it a class component.
+2. the state variable 'name' is just making a copy of the prop, which creates two sources for the same value. There should be only "one source of truth".
+
+Here's how I would refactor this component:
+```
+const App = (props) => {
+  return (
+    <p>Hello {props.name || 'Anonymous'}<p>
+  );
 }
 ```
 
@@ -109,6 +129,40 @@ render() {
 }
 ```
 
+1. In the handleChange method, an error will be thrown because of the async nature of this.timeout: by the time this.setState gets called, event will be null. This can be solved by either storing the value at the beginning of handleChange, or by using event.persist(). I personally prefer the first option.
+2. The styling of the code makes it a little hard to read - it would benefit from some adjustments to the indentation and line spacing.
+
+Here's how I would refactor this component:
+```
+class App extends React.Component {
+  state = { search: '' }
+
+  handleChange = (event) => {
+    /**
+     * This is a simple implementation of a "debounce" function,
+     * which will queue an expression to be called in 250ms and
+     * cancel any pending queued expressions. This way we can
+     * delay the call 250ms after the user has stopped typing.
+     */
+    const searchTerm = event.target.value;
+    clearTimeout(this.timeout);
+    this.timeout = setTimeout(() => {
+      this.setState({
+        search: searchTerm
+      })
+    }, 250);
+  }
+
+  render() {
+    return (
+      <div>
+        <input type="text" onChange={this.handleChange} />
+        {this.state.search ? <p>Search for: {this.state.search}</p> : null}
+      </div>
+    );
+  }
+}
+```
 ---
 
 Onto just a teensy bit of code + introducing you to our system! This part can be done on your own, and you can ping me when it's good to go!
@@ -159,9 +213,20 @@ Thus writing, and the ability to write clearly, logically and to formulate argum
 
 ### 1. Tell me about componentWillMount and the issues with it?
 
+componentWillMount is a lifecycle hook invoked prior to rendering. It causes issues when async calls are made (e.g. an API call to fetch data used to render the page), as the component will mount/render before these calls return, which causes multiple re-renders of the page.
+
 ### 2. Can you walk me through the cycle of mounting a stateful component? What functions are called in what order? Where would you place a request for data from the API? Why?
 
+When a stateful component mounts, functions are called in this order:
+  1. The constructor, specifically super(props) and then the initial state
+  2. The render() method
+  3. Then any lifecycle hooks (provided you aren't using componentWillMount, which happens prior to rendering).
+
+I would place an API request for data into componentDidMount - this will avoid excess re-renders due to the async nature of the request. Since the data from the API call will be used to properly render the page, I would create a 'loading' state variable that is initialized to true, which is used to conditionally render the page between a loading animation/spinner and the fully rendered page. So, while the API request is processing, a loading animation is displayed, and then when the request has resolved and the data is placed into the state, the loading state will flip to false and the fully-rendered page will now be displayed.
+
 ### 3. If you had unlimited time budget and could fix / improve / change one thing in your last project, what would it be and why?
+
+I'm happy to say there's fairly little I'd want to change about my last project. The one thing I found myself wanting to change was the structure of the data in the Firebase database (this was already set up by previous contributors). The way the data was structured, getting all of the data needed for each page of the web app required long promise chains (in some cases, longer than could fit on the sceen at once). While the data structure made for efficient requests (each single request didn't return any more than was explicity asked of it), it did complicate the development process early on.
 
 ---
 
