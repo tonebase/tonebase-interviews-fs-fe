@@ -63,7 +63,7 @@ There are two main React component types - class and function. In general, you w
 
 ### 4. How much experience do you have with testing frameworks? While our testing is light at the moment (read: nonexistent) this is something we'd like to move to in the future so this is a 'nice-to-know' for us!
 
-I have experience using Mocha/Chai/Jasmine for vanilla JS testing, and Jest/Enzyme for testing React components. I've also successfully implemented continuous integration/automated testing using CircleCI, though only used on one project.
+I have experience using Mocha/Chai/Jasmine for vanilla JS testing, and Jest/Enzyme for testing React components. I've also successfully implemented continuous integration/automated testing using CircleCI.
 
 ---
 
@@ -87,16 +87,14 @@ class App extends React.Component {
 }
 ```
 
-1. the component only renders a single element based off of an unchanged input value (prop),
-so it seems unnecessary to make it a class component.
-2. the state variable 'name' is just making a copy of the prop, which creates two sources
-for the same value. There should be only "one source of truth".
+1. the component only renders a single element based off of an unchanged prop, so it seems unnecessary to make it a class component.
+2. the state variable 'name' is just making a copy of the prop, which creates two sources for the same value. There should be only "one source of truth".
 
 Here's how I would refactor this component:
 ```
 const App = (props) => {
   return (
-    <p>Hello {props.name || "Anonymous"}<p>
+    <p>Hello {props.name || 'Anonymous'}<p>
   );
 }
 ```
@@ -131,36 +129,26 @@ render() {
 }
 ```
 
-1. The state is being initialized incorrectly as a private variable / the component is missing a constructor.
-2. In the handleChange method, the clearTimeout line will cause an error as this.timeout hasn't
-been defined yet. Also, handleChange itself isn't properly defined as a method, and needs to be bound to the component as well.
-3. The styling of the code is a little messy - it would benefit from better use of indentation/line spacing among other minor adjustments.
+1. In the handleChange method, an error will be thrown because of the async nature of this.timeout: by the time this.setState gets called, event will be null. This can be solved by either storing the value at the beginning of handleChange, or by using event.persist(). I personally prefer the first option.
+2. The styling of the code makes it a little hard to read - it would benefit from some adjustments to the indentation and line spacing.
 
 Here's how I would refactor this component:
 ```
 class App extends React.Component {
-  contructor(props) {
-    super(props);
+  state = { search: '' }
 
-    this.state = {
-      search: '',
-    };
-
-    this.timeout;
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(event) {
+  handleChange = (event) => {
     /**
      * This is a simple implementation of a "debounce" function,
      * which will queue an expression to be called in 250ms and
      * cancel any pending queued expressions. This way we can
-     * delay the call 250ms after the user has stoped typing.
+     * delay the call 250ms after the user has stopped typing.
      */
+    const searchTerm = event.target.value;
     clearTimeout(this.timeout);
     this.timeout = setTimeout(() => {
       this.setState({
-        search: event.target.value
+        search: searchTerm
       })
     }, 250);
   }
@@ -225,9 +213,20 @@ Thus writing, and the ability to write clearly, logically and to formulate argum
 
 ### 1. Tell me about componentWillMount and the issues with it?
 
+componentWillMount is a lifecycle hook invoked prior to rendering. It causes issues when async calls are made (e.g. an API call to fetch data used to render the page), as the component will mount/render before these calls return, which causes multiple re-renders of the page.
+
 ### 2. Can you walk me through the cycle of mounting a stateful component? What functions are called in what order? Where would you place a request for data from the API? Why?
 
+When a stateful component mounts, functions are called in this order:
+  1. The constructor, specifically super(props) and then the initial state
+  2. The render() method
+  3. Then any lifecycle hooks (provided you aren't using componentWillMount, which happens prior to rendering).
+
+I would place an API request for data into componentDidMount - this will avoid excess re-renders due to the async nature of the request. Since the data from the API call will be used to properly render the page, I would create a 'loading' state variable that is initialized to true, which is used to conditionally render the page between a loading animation/spinner and the fully rendered page. So, while the API request is processing, a loading animation is displayed, and then when the request has resolved and the data is placed into the state, the loading state will flip to false and the fully-rendered page will now be displayed.
+
 ### 3. If you had unlimited time budget and could fix / improve / change one thing in your last project, what would it be and why?
+
+I'm happy to say there's fairly little I'd want to change about my last project. The one thing I found myself wanting to change was the structure of the data in the Firebase database (this was already set up by previous contributors). The way the data was structured, getting all of the data needed for each page of the web app required long promise chains (in some cases, longer than could fit on the sceen at once). While the data structure made for efficient requests (each single request didn't return any more than was explicity asked of it), it did complicate the development process early on.
 
 ---
 
