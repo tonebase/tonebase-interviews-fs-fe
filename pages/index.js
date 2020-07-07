@@ -54,7 +54,7 @@ class Counter extends React.Component {
 
           .container {
             width: 70%;
-            min-width: 500px;
+            min-width: 600px;
             margin: 0 auto;
           }
 
