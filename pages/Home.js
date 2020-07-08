@@ -44,7 +44,7 @@ const suggest = (input, search) => {
 
 const Home = () => {
   const [searchText, setSearchText] = useState('');
-  const [searchSuggestions, setSearchSuggestions] = useState(searchMock);
+  const [searchSuggestions, setSearchSuggestions] = useState([]);
 
   const onHandleChange = (text) => {
     setSearchText(text);
