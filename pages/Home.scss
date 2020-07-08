@@ -1,0 +1,19 @@
+@import "../lib/styleGuide/spacing.scss";
+@import "../lib/styleGuide/colors.scss";
+
+.appWrapper {
+  background-color: white;
+  color: black;
+}
+
+.flexColumn {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  margin: 0 auto;
+}
+
+.buttonContainer {
+  padding-top: 18px;
+  top: 53px;
+}

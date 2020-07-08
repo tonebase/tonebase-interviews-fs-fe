@@ -51,11 +51,19 @@ Okay, with all that out of the way let's dive into the question section!
 
 ### 1. What made you interested in/choose React as a framework? Was it a choice you made? Regardless, what is the one thing you enjoy most about it compared to other frameworks you've used and what is one thing you dislike about it?
 
+I've worked in Angular.js, Angular, Knockout.js, .NET (mvc moedl).  React implements a one-way data flow, so you don't get discrepencies anywhere in the app.  Other than that, React is pretty similar to higher versions of Angular, so I don't really have a preference.  But I do prefer React over MVC models like Angular.js because there are more design patterns available and options to reuse code.
+
 ### 2. Why do the component names in JSX start with capital letters?
+
+To distinguish them from html tags.
 
 ### 3. What are the main types of components you can render in React? When do you choose one over the other?
 
+Component, PureComponent and functional components.  Choose a Component when you need all lifecycle events and state.  Use a PureComponent if you need lifecycle and state, but the component rendering doesn't depend on props values.  Functional component if you don't need state or lifecycle.  Recently, I've been experimenting with adding in hooks to functional components.  It's easier to reuse code, and you can just pull in what you need, not the entire Component.
+
 ### 4. How much experience do you have with testing frameworks? While our testing is light at the moment (read: nonexistent) this is something we'd like to move to in the future so this is a 'nice-to-know' for us!
+
+I've used jest, mocha and chai for unit testing.
 
 ---
 
@@ -78,6 +86,9 @@ class App extends React.Component {
   }
 }
 ```
+
+Basing state on props is error-prone.  Just pass the props directly to the 'p' element:
+<p>Hello {this.props.name ? this.props.name : 'Anonymous' }
 
 ### 2. What's the issue with this component. Why? How would you go about fixing it?
 
@@ -108,6 +119,10 @@ render() {
   }
 }
 ```
+
+React clears the event, but you can prevent it with 
+    event.persist();
+
 
 ---
 
@@ -159,7 +174,11 @@ Thus writing, and the ability to write clearly, logically and to formulate argum
 
 ### 1. Tell me about componentWillMount and the issues with it?
 
+It's called before the component mounts, and if you try to set state, it might not get rendered with that state.
+
 ### 2. Can you walk me through the cycle of mounting a stateful component? What functions are called in what order? Where would you place a request for data from the API? Why?
+
+constructor(), render(), componentDidMount().  I would make an api call in componentDidMount().  If you called it in render, it would get called every time the component is rendered.  I imagine you would want to set the state or save to a redux store as the component loads.
 
 ### 3. If you had unlimited time budget and could fix / improve / change one thing in your last project, what would it be and why?
 
