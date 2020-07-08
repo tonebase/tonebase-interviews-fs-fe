@@ -28,12 +28,27 @@ const searchMock = [
   'for mock data'
 ];
 
+// move to util dir
+// modified from https://stackoverflow.com/questions/11404855/javascript-autocomplete-without-external-library
+
+const suggest = (input, search) => {
+  if (input.length > 0) {
+    var reg = new RegExp(input.split('').join('\\w*').replace(/\W/, ""), 'i');
+    return search.filter(function (item) {
+      if (item.match(reg)) {
+        return item;
+      }
+    });
+  } else { return '' }
+}
+
 const Home = () => {
   const [searchText, setSearchText] = useState('');
   const [searchSuggestions, setSearchSuggestions] = useState(searchMock);
 
   const onHandleChange = (text) => {
     setSearchText(text);
+    setSearchSuggestions(suggest(text, searchMock));
   }
 
   const search = () => {
