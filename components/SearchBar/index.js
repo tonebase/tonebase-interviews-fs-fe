@@ -1,8 +1,10 @@
 import React, { Fragment } from 'react';
 import styles from './index.scss';
-// import styles from '../../lib/styleGuide/index.scss';
 import _ from 'lodash';
-export default function Search({ onHandleChange }) {
+import ListItem from './ListItem';
+
+
+export default function Search({ onHandleChange, search, searchSuggestions }) {
 
   const handleChange = (event) => {
     event.persist();
@@ -28,9 +30,22 @@ export default function Search({ onHandleChange }) {
           </div>
         </div>
       </div>
-      <div className="suggestions">
 
-      </div>
+      {searchSuggestions.length > 0 &&
+        <div className="listContainer">
+
+          {searchSuggestions.map((item, i) =>
+
+            <ul className="list" key={i.toString()}>
+              <ListItem
+                click={search}
+                item={item}
+              />
+            </ul>
+          )}
+        </div>
+      }
+
       <style jsx>
         {styles}
       </style>

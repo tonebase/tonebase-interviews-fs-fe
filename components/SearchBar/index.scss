@@ -1,8 +1,28 @@
 .searchContainer {
   margin: 0 auto;
+  width: 100%;
 
   .searchBorder {
     border: 1px solid rgba(223, 225, 229, 0);
 
+  }
+}
+
+.listContainer {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0 0 24px 24px;
+  box-shadow: 0 4px 6px 0 rgba(32, 33, 36, 0.28);
+  padding-bottom: 4px;
+  overflow: hidden;
+  width: 100%;
+
+  .list {
+    padding-bottom: 10px;
   }
 }

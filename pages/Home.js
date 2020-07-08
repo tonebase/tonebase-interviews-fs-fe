@@ -12,9 +12,25 @@ import {
 } from "../components/Molecules/Layout";
 import SearchButton from '../components/SearchBar/SearchButton';
 
+// If I had time I would replace this with a call to google's api to get search results
+// and make an array of suggestions from it
+
+const searchMock = [
+  'apple',
+  'bananna',
+  'smoothie',
+  'pizza',
+  'pasta',
+  'tacos al pastor',
+  'now I\'m hungry',
+  'should have chosen',
+  'a different subject',
+  'for mock data'
+];
 
 const Home = () => {
   const [searchText, setSearchText] = useState('');
+  const [searchSuggestions, setSearchSuggestions] = useState(searchMock);
 
   const onHandleChange = (text) => {
     setSearchText(text);
@@ -40,11 +56,13 @@ const Home = () => {
       </span>
 
       <div className="flexColumn flex-col alignItems-center justifyContent-center">
-        <img
+        <img 
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/368px-Google_2015_logo.svg.png"
         />
         <SearchBar
+          searchSuggestions={searchSuggestions}
           onHandleChange={onHandleChange}
+          search={search}
         />
 
         <div className="buttonContainer">
