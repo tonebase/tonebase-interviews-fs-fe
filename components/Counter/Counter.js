@@ -11,8 +11,10 @@ function getFormattedTime() {
 }
 
 export default view(() => {
+
   // State from CounterStore
   const { count, increment, decrement } = CounterStore;
+
   // State for time
   const clock = store({
     time: getFormattedTime(),
