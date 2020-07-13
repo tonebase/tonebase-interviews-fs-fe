@@ -82,18 +82,22 @@ class App extends React.Component {
 }
 ```
 
+The example above is initializing state in the component with props.  Simplest answer is that's unnecessary,because you can just set the Hello greeting in the p tag to <p>Hello {this.props.name}</p>.  The more complex answer is that this is commonly known as an "anti-pattern" and could often lead to a duplication of the source data.  This is because the React lifecycle method getInitialState will only be invoked when the component is created, and if the props on the component are changed without the component being refreshed, the new prop value will never be displayed because the constructor function will never update the current state of the component.  In general, one should always avoid using derived state, but considering the component is just displaying a user's name, we can ignore prop updates and simply rewrite the component as such:
+
+const App = ({ name }) => {
+  const userName = name || 'Anonymous';
+  return (<p>Hello {userName}</p>);
+};
+
+
 ### 2. What's the issue with this component. Why? How would you go about fixing it?
 
 ```
 class App extends React.Component {
 state = { search: '' }
 handleChange = event => {
-/**
-     * This is a simple implementation of a "debounce" function,
-     * which will queue an expression to be called in 250ms and
-     * cancel any pending queued expressions. This way we can
-     * delay the call 250ms after the user has stoped typing.
-     */
+    // event.persist() 
+    // calling event.persist() passes the entire event through and removes any synthetic events from the pool 
     clearTimeout(this.timeout);
     this.timeout = setTimeout(() => {
       this.setState({
@@ -111,6 +115,10 @@ render() {
   }
 }
 ```
+The issue with this component is that this.state.search will only contain null values and has to do with React's SyntheticEvent wrapper, which pools events and therefore reads the value before calling setTimeout. This is because the SyntheticEvent object will be reused and all properties will be nullfied after the event callback has been invoked.
+
+Alternatively, we could call the event.persist() method as done on line 99, which will remove the synthetic event from the pool and allow references to the event to be retained.  
+
 
 ---
 
