@@ -170,9 +170,16 @@ Thus writing, and the ability to write clearly, logically and to formulate argum
 
 ### 1. Tell me about componentWillMount and the issues with it?
 
+componentWillMount was a React lifecycle method that was deprecated by Facebook back in 2018. The reason for this is because when using a fetch call within componentWillMount(), it causes the component to render with empty data at first, because componentWillMount() will NOT return before the first render of the component. But due to the fact that JavaScript events are async, when you make an API call, the browser continues to do other work while the call is still in motion. With React, while a component is rendering it doesn’t wait for componentWillMount() to finish, so the component continues to render.  With all that being said, you would need to to create a component that still looks presentable without the data that you are hoping to display. There is no way (not even a timer) to stop the component from rendering until the data is present.
+
 ### 2. Can you walk me through the cycle of mounting a stateful component? What functions are called in what order? Where would you place a request for data from the API? Why?
 
+The lifecycle of mounting a stateful component starts off with the constructor.  Before the component mounts, the `constructor` is invoked and is responsible for initializing state and binding event handlers.Next, `getDerivedStateFromProps` gets called on the initial mount and subsequent updates, and it returns an object for updating the state or null. This is mainly used where the state depends on changes in props over time, which happens rarely. Next comes the `render` method, and it is the only required method in a class component, and it should be pure (returning the same result every time it's invoked). With props and state, it returns one of the following types: react elements, arrays and fragments, portals, string and numbers, or booleans or null. Then after the component mounts, `componentDidMount` will get invoked and is the recommended place for initializing DOM nodes, requesting data from the API, and setting up subscriptions. 
+
 ### 3. If you had unlimited time budget and could fix / improve / change one thing in your last project, what would it be and why?
+
+The last product I worked on was called Portara, a rate limiting tool using GraphQL that controls and throttles the amount of requests sent to a specific endpoint and reduces potential for malicious attacks and overload on a server.  The team with whom I had worked on the project with was stellar and had we had more time to work on the product, there were definitely a whole bunch of extra features we would have liked to implement.  Namely, we would have loved to develop a feature that syncs with AWS serverless to limit the amount of requests sent to the server and displays a cost benefit analysis tool so that users could limit or throttle the amount of requests sent to AWS's servers based on their financial needs.  It's never too late though and hopefully one day I will relish in deploying our product with this added feature!
+
 
 ---
 
