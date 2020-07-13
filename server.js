@@ -22,9 +22,9 @@ app.prepare().then(() => {
   const server = express();
 
   // here you could do some express stuff if you fancy, eg. running custom middleware or offering an API
-  // server.get('/api', (req, res) => {
-  //   return res.send({ version: 1.0 })
-  // });
+  server.get('/api', (req, res) => {
+    return res.send({ version: 1.0 })
+  });
 
   // General NextJS route handler
   server.use(handler);

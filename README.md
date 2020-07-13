@@ -50,13 +50,16 @@ The questions below are informed by our stack. I will list the details of each b
 Okay, with all that out of the way let's dive into the question section!
 
 ### 1. What made you interested in/choose React as a framework? Was it a choice you made? Regardless, what is the one thing you enjoy most about it compared to other frameworks you've used and what is one thing you dislike about it?
+/* I was introduced to React through an online course I had taken awhile back on Udemy, after designing and developing websites in HTML, CSS & Javascript I became very interested in the idea of component based frameworks and sought out React after speaking with several developer friends and learning more about its increasing popularity.  After diving in, the html style syntax of JSX made it super easy to use and so I latched onto it immediately.  Even now, after toying around with Angular and Vue, React is still my preferred library because it's less heavy than Angular which can often perform a little slower when comparaed to React's render time and virtual dom.  And even though Angular is its own suite of tools and integrates better with typescript, I still prefer and enjoy taking advantage of React's third party tools such as router, redux for centralizing state, the incorporation of React Hooks in v16.8 and also because I find it easier to use with dynamic rendering technologies such as Next.js.
 
 ### 2. Why do the component names in JSX start with capital letters?
+The main reason why component names in JSX start with capital letters is because it indicates a react component and furthermore get compiled in direct reference to the named variable. Under the hood, the syntax would be 'React.createElement(component, props, ...children). If it were to start with a lowercase letter, then React treats it as a regular html element and passes it as a string into React.createElement(..), and so no methods inside the class get called, nothing renders and the user will not see any error messages inside the browser console.
 
 ### 3. What are the main types of components you can render in React? When do you choose one over the other?
+There are two main types of components that you can render in React: functional and class. Originally, class components were prioritized when declaring/accessing state and implementing lifecycle methods.  HOWEVER, with the addition of React hooks, functional components now have access to state and lifecycle methods, as oppose to their original intention of simply rendering information on the screen.  Using functional components with React hooks helps maintain consistency with a functional programming paradigm by making logic more concise and avoiding a shared state through the reusability of stateful logic. 
 
 ### 4. How much experience do you have with testing frameworks? While our testing is light at the moment (read: nonexistent) this is something we'd like to move to in the future so this is a 'nice-to-know' for us!
-
+During the last product I worked on called Portara, I streamlined all of our product's testing using Jest with Enzyme to test rendering of React components and integrated it with Travis CI to ensure codebase integrity and prevent merge conflicts as well as facilitate continuous integration and deployment of our application.  I have since adapted this framework, adding both unit and integration tests to test all of our latest products and releases. 
 ---
 
 Whew, okay, now moving into a couple of code questions. We don't need you to code anything just yet, but this is more around optimization and undertstanding JS/React.
@@ -79,18 +82,22 @@ class App extends React.Component {
 }
 ```
 
+The example above is initializing state in the component with props.  Simplest answer is that's unnecessary,because you can just set the Hello greeting in the p tag to <p>Hello {this.props.name}</p>.  The more complex answer is that this is commonly known as an "anti-pattern" and could often lead to a duplication of the source data.  This is because the React lifecycle method getInitialState will only be invoked when the component is created, and if the props on the component are changed without the component being refreshed, the new prop value will never be displayed because the constructor function will never update the current state of the component.  In general, one should always avoid using derived state, but considering the component is just displaying a user's name, we can ignore prop updates and simply rewrite the component as such:
+
+const App = ({ name }) => {
+  const userName = name || 'Anonymous';
+  return (<p>Hello {userName}</p>);
+};
+
+
 ### 2. What's the issue with this component. Why? How would you go about fixing it?
 
 ```
 class App extends React.Component {
 state = { search: '' }
 handleChange = event => {
-/**
-     * This is a simple implementation of a "debounce" function,
-     * which will queue an expression to be called in 250ms and
-     * cancel any pending queued expressions. This way we can
-     * delay the call 250ms after the user has stoped typing.
-     */
+    // event.persist() 
+    // calling event.persist() passes the entire event through and removes any synthetic events from the pool 
     clearTimeout(this.timeout);
     this.timeout = setTimeout(() => {
       this.setState({
@@ -108,6 +115,10 @@ render() {
   }
 }
 ```
+The issue with this component is that this.state.search will only contain null values and has to do with React's SyntheticEvent wrapper, which pools events and therefore reads the value before calling setTimeout. This is because the SyntheticEvent object will be reused and all properties will be nullfied after the event callback has been invoked.
+
+Alternatively, we could call the event.persist() method as done on line 99, which will remove the synthetic event from the pool and allow references to the event to be retained.  
+
 
 ---
 
@@ -159,9 +170,16 @@ Thus writing, and the ability to write clearly, logically and to formulate argum
 
 ### 1. Tell me about componentWillMount and the issues with it?
 
+componentWillMount was a React lifecycle method that was deprecated by Facebook back in 2018. The reason for this is because when using a fetch call within componentWillMount(), it causes the component to render with empty data at first, because componentWillMount() will NOT return before the first render of the component. But due to the fact that JavaScript events are async, when you make an API call, the browser continues to do other work while the call is still in motion. With React, while a component is rendering it doesn’t wait for componentWillMount() to finish, so the component continues to render.  With all that being said, you would need to to create a component that still looks presentable without the data that you are hoping to display. There is no way (not even a timer) to stop the component from rendering until the data is present.
+
 ### 2. Can you walk me through the cycle of mounting a stateful component? What functions are called in what order? Where would you place a request for data from the API? Why?
 
+The lifecycle of mounting a stateful component starts off with the constructor.  Before the component mounts, the `constructor` is invoked and is responsible for initializing state and binding event handlers.Next, `getDerivedStateFromProps` gets called on the initial mount and subsequent updates, and it returns an object for updating the state or null. This is mainly used where the state depends on changes in props over time, which happens rarely. Next comes the `render` method, and it is the only required method in a class component, and it should be pure (returning the same result every time it's invoked). With props and state, it returns one of the following types: react elements, arrays and fragments, portals, string and numbers, or booleans or null. Then after the component mounts, `componentDidMount` will get invoked and is the recommended place for initializing DOM nodes, requesting data from the API, and setting up subscriptions. 
+
 ### 3. If you had unlimited time budget and could fix / improve / change one thing in your last project, what would it be and why?
+
+The last product I worked on was called Portara, a rate limiting tool using GraphQL that controls and throttles the amount of requests sent to a specific endpoint and reduces potential for malicious attacks and overload on a server.  The team with whom I had worked on the project with was stellar and had we had more time to work on the product, there were definitely a whole bunch of extra features we would have liked to implement.  Namely, we would have loved to develop a feature that syncs with AWS serverless to limit the amount of requests sent to the server and displays a cost benefit analysis tool so that users could limit or throttle the amount of requests sent to AWS's servers based on their financial needs.  It's never too late though and hopefully one day I will relish in deploying our product with this added feature!
+
 
 ---
 
