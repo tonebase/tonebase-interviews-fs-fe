@@ -1,0 +1,31 @@
+.magic-counter-wrapper {
+  margin: 3em;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.count-display-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 30vh;
+  max-height: 14em;
+  margin: 0.5em 0em;
+  border: 1px solid rgba(0, 100, 0, 0.8);
+  min-width: 200px;
+}
+
+.count-value {
+  font-size: 7em;
+}
+
+.inc-button {
+  min-width: 200px;
+}
+
+.dec-button {
+  min-width: 200px;
+}
