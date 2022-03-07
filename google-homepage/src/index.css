@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* OTHER FONT IMPORTS */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400&family=Ubuntu:wght@500&display=swap");
+
+/* OTHER STYLES */
+
+/* Global */
+body {
+  background-color: #202124;
+}
+
+/* TEXT */
+.text-offwhite-header {
+  color: #bdc1c6;
+}
+
+.text-offwhite-footer {
+  color: #999da2;
+}
+
+.text-offwhite-search {
+  color: #e8eaed;
+}
+
+.font-family-arial {
+  font-family: Arial, sans-serif;
+}
+
+.font-family-roboto {
+  font-family: "Roboto", sans-serif;
+}
+
+/* BACKGROUND */
+#grid:hover {
+  background-color: #303134;
+}
+
+.border-offblack-search {
+  border-color: #5f6368;
+}
+
+.bg-offblack-search {
+  background-color: #303134;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border: none;
+}
+
+#search:focus {
+  background-color: #5f6368;
+}
+
+.bg-offblack {
+  background-color: #171717;
+}
+
+.bg-offblack-button {
+  background-color: #303134;
+}
+
+.bg-offblack-button:hover {
+  border: 1px solid #5f6368;
+}
+
+/* OTHER */
+.input-outline-none {
+  outline: none;
+}
