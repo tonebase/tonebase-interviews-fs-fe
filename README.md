@@ -51,11 +51,21 @@ Okay, with all that out of the way let's dive into the question section!
 
 ### 1. What made you interested in/choose React as a framework? Was it a choice you made? Regardless, what is the one thing you enjoy most about it compared to other frameworks you've used and what is one thing you dislike about it?
 
+In university a professor recommend the class to use React to make the UI for one of the class projects, since then I started learning and using React. It wasn't a choice I made at first, but I choose to keep learning it. 
+One thing I like about React is that is pretty easy to learn and configure at first; one thing I dislike about React is that because of the freedom it gives you, the code can become very disorganized.
+
 ### 2. Why do the component names in JSX start with capital letters?
+
+Because when they start with a capital letter they are treated as a React Component, but when they start with a lowercase letter they are treated like a DOM element.
 
 ### 3. What are the main types of components you can render in React? When do you choose one over the other?
 
+Function components and class components.
+You choose function components when you want to display content that doesn't have any logic or have a light business logic (this is possible with the use of Hooks), and you choose class components when the bussiness logic is more complex and you need to use specific lifecycles methods.
+
 ### 4. How much experience do you have with testing frameworks? While our testing is light at the moment (read: nonexistent) this is something we'd like to move to in the future so this is a 'nice-to-know' for us!
+
+I have experience with Jest, React testing library and a little bit with Cypress. I have integrated Snapshot testing as well. I would say I have some experience in testing as a whole, but most of the tests I've written have been basic. 
 
 ---
 
@@ -79,6 +89,14 @@ class App extends React.Component {
 }
 ```
 
+What is wrong with this example is that this is an antipattern, state should never derived from props if it's going to remain static as in this case, also because the state is duplicating the props value, it makes it harder to know the single source of truth. A way to improve this component is making the component fully controled, like this:
+
+```
+function App (props) {
+    return <p>Hello {props.name || 'Anonymous'}</p>;
+}
+```
+
 ### 2. What's the issue with this component. Why? How would you go about fixing it?
 
 ```
@@ -91,6 +109,31 @@ handleChange = event => {
      * cancel any pending queued expressions. This way we can
      * delay the call 250ms after the user has stoped typing.
      */
+    clearTimeout(this.timeout);
+    this.timeout = setTimeout(() => {
+      this.setState({
+        search: event.target.value
+      })
+    }, 250);
+  }
+render() {
+    return (
+      <div>
+        <input type="text" onChange={this.handleChange} />
+        {this.state.search ? <p>Search for: {this.state.search}</p> : null}
+      </div>
+    )
+  }
+}
+```
+
+The issue with this example is that `event.target.value` will be null, this is because the synthetic events properties are nullified after the handler has been called, this is because the synthetic events used to be pooled and reused, but not anymore after React 17. I would fix this using `event.persist()`, what this does is telling React to keep all the properties in that event after the handler has run. It would look like this:
+
+```
+class App extends React.Component {
+state = { search: '' }
+handleChange = event => {
+    event.persist(); // SOLUTION
     clearTimeout(this.timeout);
     this.timeout = setTimeout(() => {
       this.setState({
@@ -159,9 +202,17 @@ Thus writing, and the ability to write clearly, logically and to formulate argum
 
 ### 1. Tell me about componentWillMount and the issues with it?
 
+componentWillMount is a legacy lifecycle method that was called before the component was mounted. The issue with it is that this method was used for async requests to initialize the state and avoid a second render, but nothing assured people that it was going finish before the render method was called.
+
 ### 2. Can you walk me through the cycle of mounting a stateful component? What functions are called in what order? Where would you place a request for data from the API? Why?
 
+First it is called the `constructor()` method, this is where the state is initialized and where the binding to methods is done. In second place is called `getDerivedStateFromProps()`, this is a static method that is used when the state depends on the props, a thing to note about this method is that it is also called after every update. In third place is called the `render()` method, this method is the only required method in a component and it is the one responsible for what it is to be viewed in the browser, among other things. And lastly, the `componentDidMount()` method, this method is called after the `render()`, this is where state can be update it after it mounts and where async request should be done.
+
+As mentioned before, I would place a request in the `componentDidMount()`, because it is called when the component is already mounted so if I wanted to update the state based on the response of the API, I wouldn't risk it being null values. In both the `constructor()` and `getDerivedStateFromProps()` you risk that the async request is still processing when the `render()` is called so it may result in null state values if you want to update the state based on the responde. And in the `render()` method it wouldn't be right because it should be a pure function, and an async call inside of it could cause side effects. 
+
 ### 3. If you had unlimited time budget and could fix / improve / change one thing in your last project, what would it be and why?
+
+I would add an experienced PM or a lead developer with more experience. This is because in my last project, the lack of someone with expertise in a particular type of project lead to everybody taking different routes and it took a lot of time to have a consistency in the project.
 
 ---
 
