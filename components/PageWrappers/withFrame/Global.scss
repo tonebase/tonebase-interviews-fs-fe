@@ -1,4 +1,5 @@
 /* @styled-jsx=global */
+/* stylelint-disable */
 
 // === STYLE SYSTEM ===
 @import "styleSystem.scss";
@@ -10,6 +11,7 @@
 // ===============================
 
 html {
+
   &::-webkit-scrollbar {
     width: 9px;
     background-color: #f5f5f5;
@@ -27,6 +29,7 @@ html {
   }
 
   &.__showScrollbar {
+
     &::-webkit-scrollbar,
     &::-webkit-scrollbar-track,
     &::-webkit-scrollbar-thumb {
@@ -106,12 +109,14 @@ body {
 // <<< Body Content wrapped from withFrame
 
 #bodyWrapper {
-  height: 100%;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
   position: relative;
   z-index: 100;
   min-height: 100%;
-  width: 100%;
-  display: flex;
   flex-direction: row;
 }
 
@@ -139,6 +144,7 @@ body {
 
 // <<< Wrapped from within each page component
 
+//noinspection ALL
 .appWrapper {
   position: relative;
   padding-top: 0;
@@ -185,6 +191,7 @@ body {
 // <<< "Clearfix" for major page items
 
 .pageContentItem {
+
   &::before {
     display: flex;
     content: "";
@@ -206,7 +213,7 @@ body {
 // << Loading Animation
 
 .blackAnimated {
-  background-color: #333333;
+  background-color: #333;
 
   animation-name: pulse;
   animation-duration: 2.1s;
@@ -221,25 +228,31 @@ body {
 }
 
 @keyframes pulse {
+
   0% {
-    background-color: #333333;
+    background-color: #333;
   }
+
   50% {
-    background-color: #555555;
+    background-color: #555;
   }
+
   100% {
-    background-color: #333333;
+    background-color: #333;
   }
 }
 
 @keyframes pulse {
+
   0% {
-    background-color: #111111;
+    background-color: #111;
   }
+
   50% {
-    background-color: #333333;
+    background-color: #333;
   }
+
   100% {
-    background-color: #111111;
+    background-color: #111;
   }
 }

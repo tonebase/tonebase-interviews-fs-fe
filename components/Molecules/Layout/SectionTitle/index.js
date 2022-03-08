@@ -3,12 +3,12 @@ function SectionTitle(props = {}) {
 
   let titleWrapperClasses = "sectionTitleInner w-100 paddingBottom-lg";
   let titleClasses =
-    "fontSize-xl breakLg-fontSize-xxl lineHeight-lg fontFamily-primary color-white--main textTransform-uppercase letterSpacing-sm";
+    "d-inline-block fontSize-xl breakLg-fontSize-xxl lineHeight-lg fontFamily-primary color-white--main textTransform-uppercase letterSpacing-sm";
   let subTitleClasses = "fontSize-sm breakMd-fontSize-sm lineHeight-lg";
 
   // Adjust title size
   if (props.size === "small") {
-    titleWrapperClasses = "sectionTitleInner w-100 paddingBottom-md";
+    titleWrapperClasses = "sectionTitleInner paddingBottom-md d-inline-block";
     titleClasses =
       "fontSize-lg breakLg-fontSize-xl lineHeight-md fontFamily-primary color-white--main textTransform-uppercase letterSpacing-sm";
     subTitleClasses = "fontSize-xs breakMd-fontSize-sm lineHeight-lg";
@@ -19,9 +19,9 @@ function SectionTitle(props = {}) {
   }
 
   return (
-    <div className="sectionTitle pageContentItem paddingLeft-xs paddingRight-xs">
+    <div className="sectionTitle pageContentItem paddingLeft-xs paddingRight-xs d-inline-block">
       <div className={titleWrapperClasses}>
-        <div className="titleText">
+        <div className="titleText d-inline-block">
           <h2 className={titleClasses}>{props.title}</h2>
         </div>
         {props.subtitle && (
