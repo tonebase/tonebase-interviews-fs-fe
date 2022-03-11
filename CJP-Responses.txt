@@ -1,0 +1,25 @@
+// Written responses for Tonebase interview
+
+"1. Tell me about componentWillMount and the issues with it?"
+	
+	With every component, whether class based or functional based, there exists the lifecycle.  Within this lifecycle are various lifecycle methods.  The componentWillMount method is considered legacy at this point and has been replaced.  There are a few reasons for this:
+
+	The first reason is after ES6 was released with Class syntatic sugar, the constructor methods on classes with "setState" was a more safe way to set state without additional renders. Speaking of additional renders, it's now known by React developers that it is safer to make async calls AFTER the initial render.  If componentWillMount with an async call to set state before a render no matter what, the render method will be fired before the async completes.  This can lead to possible errors.
+
+	The correct approach now is to set state in the constructor method and then add any additional async calls to the componentDidMount method.
+
+"2. Can you walk me through the cycle of mounting a stateful component? What functions are called in what order? Where would you place a request for data from the API? Why?"
+
+	As mentioned in the first response, each stateful component has component lifecycle.  A large part of this response has already been described in the first but I will elaborate on that subject here.  In particular, I will describe the mounting cycle for 'class components' rather than their functional counterparts in this response.
+
+	When a stateful class component is instantiated a constructor method is used.  (If state isn't initialized or no binded methods, there is no need for a constructor)  Technically the constructor is called before the component is mounted and this is where props can be handed down in the "super".  Also, local state can be initialized.
+
+	The only required method for a class component is "render".  The render method comes with many perks included direct interaction with the virtual DOM.  When JSX is returned (which is one of my favorite parts of working with React), html elements of your choice are rendered to the page.  The render method must always be pure and cannot modify component state without causes errors or serious side effects.
+
+	The method componentDidMount, as I described above briefly, is the replacement for the old "componentWillMount".  This is the perfect place to make api calls, subscriptions, perform async functions etc.  (Of course don't forget to call componentWillUnmount() at the end of the component's lifecycle) This is BY FAR the best place to put this type of logic in your component because, besides the constructor, is the only function that is guaranteed to run only once per mounted component.
+
+"If you had unlimited time budget and could fix / improve / change one thing in your last project, what would it be and why?"
+
+	This response for me is a more passionate one because it directly relates to my background as a musician where I've had to wear multiple hats quite often.  The one major thing I would change would be to add an additional developer/designer to my project to collaberate with.  I am confident in my skills to both implement designs AND be the designer (UI wise) but in order to place the most attention and heart into each aspect of the stack, it never was going to happen all on my own.  This is the power of mutual beneficial collaberation where talented folks with knowledge of all over the stack can work on their given assignments, but also be able to provide input and constructive criticism everywhere.  For example, on my current/last project I spent a lot of time bouncing back and forth perfecting my endpoints on my Express Router while also writing Tailwind CSS for the UI.
+	The added developer/developers on my team would be helpful for not only to specialize in certain aspects but also to hold eachother accountable and help maintain a healthy development cycle.  This mutual collaberation overall would help increase the healthy scalability, pipelining, and modularity of any given project.
+	As someone with a self-starter attitude, the ego in me loves to be able to work my heart out in each part of the stack but I know the benefits of having multiple likeminded individuals working with me on a given project.
