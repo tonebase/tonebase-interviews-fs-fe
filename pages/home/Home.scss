@@ -1,0 +1,96 @@
+$navy: #14213d;
+$mustard: #fca311;
+
+@mixin button-text($color) {
+  font-family: "Comic Sans MS";
+  font-size: 50pt;
+  font-style: normal;
+  font-weight: normal;
+  text-align: center;
+
+  color: $color;
+}
+
+@mixin default-button($background-color, $border-color, $text-color) {
+  /* animation setup */
+  transition: transform 0.1s;
+
+  /* width and height */
+  width: 100px;
+  height: 100px;
+
+  /* button dimensions */
+  border-radius: 50%;
+  border-width: 2px;
+  border: solid;
+
+  /* background color */
+  background: $background-color;
+
+  /* border color */
+  border-color: $border-color;
+
+  /* text (with color passed in) */
+  @include button-text($text-color);
+}
+
+.home { 
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  font-family: "Comic Sans MS";
+}
+
+.heading { 
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.counter {
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 10%;
+}
+
+label {
+  font-size: 30pt;
+}
+
+.buttons {
+  display: flex;
+  font-family: "Comic Sans MS";
+
+  flex-direction: row;
+
+  width: 100vw;
+
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  @include default-button($navy, $navy, white);
+
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+body {
+  background-color: white;
+}
+
+button:active {
+  transform: scale(1.05);
+}
+
+button:hover {
+  cursor: pointer;
+  @include default-button($mustard, $mustard, $navy);
+}
